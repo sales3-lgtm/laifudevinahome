@@ -25,6 +25,28 @@ rel="stylesheet">
 href="style.css">
 
 </head>
+<script>
+
+const toggle=document.querySelector(".menu-toggle");
+const nav=document.querySelector(".main-nav");
+
+toggle.addEventListener("click",()=>{
+
+if(nav.style.display==="flex"){
+
+nav.style.display="none";
+
+}else{
+
+nav.style.display="flex";
+nav.style.flexDirection="column";
+nav.style.gap="20px";
+
+}
+
+});
+
+</script>
 
 <body>
 
@@ -40,26 +62,26 @@ href="style.css">
 
 </div>
 
-<nav>
+<div class="menu-toggle">
+☰
+</div>
 
-    <nav>
-        <a href="about.html">ABOUT US</a>
-        <a href="products.html">COLLECTIONS</a>
-        <a href="technology.html">TECHNOLOGY</a>
-        <a href="contact.html">CONTACT</a>
-    </nav>
+<nav class="main-nav">
+
+    <a href="about.html">ABOUT US</a>
+    <a href="products.html">COLLECTIONS</a>
+    <a href="technology.html">TECHNOLOGY</a>
+    <a href="contact.html">CONTACT</a>
 
     <div class="lang-switch">
 
-         <a href="index-vn.html">VN</a>
-
+        <a href="index-vn.html">VN</a>
         <span>|</span>
 
         <a href="index.html" class="active">EN</a>
-
         <span>|</span>
 
-       <a href="index-ko.html">KR</a>
+        <a href="index-ko.html">KR</a>
 
     </div>
 
