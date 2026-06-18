@@ -25,28 +25,6 @@ rel="stylesheet">
 href="style.css">
 
 </head>
-<script>
-
-const toggle=document.querySelector(".menu-toggle");
-const nav=document.querySelector(".main-nav");
-
-toggle.addEventListener("click",()=>{
-
-if(nav.style.display==="flex"){
-
-nav.style.display="none";
-
-}else{
-
-nav.style.display="flex";
-nav.style.flexDirection="column";
-nav.style.gap="20px";
-
-}
-
-});
-
-</script>
 
 <body>
 
@@ -201,5 +179,29 @@ BRAND STORY
 <footer>
 
 </footer>
+
+<script>
+
+const toggle=document.querySelector(".menu-toggle");
+const nav=document.querySelector(".main-nav");
+
+toggle.addEventListener("click",()=>{
+
+if(nav.style.display==="flex"){
+
+nav.style.display="none";
+
+}else{
+
+nav.style.display="flex";
+nav.style.flexDirection="column";
+nav.style.gap="20px";
+
+}
+
+});
+
+</script>
+
 </body>
 </html>

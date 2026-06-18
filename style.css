@@ -36,10 +36,13 @@ body{
 
 .header{
 
-    position:absolute;
+    position:fixed;
 
     top:0;
     left:0;
+
+    background:rgba(255,255,255,.82);
+    backdrop-filter:blur(10px);
 
     width:100%;
 
@@ -83,7 +86,7 @@ body{
 
     border-radius:30px;
 
-    background:rgba(255,255,255,.6);
+    background:rgba(255,255,255,.85);
 
     backdrop-filter:blur(10px);
 
@@ -748,99 +751,6 @@ TABLET
 
 }
 
-/* ======================
-MOBILE
-====================== */
-@media screen and (max-width:768px){
-
-.header{
-    flex-direction:column;
-    gap:15px;
-    padding:20px;
-}
-
-.header nav{
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:15px;
-}
-
-.lang-switch{
-    margin:0;
-}
-
-.logo img{
-    height:70px;
-}
-
-.hero{
-    height:auto;
-    background-size:100%;
-    background-position:center top;
-}
-
-.hero-content{
-    width:100%;
-    height:auto;
-    padding:130px 25px 60px;
-}
-
-.hero h1{
-    font-size:42px;
-    line-height:1.15;
-}
-
-.hero p{
-    font-size:17px;
-}
-
-.feature-grid{
-    grid-template-columns:1fr 1fr;
-    gap:25px;
-}
-
-.feature-item{
-    text-align:center;
-}
-
-.hero-buttons{
-    flex-direction:column;
-}
-
-.btn-primary,
-.btn-secondary{
-    width:100%;
-    text-align:center;
-}
-
-.brand-story img,
-.collections img,
-.contact-banner img{
-    width:100%;
-    height:auto;
-    display:block;
-}
-
-}
-
-/* ======================
-SMALL PHONE
-====================== */
-@media screen and (max-width:480px){
-
-.hero h1{
-    font-size:34px;
-}
-
-.hero p{
-    font-size:15px;
-}
-
-.feature-grid{
-    grid-template-columns:1fr;
-}
-
-}
 /* ==========================
 MOBILE V2
 ========================== */
@@ -875,13 +785,23 @@ grid-template-columns:repeat(2,1fr);
 @media(max-width:768px){
 
 .header{
-padding:20px;
-flex-direction:column;
-gap:15px;
+padding:15px 20px;
+
+flex-direction:row;
+
+justify-content:space-between;
+
+align-items:center;
 }
 
 .menu-toggle{
 display:block;
+
+margin-left:auto;
+
+font-size:32px;
+
+cursor:pointer;
 }
 
 .main-nav{
@@ -889,7 +809,8 @@ display:none;
 }
 
 .logo img{
-height:70px;
+  height:45px;
+  width:auto;
 }
 
 .hero{
@@ -906,7 +827,7 @@ background-position:center top;
 width:100%;
 height:auto;
 
-padding:130px 25px 60px;
+padding:140px 25px 60px;
 }
 
 .hero h1{
@@ -930,7 +851,20 @@ gap:25px;
 
 .feature-item{
 
-text-align:center;
+    text-align:center;
+
+}
+
+.feature-item img{
+
+    display:block;
+
+    width:56px;
+
+    height:56px;
+
+    margin:0 auto 18px;
+
 }
 
 .hero-buttons{
