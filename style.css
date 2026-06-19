@@ -485,6 +485,39 @@ body{
    RESPONSIVE: MOBILE (최대 768px)
 ========================== */
 @media screen and (max-width:768px){
+    /* ==========================
+   RESPONSIVE: MOBILE (최대 768px)
+========================== */
+@media screen and (max-width:768px){
+    
+    /* 📌 [여기] 기존에 있던 미디어 쿼리 초입부에 아래 코드를 추가해 주세요 */
+    .hero {
+        background-size: cover;       /* 이미지가 잘리지 않고 화면을 꽉 채우도록 변경 */
+        background-position: center;   /* 이미지의 중심이 모바일 화면 가운데에 오도록 설정 */
+        min-height: 80vh;              /* 세로 화면이 긴 모바일 특성에 맞춰 적절한 높이 부여 */
+        height: auto;
+    }
+
+    .hero-overlay {
+        /* 모바일에서는 텍스트 가독성을 위해 배경 전체에 어두운 반투명 막을 고르게 덮습니다 */
+        background: rgba(255, 255, 255, 0.75); 
+    }
+
+    .hero-content {
+        width: 100%;
+        min-height: 80vh;
+        padding: 120px 20px 60px 20px; /* 위쪽 여백을 주어 헤더와 겹치지 않게 정렬 */
+        justify-content: center;
+        text-align: center;            /* 모바일에서는 텍스트를 중앙 정렬하는 것이 인상이 깔끔합니다 */
+    }
+    
+    /* 이하 기존에 있던 모바일 코드들 (.menu-toggle, .main-nav 등) */
+    .menu-toggle {
+        display:block;
+    }
+    ...
+}
+
     .menu-toggle{
         display:block; /* 모바일에서 ☰ 활성화 */
     }
@@ -562,5 +595,336 @@ body{
     
     .btn-primary, .btn-secondary{
         text-align:center;
+    }
+}
+.footer{
+
+```
+background:#050505;
+
+padding:40px 70px;
+```
+
+}
+
+.footer-top{
+
+```
+display:grid;
+
+grid-template-columns:1.5fr 1fr 1fr 1fr .8fr 1fr;
+
+gap:60px;
+```
+
+}
+
+.footer-logo img{
+
+```
+width:220px;
+
+margin-bottom:20px;
+```
+
+}
+
+.footer-logo p{
+
+```
+color:#ddd;
+
+font-size:15px;
+
+line-height:1.8;
+
+max-width:320px;
+```
+
+}
+
+.copyright{
+
+```
+margin-top:25px;
+
+color:#aaa;
+
+font-size:14px;
+```
+
+}
+
+.footer-column h4{
+
+```
+color:#fff;
+
+font-size:18px;
+
+margin-bottom:20px;
+```
+
+}
+
+.footer-column a{
+
+```
+display:block;
+
+color:#ddd;
+
+text-decoration:none;
+
+margin-bottom:12px;
+
+font-size:15px;
+
+transition:.3s;
+```
+
+}
+
+.footer-column a:hover{
+
+```
+color:#18b05c;
+```
+
+}
+
+.social-icons{
+
+```
+display:flex;
+
+gap:18px;
+
+margin-top:15px;
+```
+
+}
+
+.social-icons a{
+
+```
+width:52px;
+
+height:52px;
+
+border:1px solid #666;
+
+border-radius:50%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+color:white;
+
+text-decoration:none;
+
+font-size:22px;
+```
+
+}
+
+.language{
+
+```
+color:#fff;
+
+margin-top:40px;
+```
+
+}
+
+@media(max-width:768px){
+
+.footer{
+
+```
+padding:50px 25px;
+```
+
+}
+
+.footer-top{
+
+```
+grid-template-columns:1fr;
+
+gap:40px;
+```
+
+}
+
+}
+
+/* =====================================
+   FOOTER SECTION
+===================================== */
+
+.footer {
+    background: #111111; /* 고급스러운 어두운 배경 */
+    color: #ffffff;
+    padding: 80px 80px 40px 80px;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 2fr repeat(4, 1fr) 1.5fr; /* 첫 칸과 마지막 칸을 여유 있게 배치 */
+    gap: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 50px;
+}
+
+/* 로고 및 회사 설명 영역 */
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footer-logo img {
+    height: 45px;
+    width: auto;
+    display: block;
+}
+
+.footer-logo p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #999999;
+    max-width: 260px;
+}
+
+.footer-logo .copyright {
+    font-size: 13px;
+    color: #666666;
+    margin-top: auto; /* 하단 밀착 */
+}
+
+/* 개별 링크 칼럼 */
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer-column h4 {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.footer-column a {
+    font-size: 14px;
+    color: #bbbbbb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: #0F9D58; /* 브랜드 키 컬러 */
+}
+
+/* 소셜 및 언어 선택 영역 */
+.footer-column.social {
+    gap: 25px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 12px;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background: #0F9D58;
+    color: #ffffff;
+    transform: translateY(-3px);
+}
+
+.footer-column .language {
+    font-size: 13px;
+    color: #bbbbbb;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px 12px;
+    border-radius: 4px;
+    display: inline-block;
+    align-self: flex-start;
+    transition: background 0.3s;
+}
+
+.footer-column .language:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* =====================================
+   FOOTER RESPONSIVE (미디어 쿼리 추가)
+===================================== */
+
+/* 태블릿 화면 (최대 1024px) */
+@media screen and (max-width: 1024px) {
+    .footer {
+        padding: 60px 40px 30px 40px;
+    }
+    .footer-top {
+        grid-template-columns: repeat(3, 1fr); /* 3열로 압축 */
+        gap: 40px 30px;
+    }
+    .footer-logo {
+        grid-column: span 3; /* 로고 영역을 최상단에 길게 배치 */
+        margin-bottom: 20px;
+    }
+    .footer-logo .copyright {
+        margin-top: 10px;
+    }
+}
+
+/* 모바일 화면 (최대 768px) */
+@media screen and (max-width: 768px) {
+    .footer {
+        padding: 50px 20px 30px 20px;
+    }
+    .footer-top {
+        grid-template-columns: 1fr; /* 1열 세로 정렬 */
+        gap: 35px;
+    }
+       .footer-logo img {
+        height: 38px;      /* ◀ 모바일 화면에 맞춰 줄어들 크기 */
+    }
+    .footer-logo {
+        grid-column: span 1;
+    }
+    .footer-column {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding-bottom: 20px; /* 구분을 위한 경계선 추가 */
+    }
+    .footer-column.social {
+        border-bottom: none;
     }
 }
