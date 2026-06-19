@@ -767,7 +767,7 @@ cursor:pointer;
 
 .hero-content{
 width:100%;
-padding:140px 40px 80px;
+padding:110px 40px 50px;
 }
 
 .hero h1{
@@ -805,7 +805,22 @@ cursor:pointer;
 }
 
 .main-nav{
-display:none;
+    display:none;
+    position:absolute;
+
+    top:75px;
+    right:20px;
+
+    width:220px;
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+
 }
 
 .logo img{
@@ -827,18 +842,18 @@ background-position:center top;
 width:100%;
 height:auto;
 
-padding:140px 25px 60px;
+padding:130px 25px 50px;
 }
 
 .hero h1{
 
-font-size:42px;
-line-height:1.15;
+font-size:26px;
+line-height:1.3;
 }
 
 .hero p{
 
-font-size:16px;
+font-size:15px;
 line-height:1.8;
 }
 
@@ -887,7 +902,7 @@ text-align:center;
 
 .hero h1{
 
-font-size:34px;
+font-size:24px;
 }
 
 .hero p{
