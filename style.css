@@ -501,7 +501,31 @@ body{
         box-shadow:0 10px 20px rgba(0,0,0,.05);
         margin-left:0;
     }
-    
+    .feature-icons{
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:20px 15px;
+        width:100%;
+        max-width:300px;
+        margin:30px auto 0;
+    }
+
+    .feature-item{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+    }
+
+    .feature-item img{
+        width:56px;
+        height:56px;
+    }
+
+    .feature-item span{
+        margin-top:8px;
+        font-size:14px;
+    }
     /* JS에서 open 클래스를 붙였을 때 노출 */
     .main-nav.open{
         display:flex;
