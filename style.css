@@ -502,11 +502,10 @@ body{
         margin-left:0;
     }
     .feature-icons{
-        display:grid;
-        grid-template-columns:repeat(2,1fr);
-        gap:20px 15px;
-        width:100%;
-        max-width:300px;
+        display:grid !important;
+        grid-template-columns:1fr 1fr !important;
+        gap:20px !important;
+        max-width:320px;
         margin:30px auto 0;
     }
 
