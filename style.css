@@ -424,49 +424,118 @@ body{
    CONTACT PAGE
 ====================== */
 
-.contact-wrapper{
+.quotation-section{
+    background:#f3f3f3;
+    padding:80px 20px;
+}
+
+.quotation-wrap{
+    max-width:1400px;
+    margin:auto;
+    background:#f5f5f5;
+    border:2px solid #1d6b2e;
+    border-radius:15px;
+    padding:50px;
+}
+
+.quotation-wrap h2{
+    text-align:center;
+    margin-bottom:50px;
+    font-size:42px;
+}
+
+.quotation-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:60px;
-    padding:0 80px 120px;
+    gap:40px;
 }
 
-.contact-info h2{
-    margin-bottom:30px;
+.quotation-wrap label{
+    display:block;
+    margin-bottom:10px;
+    margin-top:25px;
+    font-weight:700;
 }
 
-.contact-info p{
-    margin-bottom:25px;
-    line-height:1.9;
-    color:#555;
-}
-
-.contact-form form{
-    display:flex;
-    flex-direction:column;
-    gap:20px;
-}
-
-.contact-form input,
-.contact-form textarea{
-    padding:18px;
-    border:1px solid #ddd;
+.quotation-wrap input,
+.quotation-wrap textarea{
+    width:100%;
+    padding:16px;
+    border:1px solid #2d7d39;
     border-radius:8px;
-    font-size:15px;
+    background:#fff;
 }
 
-.contact-form textarea{
+.quotation-wrap textarea{
     height:180px;
+    resize:none;
 }
 
-.contact-form button{
-    background:#0F9D58;
-    color:#fff;
-    border:none;
-    padding:18px;
+.collection-group{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.collection-group label{
+    border:1px solid #2d7d39;
+    padding:10px 18px;
     border-radius:8px;
-    font-weight:600;
+    background:white;
+    margin-top:0;
     cursor:pointer;
+}
+
+.collection-group input{
+    display:none;
+}
+
+.contact-method{
+    margin-top:20px;
+    display:flex;
+    gap:30px;
+}
+
+.privacy{
+    margin-top:30px;
+}
+
+#submit-btn{
+    width:100%;
+    margin-top:40px;
+    height:70px;
+    background:#1d6b2e;
+    color:white;
+    font-size:24px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+#submit-btn:hover{
+    background:#145122;
+}
+
+#success-message{
+    margin-top:20px;
+    text-align:center;
+    color:#1d6b2e;
+}
+
+@media(max-width:768px){
+
+.quotation-grid{
+    grid-template-columns:1fr;
+}
+
+.quotation-wrap{
+    padding:30px 20px;
+}
+
+.quotation-wrap h2{
+    font-size:30px;
+}
+
 }
 
 /* ======================
@@ -1055,11 +1124,16 @@ gap:40px;
         grid-template-columns: 1fr; /* 1열 세로 정렬 */
         gap: 35px;
     }
-       .footer-logo img {
-        height: 38px;      /* ◀ 모바일 화면에 맞춰 줄어들 크기 */
+    .footer-logo img{ /* 모바일 화면에서 로고 크기 */
+        width:160px;
+        height:auto;
+        display:block;
     }
-    .footer-logo {
-        grid-column: span 1;
+
+    .footer-logo{
+        display:flex;
+        align-items:center;
+        justify-content:center;
     }
     .footer-column {
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);

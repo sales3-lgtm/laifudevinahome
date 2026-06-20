@@ -29,7 +29,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 href="style.css">
 
 </head>
-
 <body>
 
 <header class="header">
@@ -66,85 +65,36 @@ href="style.css">
 
 </header>
 
-<section class="hero">
-
-<div class="hero-overlay"></div>
-
-<div class="hero-content">
-
-<h1>
-
-Technology Built on Trust,<br>
-Value Defined by Quality<span>.</span>
-
-</h1>
-
-<p>
-
-Korean engineering expertise,
-strategic sourcing and precision
-manufacturing infrastructure
-delivering reliable performance
-worldwide.
-
-</p>
 
 
-<div class="hero-features">
+<section class="collections">
 
-<div class="feature-grid">
-  <div class="feature-item">
-   <img src="image/icons/icon-quality.svg"
-         alt="Trusted Quality">
-
-  </svg>
-    <h3>TRUSTED QUALITY</h3>
-    <p>Reliable performance<br>you can count on</p>
-  </div>
-
-  <div class="feature-item">
-
-   <img src="image/icons/icon-engineering.svg"
-         alt="Engineering Solutions">
-        </svg>
-
-            <h3>ENGINEERING SOLUTIONS</h3>
-    <p>Purpose-built for<br>every profession</p>
-  </div>
-
-  <div class="feature-item">
-     <img src="image/icons/icon-global.svg"
-         alt="Global Partnership">
-    <h3>GLOBAL PARTNERSHIP</h3>
-    <p>Trusted by partners<br>worldwide</p>
-  </div>
-
-  <div class="feature-item">
-     <img src="image/icons/icon-sustainable.svg"
-         alt="Sustainable Future">
-    <h3>SUSTAINABLE FUTURE</h3>
-    <p>Responsible practices<br>for a better tomorrow</p>
-  </div>
-
-</div>
+<input
+type="text"
+id="searchBox"
+placeholder="Search Products">
 
 
-</div>
-
-<div class="hero-buttons">
 
 
-<a href="#collections" 
-class="btn-primary">
 
-VIEW COLLECTIONS
+<h2>OUR COLLECTIONS</h2>
 
-</a>
+<div class="collection-grid">
 
-<a href="aboutus.html"
-class="btn-secondary">
+<div class="product-card">
 
-BRAND STORY
+<img src="images/product1.jpg">
+
+<div class="card-content">
+
+<h3>LF-WJ-2401</h3>
+
+<p>Industrial Workwear</p>
+
+<a href="products/LF-WJ-2401.html">
+
+View Details →
 
 </a>
 
@@ -152,78 +102,58 @@ BRAND STORY
 
 </div>
 
+
+
+<div class="product-card">
+
+<img src="images/product2.jpg">
+
+<div class="card-content">
+
+<h3>LF-WJ-2402</h3>
+
+<p>Industrial Workwear</p>
+
+<a href="products/LF-WJ-2402.html">
+
+View Details →
+
+</a>
+
+</div>
+
+</div>
+
+
+
+<div class="product-card">
+
+<img src="images/product3.jpg">
+
+<div class="card-content">
+
+<h3>LF-WJ-2403</h3>
+
+<p>Industrial Workwear</p>
+
+<a href="products/LF-WJ-2403.html">
+
+View Details →
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<section class="brand-story">
-<img src="image/1banner01.png">
-        
-</section>
-
-<section id="collections" class="collections">
-<img src="image/2banner.png">
-
-<!-- 1. OUR COLLECTIONS SECTION -->
-
-
-</section>
-
-<section class="contact-banner">
-<img src="image/process.png">
-
-<section class="cta-banner-section">
-    <div class="cta-banner-container">
-        <!-- 왼쪽 타이틀 구역 -->
-        <div class="cta-banner-left">
-            <h2>Let's Build Your<br>Uniform Program Together.</h2>
-        </div>
-        
-        <!-- 중앙 설명 구역 (왼쪽에 세로선 포함) -->
-        <div class="cta-banner-middle">
-            <p>Speak with our specialists about customized workwear, classroom garments, medical uniforms, and industrial supply solutions.</p>
-        </div>
-        
-        <!-- 오른쪽 버튼 구역 -->
-        <div class="cta-banner-right">
-            <a href="contact.html" class="btn-banner-green">REQUEST A QUOTATION ➔</a>
-            <a href="#" class="btn-banner-outline"><i class="fa-solid fa-download"></i> DOWNLOAD CATALOG</a>
-        </div>
-    </div>
-</section>
 
 
 
-
-<section class="contact-banner">
-<img src="image/contactimg.png">
-</section>
-
-
-
-
-<script>
-
-const toggle=document.querySelector(".menu-toggle");
-const nav=document.querySelector(".main-nav");
-
-toggle.addEventListener("click",()=>{
-
-if(nav.style.display==="flex"){
-
-nav.style.display="none";
-
-}else{
-
-nav.style.display="flex";
-nav.style.flexDirection="column";
-nav.style.gap="20px";
-
-}
-
-});
-
-</script>
-
-<!-- HTML -->
+<!-- FOOTER -->
 
 <footer class="footer">
 
