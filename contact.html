@@ -1,113 +1,210 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Contact | LAIFUDE VINA</title>
+<title>Technology | LAIFUDE VINA</title>
+
+<meta name="description"
+content="Technology Built on Trust, Value Defined by Quality">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+rel="stylesheet">
 
 <link rel="stylesheet"
-href="style.css">
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* CONTACT PAGE */
+
+.contact-page{
+    width:100%;
+    background:#fff;
+    padding-top:90px;
+}
+
+.contact-page img{
+    display:block;
+    width:100%;
+    max-width:1920px;
+    margin:auto;
+    height:auto;
+}
+
+</style>
 
 </head>
 
 <body>
 
-<header class="sub-header">
+
+<!-- HEADER -->
+
+<header class="header">
 
 <div class="logo">
 
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizxoM1a_R4TZ41VawGSY2JHdMO2BH2U_FU8kQZ3osyq7MdyNgyUJXTJA72wg3nILN4zfaFHIz2Czqiko5aoT79ZbF0UPakPGQiE__7cPCPkPR7tYv6mN27AiV0ZqoJe5s05c7EVZn8z1nhWSQNTjuEvB7iNtNX4WViYGAahAI4_hPdsMVJWNSwgGxzxOI/s1536/LAIFUDE-LOGO.png">
+<a href="index.html">
+
+<img src="image/logo.png" alt="LAIFUDE VINA">
+
+</a>
 
 </div>
 
-<nav>
+<div class="menu-toggle">
+☰
+</div>
 
-<a href="index.html">HOME</a>
+<nav class="main-nav">
 
-<a href="about.html">ABOUT</a>
+    <a href="aboutus.html">ABOUT US</a>
+    <a href="products.html">COLLECTIONS</a>
+    <a href="technology.html">TECHNOLOGY</a>
+    <a href="Sustainability.html">SUSTAINABILITY</a>
+    <a href="contact.html">CONTACT</a>
 
-<a href="products.html">COLLECTIONS</a>
+    <button class="language">
+        🌐 <span id="current-language">English</span>
+        <i class="fa-solid fa-chevron-down"></i>
+    </button>
+   
 
 </nav>
 
 </header>
 
-<section class="page-hero">
 
-<h1>
-Let's Build Together
-</h1>
+<!-- CONTACT IMAGE -->
 
-<p>
+<section class="contact-page">
 
-We are ready to support your
-industrial sourcing and manufacturing needs.
+    <img src="image/contactbg.png"
+         alt="LAIFUDE contact">
 
-</p>
+    <img src="image/contactbg02.png"
+         alt="LAIFUDE contact">     
 
 </section>
 
-<section class="contact-wrapper">
+<section class="quotation-section">
 
-<div class="contact-info">
+<div class="quotation-wrap">
 
-<h2>
-LAIFUDE VINA CO., LTD.
-</h2>
+<h2>QUOTATION REQUEST FORM</h2>
 
-<p>
+<form id="quotation-form">
 
-LK5-129-75, KDT Splendora<br>
-Xa Son Dong<br>
-Ha Noi City<br>
-Vietnam
+<div class="quotation-grid">
 
-</p>
+<!-- LEFT -->
+<div class="quotation-left">
 
-<p>
+<label>[ COMPANY NAME ]</label>
+<input type="text" name="company_name" placeholder="COMPANY NAME" required>
 
-Phone<br>
-+84 24 6664 1500
+<label>[ EMAIL ADDRESS ]</label>
+<input type="email" name="user_email" placeholder="EMAIL ADDRESS" required>
 
-</p>
+<label>[ PRIMARY COLLECTION INTERES ]</label>
 
-<p>
+<div class="collection-group">
 
-Email<br>
-laifudevina@gmail.com
+<label><input type="checkbox" value="CORPORATE"> CORPORATE</label>
 
-</p>
+<label><input type="checkbox" value="INDUSTRIAL"> INDUSTRIAL</label>
+
+<label><input type="checkbox" value="IR4+ESD"> IR4+ESD</label>
+
+<label><input type="checkbox" value="MEDICAL UNIFORM"> MEDICAL UNIFORM</label>
+
+<label><input type="checkbox" value="SAFETY & PPE"> SAFETY & PPE</label>
+
+<label><input type="checkbox" value="CUSTOM"> CUSTOM</label>
 
 </div>
 
-<div class="contact-form">
-
-<form>
-
-<input
-type="text"
-placeholder="Your Name">
-
-<input
-type="email"
-placeholder="Email Address">
-
-<input
-type="text"
-placeholder="Company Name">
+<label>[ CUSTOMIZATION NEEDS ]</label>
 
 <textarea
-placeholder="Message"></textarea>
+name="customization"
+placeholder="CUSTOMIZATION NEEDS"></textarea>
 
-<button type="submit">
+</div>
 
-SEND MESSAGE
+
+<!-- RIGHT -->
+
+<div class="quotation-right">
+
+<label>[ CONTACT PERSON ]</label>
+<input type="text" name="contact_person" placeholder="CONTACT PERSON" required>
+
+<label>[ PHONE NUMBER ]</label>
+<input type="text" name="phone" placeholder="PHONE NUMBER">
+
+<label>[ ESTIMATED QUANTITY ]</label>
+<input type="text" name="quantity"
+placeholder="Enter qty, logo, specific fabric">
+
+<label>[ ADDITIONAL NOTES ]</label>
+
+<textarea
+name="additional_notes"
+placeholder="ADDITIONAL NOTES"></textarea>
+
+
+<div class="contact-method">
+
+<label>
+<input type="radio"
+name="preferred_contact"
+value="Email"
+checked>
+Email
+</label>
+
+<label>
+<input type="radio"
+name="preferred_contact"
+value="Phone">
+Phone
+</label>
+
+</div>
+
+
+<div class="privacy">
+
+<input type="checkbox" required>
+
+I AGREE TO PRIVACY POLICY
+
+</div>
+
+</div>
+
+</div>
+
+
+<button type="submit"
+id="submit-btn">
+
+SUBMIT REQUEST →
 
 </button>
+
+<div id="success-message"></div>
 
 </form>
 
@@ -115,5 +212,123 @@ SEND MESSAGE
 
 </section>
 
+<section class="contact-page">
+
+    <img src="image/contactbg03.png"
+         alt="LAIFUDE contact">
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<div class="footer-top">
+
+    <div class="footer-logo">
+
+        <a href="index.html">
+            <img src="image/footer-logo.png" alt="LAIFUDE">
+        </a>
+
+        <p>
+            Technology Built on Trust,<br>
+            Value Defined by Quality<span>.</span>
+        </p>
+
+        <div class="copyright">
+            © 2026 LAIFUDE. All rights reserved.
+        </div>
+
+    </div>
+
+
+    <div class="footer-column">
+
+        <h4>COMPANY</h4>
+
+        <a href="aboutus.html">About Us</a>
+        <a href="technology.html">Brand Philosophy</a>
+        <a href="Sustainability.html">Sustainability</a>   
+        <a href="#">News & Insights</a>
+        <a href="#">Careers</a>
+
+    </div>
+
+
+    <div class="footer-column">
+
+        <h4>COLLECTIONS</h4>
+
+        <a href="#">Workwear</a>
+        <a href="#">Corporate Wear</a>
+        <a href="#">ESD & Cleanroom Wear</a>
+        <a href="#">Medical Uniforms</a>
+        <a href="#">Safety & PPE</a>
+
+    </div>
+
+
+    <div class="footer-column">
+
+        <h4>SUPPORT</h4>
+
+        <a href="quotation.html">Request a Quotation</a>
+        <a href="#">FAQ</a>
+        <a href="#">Catalog Download</a>
+        <a href="contact.html">Contact Us</a>
+
+    </div>
+
+
+    <div class="footer-column">
+
+        <h4>LEGAL</h4>
+
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+
+    </div>
+
+
+    <div class="footer-column social">
+
+        <h4>FOLLOW US</h4>
+
+        <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.facebook.com/laifudevn/"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+
+<div class="language-footer">
+    🌐 <span id="footer-language">English</span>
+    <i class="fa-solid fa-chevron-down"></i>
+</div>
+
+
+</footer>
+<div class="language-menu">
+
+    <div onclick="changeLanguage('en')">English</div>
+    <div onclick="changeLanguage('ko')">한국어</div>
+    <div onclick="changeLanguage('vi')">Tiếng Việt</div>
+    <div onclick="changeLanguage('zh-CN')">中文</div>
+
+</div>
+
+<div id="google_translate_element"></div>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script src="language.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script src="contact.js"></script>
+
+
 </body>
 </html>
+```
