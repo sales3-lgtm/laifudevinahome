@@ -22,7 +22,8 @@ crossorigin>
 rel="stylesheet">
 
 <!-- Font Awesome 6 아이콘 라이브러리 추가 -->
-<link rel="stylesheet" href="https://cloudflare.com">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 <link rel="stylesheet"
 href="style.css">
@@ -49,22 +50,17 @@ href="style.css">
 
 <nav class="main-nav">
 
-    <a href="about.html">ABOUT US</a>
+    <a href="aboutus.html">ABOUT US</a>
     <a href="products.html">COLLECTIONS</a>
     <a href="technology.html">TECHNOLOGY</a>
+    <a href="Sustainability.html">SUSTAINABILITY</a>
     <a href="contact.html">CONTACT</a>
 
-    <div class="lang-switch">
-
-        <a href="index-vn.html">VN</a>
-        <span>|</span>
-
-        <a href="index.html" class="active">EN</a>
-        <span>|</span>
-
-        <a href="index-ko.html">KR</a>
-
-    </div>
+    <button class="language">
+        🌐 <span id="current-language">English</span>
+        <i class="fa-solid fa-chevron-down"></i>
+    </button>
+  
 
 </nav>
 
@@ -145,7 +141,7 @@ VIEW COLLECTIONS
 
 </a>
 
-<a href="about.html"
+<a href="aboutus.html"
 class="btn-secondary">
 
 BRAND STORY
@@ -156,8 +152,6 @@ BRAND STORY
 
 </div>
 
-
-</section>
 </section>
 
 <section class="brand-story">
@@ -168,12 +162,39 @@ BRAND STORY
 <section id="collections" class="collections">
 <img src="image/2banner.png">
 
+<!-- 1. OUR COLLECTIONS SECTION -->
+
+
 </section>
 
 <section class="contact-banner">
-<img src="image/bottom03.png">
+<img src="image/process.png">
+
+<section class="cta-banner-section">
+    <div class="cta-banner-container">
+        <!-- 왼쪽 타이틀 구역 -->
+        <div class="cta-banner-left">
+            <h2>Let's Build Your<br>Uniform Program Together.</h2>
+        </div>
+        
+        <!-- 중앙 설명 구역 (왼쪽에 세로선 포함) -->
+        <div class="cta-banner-middle">
+            <p>Speak with our specialists about customized workwear, classroom garments, medical uniforms, and industrial supply solutions.</p>
+        </div>
+        
+        <!-- 오른쪽 버튼 구역 -->
+        <div class="cta-banner-right">
+            <a href="#" class="btn-banner-green">REQUEST A QUOTATION ➔</a>
+            <a href="#" class="btn-banner-outline"><i class="fa-solid fa-download"></i> DOWNLOAD CATALOG</a>
+        </div>
+    </div>
+</section>
 
 
+
+
+<section class="contact-banner">
+<img src="image/contactimg.png">
 </section>
 
 
@@ -230,8 +251,9 @@ Value Defined by Quality<span>.</span>
 
         <h4>COMPANY</h4>
 
-        <a href="about.html">About Us</a>
-        <a href="#">Brand Philosophy</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="technology.html">Brand Philosophy</a>
+        <a href="Sustainability.html">Sustainability</a>
         <a href="#">News & Insights</a>
         <a href="#">Careers</a>
 
@@ -276,14 +298,15 @@ Value Defined by Quality<span>.</span>
     <div class="social-icons">
         <!-- 링크 주소(#) 부분에 실제 주소를 넣으시면 됩니다 -->
         <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://www.facebook.com/laifudevn/" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
         <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
         <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
     </div>
 
-    <div class="language">
-        🌐 English ▼
-    </div>
+<div class="language-footer">
+    🌐 <span id="footer-language">English</span>
+    <i class="fa-solid fa-chevron-down"></i>
+</div>
 
 </div>
 
@@ -292,6 +315,22 @@ Value Defined by Quality<span>.</span>
 ```
 
 </footer>
+
+<div class="language-menu">
+
+    <div onclick="changeLanguage('en')">English</div>
+    <div onclick="changeLanguage('ko')">한국어</div>
+    <div onclick="changeLanguage('vi')">Tiếng Việt</div>
+    <div onclick="changeLanguage('zh-CN')">中文</div>
+
+</div>
+
+<div id="google_translate_element"></div>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script src="language.js"></script>
+
 
 </body>
 </html>

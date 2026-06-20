@@ -1,0 +1,97 @@
+<form id="quotation-form">
+
+<div class="form-row">
+
+<input type="text"
+name="company_name"
+placeholder="COMPANY NAME"
+required>
+
+<input type="text"
+name="contact_person"
+placeholder="CONTACT PERSON"
+required>
+
+</div>
+
+<div class="form-row">
+
+<input type="email"
+name="user_email"
+placeholder="EMAIL ADDRESS"
+required>
+
+<input type="text"
+name="phone"
+placeholder="PHONE NUMBER">
+
+</div>
+
+<h3>PRIMARY COLLECTION</h3>
+
+<div class="collection-group">
+
+<label><input type="checkbox" name="collection" value="Corporate"> CORPORATE</label>
+
+<label><input type="checkbox" name="collection" value="Industrial"> INDUSTRIAL</label>
+
+<label><input type="checkbox" name="collection" value="IR4+ESD"> IR4+ESD</label>
+
+<label><input type="checkbox" name="collection" value="Medical"> MEDICAL UNIFORM</label>
+
+<label><input type="checkbox" name="collection" value="Safety"> SAFETY & PPE</label>
+
+<label><input type="checkbox" name="collection" value="Custom"> CUSTOM</label>
+
+</div>
+
+<input type="text"
+name="quantity"
+placeholder="ESTIMATED QUANTITY">
+
+<textarea
+name="customization"
+placeholder="CUSTOMIZATION NEEDS"></textarea>
+
+<textarea
+name="additional_notes"
+placeholder="ADDITIONAL NOTES"></textarea>
+
+<label>
+<input type="radio"
+name="preferred_contact"
+value="Email"
+checked>
+Email
+</label>
+
+<label>
+<input type="radio"
+name="preferred_contact"
+value="Phone">
+Phone
+</label>
+
+<label>
+
+<input type="checkbox"
+required>
+
+I AGREE TO PRIVACY POLICY
+
+</label>
+
+<button type="submit">
+
+SUBMIT REQUEST →
+
+</button>
+
+</form>
+
+<div id="success-message"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script src="quotation.js"></script>
+

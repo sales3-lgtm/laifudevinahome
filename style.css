@@ -103,28 +103,30 @@ body{
     color:#0F9D58;
 }
 
-.lang-switch{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    padding:8px 14px;
-    border-radius:30px;
-    background:rgba(255,255,255,.85);
-    backdrop-filter:blur(10px);
-    box-shadow:0 4px 15px rgba(0,0,0,.05);
-    margin-left: 20px;
+
+.language-menu div{
+    padding:14px 20px;
+    cursor:pointer;
+    min-width:140px;
+    
 }
 
-.lang-switch a{
-    text-decoration:none;
-    color:#666;
-    font-size:12px;
-    font-weight:700;
-    letter-spacing:.5px;
+.language-menu div:hover{
+    background:#f5f5f5;
+}
+.language-menu{
+    position:fixed;
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+    overflow:hidden;
+    display:none;
+    z-index:99999;
+    min-width:150px;
 }
 
-.lang-switch a.active{
-    color:#0F9D58;
+.language-menu.active{
+    display:block;
 }
 
 /* ==========================
@@ -283,6 +285,19 @@ body{
    SUB PAGES & OTHER SECTIONS
 ====================== */
 
+/* ABOUT PAGE */
+.about-page{
+    width:90%;
+    padding-top:90px;
+}
+
+.about-page img{
+    width:90%;
+    max-width:1800px;
+    margin:auto;
+    display:block;
+}
+
 .sub-header{
     height:90px;
     display:flex;
@@ -396,6 +411,14 @@ body{
     line-height:1.8;
     color:#666;
 }
+.sustainability-page img{
+    display:block;
+    width:100%;
+    max-width:1800px;
+    margin:0 auto;
+    border:none;
+    box-shadow:none;
+}
 
 /* ======================
    CONTACT PAGE
@@ -480,6 +503,11 @@ body{
         padding: 0 40px 60px;
     }
 }
+.language-selector{
+    position:relative;
+    margin-top:20px;
+}
+
 
 /* ==========================
    RESPONSIVE: MOBILE (최대 768px)
@@ -763,6 +791,117 @@ gap:40px;
 }
 
 }
+/* =====================================
+   IN-BETWEEN CTA BANNER
+===================================== */
+.cta-banner-section {
+    width: 100%;
+    padding: 3px 0; /* 위아래 이미지와의 여백 */
+    background: #ffffff; /* 주변 배경색에 맞춰 조절 가능 */
+}
+
+.cta-banner-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #0b0f19; /* 시안의 고급스러운 다크 네이비/블랙 배경 */
+    border-radius: 8px; /* 📌 시안 특유의 부드러운 둥근 모서리 */
+    padding: 35px 50px;
+    display: grid;
+    grid-template-columns: 1.1fr 1.3fr 1fr;
+    gap: 40px;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* 왼쪽 타이틀 */
+.cta-banner-left h2 {
+    font-family: 'Playfair Display', serif; /* 메인 서체와 통일 */
+    font-size: 24px;
+    line-height: 1.3;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: -0.3px;
+}
+
+/* 중앙 설명 및 세로 구분선 */
+.cta-banner-middle {
+    border-left: 1px solid rgba(255, 255, 255, 0.15); /* 📌 시안의 가느다란 세로 구분선 */
+    padding-left: 40px;
+}
+
+.cta-banner-middle p {
+    font-size: 13px;
+    color: #9aa0a6; /* 약간 톤다운된 설명글 텍스트 색상 */
+    line-height: 1.6;
+}
+
+/* 오른쪽 버튼 배치 */
+.cta-banner-right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* 상단 초록색 그라데이션 버튼 */
+.btn-banner-green {
+    background: linear-gradient(135deg, #1f924b 0%, #15793c 100%); /* 입체감 있는 초록 그라데이션 */
+    color: #ffffff;
+    text-align: center;
+    padding: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.btn-banner-green:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* 하단 아웃라인 버튼 */
+.btn-banner-outline {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    text-align: center;
+    padding: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+}
+
+.btn-banner-outline i {
+    margin-right: 6px; /* 다운로드 아이콘 여백 */
+}
+
+.btn-banner-outline:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* =====================================
+   BANNER RESPONSIVE (모바일 대응)
+===================================== */
+@media screen and (max-width: 992px) {
+    .cta-banner-container {
+        grid-template-columns: 1fr; /* 화면이 좁아지면 한 줄씩 세로 배치 */
+        gap: 25px;
+        padding: 40px 30px;
+        margin: 0 20px; /* 좌우 여백 확보 */
+    }
+    
+    .cta-banner-middle {
+        border-left: none; /* 모바일에서는 세로선 제거 */
+        border-top: 1px solid rgba(255, 255, 255, 0.1); /* 가로선으로 대체 */
+        padding-left: 0;
+        padding-top: 20px;
+    }
+}
+
 
 /* =====================================
    FOOTER SECTION
@@ -771,7 +910,7 @@ gap:40px;
 .footer {
     background: #111111; /* 고급스러운 어두운 배경 */
     color: #ffffff;
-    padding: 50px 80px 30px 80px;
+    padding: 40px 80px 20px 80px;
     font-family: 'Inter', sans-serif;
     width: 100%;
 }
@@ -884,6 +1023,7 @@ gap:40px;
     background: rgba(255, 255, 255, 0.1);
 }
 
+
 /* =====================================
    FOOTER RESPONSIVE (미디어 쿼리 추가)
 ===================================== */
@@ -929,3 +1069,52 @@ gap:40px;
         border-bottom: none;
     }
 }
+.language-selector{
+    position:relative;
+}
+
+.lang-btn{
+    background:none;
+    border:none;
+    color:#fff;
+    cursor:pointer;
+}
+
+.lang-menu{
+    display:none;
+    position:absolute;
+    bottom:40px;
+    left:0;
+    width:140px;
+    background:#111;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:8px;
+}
+
+.lang-menu.show{
+    display:block;
+}
+
+.lang-menu li{
+    list-style:none;
+    padding:12px 16px;
+    color:white;
+    cursor:pointer;
+}
+
+.lang-menu li:hover{
+    background:#1f1f1f;
+}
+/*구글 번역 버튼 숨기기*/
+#google_translate_element{
+    display:none;
+}
+
+.goog-te-banner-frame{
+    display:none !important;
+}
+
+body{
+    top:0 !important;
+}
+
