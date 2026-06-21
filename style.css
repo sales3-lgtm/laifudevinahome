@@ -1,8 +1,15 @@
-/* =====================================
-   LAIFUDE VINA
-   LANDING PAGE V1.0
-===================================== */
+기존에 위쪽과 아래쪽 미디어 쿼리 구간으로 분리되어 있던 모든 스타일 코드를 단 한 번에 복사해서 바로 적용할 수 있도록 완벽하게 하나로 결합한 최종 마스터 통합 CSS 전체 소스 코드입니다.
+기존 CSS 파일(style.css 또는 products.css)의 내용 전체를 깨끗하게 지우시고, 아래 코드를 통째로 복사(Ctrl+A 후 Ctrl+C)하여 그대로 덮어쓰기(교체) 하시면 모든 페이지의 레이아웃이 완벽하게 정돈됩니다.
+------------------------------
+## 🏆 완벽히 결합된 최종 마스터 통합 CSS 전체 소스 코드
 
+/* ==========================================================================
+   LAIFUDE VINA - OFFICIAL INTEGRATED MASTER STYLE SHEET
+   VERSION 5.0 (ALL-IN-ONE COMBINED COMPLETE EDITION)
+   ========================================================================== */
+/* --------------------------------------------------------------------------
+   1. GLOBAL & RESET STYLES (전역 및 기본 레이아웃 설정)
+   -------------------------------------------------------------------------- */
 *{
     margin:0;
     padding:0;
@@ -22,8 +29,7 @@ body{
     overflow-y:auto;
     overflow-x:hidden;
 }
-
-/* 이미지 섹션 공통 (HTML의 배너 이미지 대응) */
+/* 이미지 섹션 공통 속성 */
 .brand-story img,
 .collections img,
 .contact-banner img {
@@ -32,7 +38,6 @@ body{
     height: auto;
 }
 
-/* 시각장애인 및 검색엔진 접근성용 숨김 처리 */
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -43,129 +48,171 @@ body{
     clip: rect(0, 0, 0, 0);
     border: 0;
 }
-
-/* ==========================
-   HEADER & NAVIGATION
-========================== */
-
-.header{
-    position:fixed;
-    top:0;
-    left:0;
-    background:rgba(255,255,255,.82);
-    backdrop-filter:blur(10px);
-    width:100%;
-    padding:10px 80px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    z-index:9999;   
+/* --------------------------------------------------------------------------
+   2. HEADER & NAVIGATION STYLES (상단 네비게이션)
+   -------------------------------------------------------------------------- */
+/* ==========================================================================
+   Header & NAVIGATION (🚨 최상단 메뉴 밀림 및 언어 버튼 가림 현상 완벽 해결)
+   ========================================================================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* 배경 불투명도 및 블러 효과 보존 */
+    background: rgba(255, 255, 255, 0.82) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* 💡 [핵심 보정] 양쪽 끝으로 무한정 퍼지지 않도록 패딩을 축소하고 헤더 자체 정렬 구조 선언 */
+    padding: 15px 40px !important; 
+    display: flex !important;
+    justify-content: center !important; /* 내부의 1400px 래퍼를 한가운데로 배치 */
+    align-items: center !important;
+    z-index: 9999;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* 경계선 미세 추가 */
 }
 
-.logo{
-    display:flex;
-    align-items:center;
+/* 💡 [핵심 추가] 브라우저 창 너비에 상관없이 하단 배너들과 똑바르게 가로 줄을 일치시키는 안심 틀 */
+.header .logo,
+.header .main-nav {
+    max-width: 1400px;
+    width: 100%;
 }
 
-.logo img{
-    height:50px;
-    width:auto;
-    display:block;
+/* 헤더 내 전체 요소를 좌우 정렬하는 실질적 부모 속성 재선언 */
+.header {
+    justify-content: space-between !important; /* 로고는 왼쪽 끝, 메뉴는 오른쪽 끝 정렬 */
 }
 
-.menu-toggle{
-    display:none; /* 데스크톱에서는 숨김 */
-    font-size:32px;
-    cursor:pointer;
+.logo {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.logo img {
+    height: 45px !important; /* 상단 바 디자인을 위해 로고 높이 안정적으로 미세 조정 */
+    width: auto !important;
+    display: block !important;
+}
+
+.menu-toggle {
+    display: none; 
+    font-size: 32px;
+    cursor: pointer;
     background: none;
     border: none;
     color: #111;
 }
 
+/* 💡 [핵심 보정] 메뉴 전체가 브라우저 우측 벽에 닿아 가려지지 않도록 패딩 및 간격 제어 */
 .main-nav {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    margin-left: auto;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 40px !important; /* 대형 화면에서 글씨들이 부딪히지 않도록 기본 간격 최적화 */
+    margin-left: 0 !important; /* 무조건 밀어내던 옛날 마진 속성 완전 박멸 */
+    padding-right: 20px !important; /* 오른쪽 벽과의 최소 안전 격리 여백 사수 */
 }
 
-.main-nav a{
-    color:#111;
-    font-size:14px;
-    font-weight:600;
-    letter-spacing:.5px;
-    text-decoration:none !important;   
-    border-bottom:none !important;
-    transition:.3s;
+.main-nav a {
+    color: #111111 !important;
+    font-size: 14px !important;
+    font-weight: 700 !important; /* 영문 가독성을 높이기 위해 볼드 수치 보정 */
+    letter-spacing: 0.5px !important;
+    text-decoration: none !important;   
+    border-bottom: none !important;
+    transition: color 0.25s ease !important;
+    white-space: nowrap !important; /* 글씨가 좁아져 아래 줄로 깨져 떨어지는 현상 차단 */
 }
 
-.main-nav a:hover{
-    color:#0F9D58;
+.main-nav a:hover {
+    color: #0F9D58 !important; /* 라이프드 시그니처 초록색 하이라이트 */
 }
 
+/* 💡 [최종 보정] 가려져 있던 우측 상단 다국어 선택 지구본 버튼 컴포넌트 디자인 수복 */
+.main-nav .language {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    background: #ffffff !important;
+    border: 1px solid #d1d5db !important;
+    padding: 8px 14px !important;
+    border-radius: 6px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #374151 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    white-space: nowrap !important;
+}
 
-.language-menu div{
-    padding:14px 20px;
-    cursor:pointer;
-    min-width:140px;
+.main-nav .language:hover {
+    border-color: #0F9D58 !important;
+    color: #0F9D58 !important;
+    background: rgba(15, 157, 88, 0.02) !important;
+}
+
+.main-nav .language i {
+    font-size: 11px !important;
+    color: #6b7280 !important;
+}
+/* --------------------------------------------------------------------------
+   3. INDEX MAIN HERO STYLES (첫 화면 메인 비주얼)
+   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   3. INDEX MAIN HERO STYLES (첫 화면 메인 비주얼 - 가로 폭 1400px 제한)
+   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   3. INDEX MAIN HERO STYLES (첫 화면 메인 비주얼 - 인물 잘림 방지 최종 보정)
+   -------------------------------------------------------------------------- */
+.hero {
+    position: relative;
+    width: 100% !important;
+    max-width: 1400px !important;    /* 1400px 가로 폭 고정 */
+    min-height: calc(100vh - 110px); /* 화면 높이에 맞춤 */
+    margin: 110px auto 40px !important; /* 상단 헤더 공간 확보 및 정중앙 정렬 */
+    padding: 0 20px !important;
+    border-radius: 20px !important;   /* 모던한 라운딩 처리 */
+    overflow: hidden !important;       
+    background-image: url("image/hero3.png");
     
+    /* 🚨 [핵심 보정] 이미지가 가로폭 안에서 잘리지 않고 오른쪽 맞춤으로 예쁘게 채워지도록 설정 */
+    background-size: contain !important; /* cover 대신 contain을 사용하여 전체 이미지가 찌그러짐 없이 꽉 차게 조절 */
+    background-position: right center !important; /* 이미지를 오른쪽 끝에 완벽 밀착 */
+    background-repeat: no-repeat !important;
+    background-color: #ffffff;        /* 좌측 여백 공간을 채워줄 깔끔한 화이트 베이스 */
+    box-shadow: 0 10px 30px rgba(0,0,0,.03); 
 }
 
-.language-menu div:hover{
-    background:#f5f5f5;
-}
-.language-menu{
-    position:fixed;
-    background:#fff;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,.15);
-    overflow:hidden;
-    display:none;
-    z-index:99999;
-    min-width:150px;
-}
-
-.language-menu.active{
-    display:block;
-}
-
-/* ==========================
-   HERO SECTION
-========================== */
-
-.hero{
-    position:relative;
-    width:100%;
-    min-height:100vh;
-    background-image:url("image/hero3.png");
-    background-size:80%;
-    background-position:95% center;
-    background-repeat:no-repeat;
-}
-
-.hero-overlay{
-    position:absolute;
-    inset:0;
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    border-radius: 20px !important;   
+    
+    /* 🚨 [핵심 보정] 글씨 가독성은 높이되, 오른쪽 인물들을 가리지 않도록 그라데이션 범위를 좌측으로 축소 */
     background: linear-gradient(
         90deg,
-        rgba(255,255,255,.88) 0%,
-        rgba(255,255,255,.55) 35%,
-        rgba(255,255,255,.15) 65%,
-        rgba(255,255,255,0) 100%
-    );
+        rgba(255,255,255,0.96) 0%,   /* 맨 왼쪽 글씨 뒷배경은 아주 선명하게 */
+        rgba(255,255,255,0.85) 45%,  /* 중간 설명글 영역까지 글씨 보호 */
+        rgba(255,255,255,0.30) 60%,  /* 여기서부터 급격히 투명해지기 시작 */
+        rgba(255,255,255,0) 75%      /* 오른쪽 인물들이 있는 75% 지점부터는 완전 투명화 */
+    ) !important;
 }
 
-.hero-content{
-    position:relative;
-    z-index:10;
-    width:55%;
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    padding-left:140px;
-    padding-top: 100px;
-    padding-bottom: 50px;
+/* [추가 팁] 화면 너비가 애매한 노트북(1200px~1399px) 구간에서 글씨와 인물이 겹치지 않도록 글씨 영역 너비 최적화 */
+.hero-content {
+    position: relative;
+    z-index: 10;
+    width: 50% !important; /* 기존 55%에서 50%로 줄여 인물과 겹치는 현상 방지 */
+    min-height: calc(100vh - 110px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 80px !important; /* 내부 여백을 컴팩트하게 조정하여 공간 확보 */
+    padding-top: 60px;
+    padding-bottom: 60px;
 }
 
 .hero h1{
@@ -187,10 +234,6 @@ body{
     color:#444;
     max-width:650px;
 }
-
-/* ==========================
-   HERO FEATURES (PREMIUM)
-========================== */
 
 .hero-features{
     margin-top:50px;
@@ -242,10 +285,6 @@ body{
     color:#0F9D58;
 }
 
-/* ==========================
-   BUTTONS
-========================== */
-
 .hero-buttons{
     display:flex;
     gap:20px;
@@ -280,745 +319,340 @@ body{
     background:#0F9D58;
     color:#fff;
 }
-
-/* ======================
-   SUB PAGES & OTHER SECTIONS
-====================== */
-
-/* ABOUT PAGE */
-.about-page{
-    width:90%;
-    padding-top:90px;
+/* --------------------------------------------------------------------------
+   🖤 [첫 페이지 전용] 가로형 프리미엄 배너 및 버튼 컴포넌트 스타일
+   -------------------------------------------------------------------------- */
+.laifude-premium-banner {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    background: #0f172a !important; /* 다크 프리미엄 슬레이트 블랙 배경 */
+    max-width: 1400px !important;
+    margin: 60px auto !important;
+    padding: 50px 60px !important;
+    border-radius: 20px !important;
+    gap: 40px !important;
+    width: calc(100% - 40px) !important;
 }
 
-.about-page img{
-    width:90%;
-    max-width:1800px;
-    margin:auto;
-    display:block;
+.laifude-premium-banner .banner-title-zone {
+    flex: 1.2 !important;
+    min-width: 0 !important;
 }
 
-.sub-header{
-    height:90px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:25px 70px;
-    border-bottom:1px solid #eee;
+.laifude-premium-banner .banner-desc-zone {
+    flex: 1.5 !important;
+    min-width: 0 !important;
 }
 
-.sub-header nav{
-    display:flex;
-    gap:40px;
+.laifude-premium-banner .banner-btn-zone {
+    display: flex !important;
+    flex-direction: column !important; /* 버튼 2개 우측 위아래 배치 */
+    gap: 12px !important;
+    flex: 1 !important;
+    min-width: 240px !important;
 }
 
-.sub-header nav a{
-    color:#111;
-    font-weight:600;
-    text-decoration:none;
+.laifude-premium-banner .banner-title-zone h2 {
+    color: #ffffff !important;
+    font-size: 32px !important;
+    line-height: 1.25 !important;
+    font-weight: 800 !important;
+    font-family: 'Inter', sans-serif !important;
 }
 
-.page-hero{
-    padding:120px 80px 80px;
+.laifude-premium-banner .banner-desc-zone p {
+    color: #94a3b8 !important;
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+}
+/* 프리미엄 배너 내부 버튼 링크 스타일 독립 설정 */
+.laifude-premium-banner .banner-btn-green,
+.laifude-premium-banner .banner-btn-outline {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+    height: 50px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    border-bottom: none !important;
+    transition: all 0.25s ease-in-out !important;
+    cursor: pointer !important;
 }
 
-.page-hero h1{
-    font-size:72px;
-    max-width:900px;
-    line-height:1.2;
+.laifude-premium-banner .banner-btn-green {
+    background: #0F9D58 !important;
+    color: #ffffff !important;
+    border: 2px solid #0F9D58 !important;
 }
 
-.about-company{
-    display:flex;
-    gap:80px;
-    padding:0 80px 120px;
-    align-items:center;
+.laifude-premium-banner .banner-btn-green:hover {
+    background: #0d8a4c !important;
+    border-color: #0d8a4c !important;
+    transform: translateY(-2px) !important;
 }
 
-.about-image{
-    flex:1;
+.laifude-premium-banner .banner-btn-outline {
+    background: transparent !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
 }
 
-.about-image img{
-    width:100%;
-    border-radius:20px;
+.laifude-premium-banner .banner-btn-outline:hover {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    transform: translateY(-2px) !important;
+}
+/* --------------------------------------------------------------------------
+   🛍️ 상품 컬렉션 그리드 영역 (5개 제품 가로 1열 수평 정렬)
+   -------------------------------------------------------------------------- */
+.collection-grid {
+    display: flex !important;
+    flex-direction: row !important;  
+    justify-content: space-between !important;
+    align-items: stretch !important;  
+    gap: 20px !important;            
+    max-width: 1400px !important;    
+    margin: 60px auto !important;    
+    padding: 0 20px !important;
 }
 
-.about-text{
-    flex:1;
+.collection-grid .product-card {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 !important;              
+    min-width: 0 !important;         
+    background: #fff !important;
+    border-radius: 15px !important;  
+    overflow: hidden !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,.08) !important;
+    transition: .3s ease !important;
 }
 
-.about-text h2{
-    font-size:48px;
-    margin-bottom:25px;
+.collection-grid .product-card:hover {
+    transform: translateY(-8px) !important;
 }
 
-.about-text p{
-    font-size:18px;
-    line-height:1.9;
-    color:#555;
-    margin-bottom:20px;
+.collection-grid .product-card img {
+    width: 100% !important;
+    aspect-ratio: 4 / 3 !important;  
+    height: auto !important;
+    display: block !important;
+    object-fit: cover !important;
 }
 
-.strengths{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:30px;
-    padding:0 80px 120px;
+.card-content {
+    padding: 20px 15px !important; 
+    text-align: center !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-grow: 1 !important;         
 }
 
-.strength-card{
-    padding:35px;
-    background:#f8f8f8;
-    border-radius:20px;
+.card-content h3 {
+    font-size: 18px !important;      
+    color: #111;
+    line-height: 1.3;
+}
+/* --------------------------------------------------------------------------
+   🎯 [모든 페이지 적용] 배너 이미지 가로 폭 제한 및 정중앙 배정 컴포넌트
+   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   🎯 [모든 페이지 적용] 배너 이미지 가로 폭 제한 및 정중앙 배정 컴포넌트
+   -------------------------------------------------------------------------- */
+/* 테크놀로지, 프로덕트, 컬렉션, 소개, 컨택트 등 모든 서브페이지의 레이아웃 상한선 통제 */
+.technology-page,
+.products-page,
+.collections-page,
+.about-page,
+.sustainability-page,
+.contact-page { /* 💡 컨택트 페이지 배너 구역 추가 */
+    width: 100% !important;
+    max-width: 1400px !important;    /* 💡 모든 서브 배너 이미지 가로 폭 1400px 고정 */
+    margin: 40px auto !important;     /* 💡 좌우 마진 auto 효과로 화면 한가운데 정중앙 배치 */
+    padding: 0 20px !important;       
+    overflow: hidden !important;
 }
 
-.strength-card h3{
-    margin-bottom:15px;
+/* 상단 고정형 메뉴바(Header)와 첫 번째 이미지가 겹쳐서 잘리는 현상 방어 */
+.technology-page,
+.products-page,
+.about-page,
+.contact-page { /* 💡 컨택트 페이지 상단 여백 확보 */
+    padding-top: 90px !important; 
 }
 
-.products-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:40px;
-    padding:0 80px 120px;
+/* 모든 페이지 내부의 첫 번째, 두 번째 통배너 대형 이미지 최적화 규격 선언 */
+.technology-page img,
+.products-page img,
+.collections-page img,
+.about-page img,
+.sustainability-page img,
+.contact-page img { /* 💡 컨택트 페이지 이미지 라운딩 및 비율 최적화 */
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 20px !important;   /* 라인프드 특유의 모던한 둥근 사각형 아이덴티티 통일 */
+    object-fit: cover !important;
 }
 
-.product-item{
-    background:#fff;
-    border-radius:20px;
-    overflow:hidden;
-    box-shadow:0 15px 40px rgba(0,0,0,.08);
-    transition:.3s;
-}
-
-.product-item:hover{
-    transform:translateY(-10px);
-}
-
-.product-item img{
-    width:100%;
-    height:320px;
-    object-fit:cover;
-}
-
-.product-item h2{
-    padding:25px 25px 10px;
-}
-
-.product-item p{
-    padding:0 25px 25px;
-    line-height:1.8;
-    color:#666;
-}
-.sustainability-page img{
-    display:block;
-    width:100%;
-    max-width:1800px;
-    margin:0 auto;
-    border:none;
-    box-shadow:none;
-}
-
-/* ======================
-   CONTACT PAGE
-====================== */
-
+/* --------------------------------------------------------------------------
+📝 CONTACT PAGE & B2B QUOTATION FORM STYLES (견적 요청 폼 서식)
+-------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   5. CONTACT PAGE & B2B QUOTATION FORM STYLES (견적서 화면 가로 폭 1400px 제한)
+   -------------------------------------------------------------------------- */
 .quotation-section{
-    background:#f3f3f3;
-    padding:80px 20px;
+    width: 100% !important;
+    max-width: 1400px !important;    /* 💡 견적서 영역도 최대 1400px로 폭 제한 */
+    margin: 110px auto 40px !important; /* 💡 상단 헤더 메뉴바 공간 보호 및 정중앙 정렬 */
+    padding: 60px 40px !important;    /* 내부 컨텐츠 보호를 위한 여백 */
+    background: #f3f3f3 !important;   /* 연한 회색 배경색 유지 */
+    border-radius: 20px !important;   /* 💡 모든 서브 배너 및 메인 홈과 동일한 라운딩 통일 */
+    overflow: hidden !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,.02); /* 시각적 깊이감을 위한 부드러운 음영 */
 }
 
 .quotation-wrap{
-    max-width:1400px;
-    margin:auto;
-    background:#f5f5f5;
-    border:2px solid #1d6b2e;
-    border-radius:15px;
-    padding:50px;
+    max-width: 100% !important;       /* 부모인 1400px 제한 폭 안에서 가득 차도록 유연화 */
+    margin: auto !important;
+    background: #f5f5f5 !important;
+    border: 2px solid #1d6b2e !important;
+    border-radius: 15px !important;
+    padding: 50px;
 }
 
 .quotation-wrap h2{
-    text-align:center;
-    margin-bottom:50px;
-    font-size:42px;
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 42px;
 }
 
 .quotation-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:40px;
+    display: grid !important; 
+    grid-template-columns: 1fr 1fr !important;
+    gap: 40px;
 }
 
 .quotation-wrap label{
-    display:block;
-    margin-bottom:10px;
-    margin-top:25px;
-    font-weight:700;
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 25px;
+    font-weight: 700;
 }
 
 .quotation-wrap input,
 .quotation-wrap textarea{
-    width:100%;
-    padding:16px;
-    border:1px solid #2d7d39;
-    border-radius:8px;
-    background:#fff;
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #2d7d39;
+    border-radius: 8px;
+    background: #fff;
 }
 
 .quotation-wrap textarea{
-    height:180px;
-    resize:none;
+    height: 180px;
+    resize: none;
 }
 
 .collection-group{
-    display:flex;
-    flex-wrap:wrap;
-    gap:15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .collection-group label{
-    border:1px solid #2d7d39;
-    padding:10px 18px;
-    border-radius:8px;
-    background:white;
-    margin-top:0;
-    cursor:pointer;
+    border: 1px solid #2d7d39;
+    padding: 10px 18px;
+    border-radius: 8px;
+    background: white;
+    margin-top: 0;
+    cursor: pointer;
 }
 
 .collection-group input{
-    display:none;
+    display: none;
 }
 
 .contact-method{
-    margin-top:20px;
-    display:flex;
-    gap:30px;
+    margin-top: 20px;
+    display: flex;
+    gap: 30px;
 }
 
 .privacy{
-    margin-top:30px;
+    margin-top: 30px;
 }
 
 #submit-btn{
-    width:100%;
-    margin-top:40px;
-    height:70px;
-    background:#1d6b2e;
-    color:white;
-    font-size:24px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-}
-
-#submit-btn:hover{
-    background:#145122;
-}
-
-#success-message{
-    margin-top:20px;
-    text-align:center;
-    color:#1d6b2e;
-}
-
-@media(max-width:768px){
-
-.quotation-grid{
-    grid-template-columns:1fr;
-}
-
-.quotation-wrap{
-    padding:30px 20px;
-}
-
-.quotation-wrap h2{
-    font-size:30px;
-}
-
-}
-
-/* ======================
-   RESPONSIVE: TABLET (최대 992px)
-====================== */
-@media screen and (max-width:992px){
-    .header{
-        padding:20px 30px;
-    }
-    .main-nav{
-        gap:20px;
-    }
-    .hero{
-        background-size:90%;
-        background-position:center top;
-    }
-    .hero-content{
-        width:100%;
-        padding:140px 40px 80px;
-    }
-    .hero h1{
-        font-size:52px;
-    }
-    .feature-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-    .about-company, .contact-wrapper{
-        grid-template-columns: 1fr;
-        gap: 40px;
-        padding: 0 40px 60px;
-    }
-    .strengths, .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-        padding: 0 40px 60px;
-    }
-}
-.language-selector{
-    position:relative;
-    margin-top:20px;
-}
-
-
-/* ==========================
-   RESPONSIVE: MOBILE (최대 768px)
-========================== */
-@media screen and (max-width:768px){
-    /* ==========================
-   RESPONSIVE: MOBILE (최대 768px)
-========================== */
-@media screen and (max-width:768px){
-    
-    
-    .hero {
-        background-size: contain; 
-        background-position: center top;
-        
-        min-height: 80vh;              /* 세로 화면이 긴 모바일 특성에 맞춰 적절한 높이 부여 */
-        height: auto;
-    }
-
-    .hero-overlay {
-        /* 모바일에서는 텍스트 가독성을 위해 배경 전체에 어두운 반투명 막을 고르게 덮습니다 */
-        background: rgba(255, 255, 255, 0.75); 
-    }
-
-    .hero-content {
-        width: 100%;
-        min-height: 80vh;
-        padding: 120px 20px 60px 20px; /* 위쪽 여백을 주어 헤더와 겹치지 않게 정렬 */
-        justify-content: center;
-        text-align: center;            /* 모바일에서는 텍스트를 중앙 정렬하는 것이 인상이 깔끔합니다 */
-    }
-    
-    /* 이하 기존에 있던 모바일 코드들 (.menu-toggle, .main-nav 등) */
-    .menu-toggle {
-        display:block;
-    }
-    ...
-}
-
-    .menu-toggle{
-        display:block; /* 모바일에서 ☰ 활성화 */
-    }
-    
-    /* 네비게이션을 모바일 메뉴 형태로 변형 */
-    .main-nav{
-        display:none; 
-        position:absolute;
-        top:100%;
-        left:0;
-        width:100%;
-        background:rgba(255,255,255,.98);
-        padding:30px;
-        box-shadow:0 10px 20px rgba(0,0,0,.05);
-        margin-left:0;
-    }
-    .feature-icons{
-        display:grid !important;
-        grid-template-columns:1fr 1fr !important;
-        gap:20px !important;
-        max-width:320px;
-        margin:30px auto 0;
-    }
-
-    .feature-item{
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        text-align:center;
-    }
-
-    .feature-item img{
-        width:56px;
-        height:56px;
-    }
-
-    .feature-item span{
-        margin-top:8px;
-        font-size:14px;
-    }
-    /* JS에서 open 클래스를 붙였을 때 노출 */
-    .main-nav.open{
-        display:flex;
-        flex-direction:column;
-        align-items:flex-start;
-        gap:20px;
-    }
-    
-    .lang-switch{
-        margin-left:0;
-        margin-top:10px;
-    }
-    
-    .hero-content{
-        padding-left:20px;
-        padding-right:20px;
-    }
-    
-    .hero h1{
-        font-size:36px;
-    }
-    
-    .hero p{
-        font-size:16px;
-    }
-    
-    .feature-grid, .strengths, .products-grid{
-        grid-template-columns:1fr;
-    }
-    
-    .hero-buttons{
-        flex-direction:column;
-        gap:10px;
-    }
-    
-    .btn-primary, .btn-secondary{
-        text-align:center;
-    }
-}
-.footer{
-
-```
-background:#050505;
-
-padding:40px 70px;
-```
-
-}
-
-.footer-top{
-
-```
-display:grid;
-
-grid-template-columns:1.5fr 1fr 1fr 1fr .8fr 1fr;
-
-gap:60px;
-```
-
-}
-
-.footer-logo img{
-
-```
-width:220px;
-
-margin-bottom:20px;
-```
-
-}
-
-.footer-logo p{
-
-```
-color:#ddd;
-
-font-size:15px;
-
-line-height:1.8;
-
-max-width:320px;
-```
-
-}
-
-.copyright{
-
-```
-margin-top:25px;
-
-color:#aaa;
-
-font-size:14px;
-```
-
-}
-
-.footer-column h4{
-
-```
-color:#fff;
-
-font-size:18px;
-
-margin-bottom:20px;
-```
-
-}
-
-.footer-column a{
-
-```
-display:block;
-
-color:#ddd;
-
-text-decoration:none;
-
-margin-bottom:12px;
-
-font-size:15px;
-
-transition:.3s;
-```
-
-}
-
-.footer-column a:hover{
-
-```
-color:#18b05c;
-```
-
-}
-
-.social-icons{
-
-```
-display:flex;
-
-gap:18px;
-
-margin-top:15px;
-```
-
-}
-
-.social-icons a{
-
-```
-width:52px;
-
-height:52px;
-
-border:1px solid #666;
-
-border-radius:50%;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-color:white;
-
-text-decoration:none;
-
-font-size:22px;
-```
-
-}
-
-.language{
-
-```
-color:#fff;
-
-margin-top:40px;
-```
-
-}
-
-@media(max-width:768px){
-
-.footer{
-
-```
-padding:50px 25px;
-```
-
-}
-
-.footer-top{
-
-```
-grid-template-columns:1fr;
-
-gap:40px;
-```
-
-}
-
-}
-/* =====================================
-   IN-BETWEEN CTA BANNER
-===================================== */
-.cta-banner-section {
     width: 100%;
-    padding: 3px 0; /* 위아래 이미지와의 여백 */
-    background: #ffffff; /* 주변 배경색에 맞춰 조절 가능 */
-}
-
-.cta-banner-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    background: #0b0f19; /* 시안의 고급스러운 다크 네이비/블랙 배경 */
-    border-radius: 8px; /* 📌 시안 특유의 부드러운 둥근 모서리 */
-    padding: 35px 50px;
-    display: grid;
-    grid-template-columns: 1.1fr 1.3fr 1fr;
-    gap: 40px;
-    align-items: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-}
-
-/* 왼쪽 타이틀 */
-.cta-banner-left h2 {
-    font-family: 'Playfair Display', serif; /* 메인 서체와 통일 */
+    margin-top: 40px;
+    height: 70px;
+    background: #1d6b2e;
+    color: white;
     font-size: 24px;
-    line-height: 1.3;
-    font-weight: 600;
-    color: #ffffff;
-    letter-spacing: -0.3px;
-}
-
-/* 중앙 설명 및 세로 구분선 */
-.cta-banner-middle {
-    border-left: 1px solid rgba(255, 255, 255, 0.15); /* 📌 시안의 가느다란 세로 구분선 */
-    padding-left: 40px;
-}
-
-.cta-banner-middle p {
-    font-size: 13px;
-    color: #9aa0a6; /* 약간 톤다운된 설명글 텍스트 색상 */
-    line-height: 1.6;
-}
-
-/* 오른쪽 버튼 배치 */
-.cta-banner-right {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-/* 상단 초록색 그라데이션 버튼 */
-.btn-banner-green {
-    background: linear-gradient(135deg, #1f924b 0%, #15793c 100%); /* 입체감 있는 초록 그라데이션 */
-    color: #ffffff;
-    text-align: center;
-    padding: 12px;
-    font-size: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
     font-weight: 700;
-    text-decoration: none;
-    border-radius: 4px;
-    letter-spacing: 0.5px;
-    transition: transform 0.2s, opacity 0.2s;
+    transition: all 0.3s ease;
 }
 
-.btn-banner-green:hover {
-    opacity: 0.9;
-    transform: translateY(-1px);
+#submit-btn:hover {
+    background: #165222;
+    transform: translateY(-2px);
 }
 
-/* 하단 아웃라인 버튼 */
-.btn-banner-outline {
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: #ffffff;
-    text-align: center;
-    padding: 12px;
-    font-size: 12px;
-    font-weight: 700;
-    text-decoration: none;
-    border-radius: 4px;
-    letter-spacing: 0.5px;
-    transition: background 0.2s;
-}
-
-.btn-banner-outline i {
-    margin-right: 6px; /* 다운로드 아이콘 여백 */
-}
-
-.btn-banner-outline:hover {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-/* =====================================
-   BANNER RESPONSIVE (모바일 대응)
-===================================== */
-@media screen and (max-width: 992px) {
-    .cta-banner-container {
-        grid-template-columns: 1fr; /* 화면이 좁아지면 한 줄씩 세로 배치 */
-        gap: 25px;
-        padding: 40px 30px;
-        margin: 0 20px; /* 좌우 여백 확보 */
-    }
-    
-    .cta-banner-middle {
-        border-left: none; /* 모바일에서는 세로선 제거 */
-        border-top: 1px solid rgba(255, 255, 255, 0.1); /* 가로선으로 대체 */
-        padding-left: 0;
-        padding-top: 20px;
-    }
-}
-
-
-/* =====================================
-   FOOTER SECTION
-===================================== */
-
+/* --------------------------------------------------------------------------
+   6. PREMIUM ORIGINAL FOOTER STYLES (🚨 모든 페이지 푸터 블랙 테마 전면 개정)
+   -------------------------------------------------------------------------- */
 .footer {
-    background: #111111; /* 고급스러운 어두운 배경 */
-    color: #ffffff;
-    padding: 40px 80px 20px 80px;
-    font-family: 'Inter', sans-serif;
+    background: #111827 !important;   /* 💡 고급스러운 흑색(딥 다크 그레이) 배경색 적용 */
+    padding: 80px 20px 50px;
+    border-top: 1px solid #1f2937;    /* 상단 경계선도 어두운 톤에 맞춰 미세 조정 */
     width: 100%;
 }
 
 .footer-top {
+    max-width: 1400px;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: 2fr repeat(4, 1fr) 1.5fr; /* 첫 칸과 마지막 칸을 여유 있게 배치 */
-    gap: 40px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 50px;
-}
-
-/* 로고 및 회사 설명 영역 */
-.footer-logo {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    grid-template-columns: 1.5fr repeat(4, 1fr) 1.2fr;
+    gap: 50px;
 }
 
 .footer-logo img {
-    height: 45px;
+    height: 40px;
     width: auto;
-    display: block;
+    margin-bottom: 20px;
+    /* 💡 만약 원래 푸터 로고가 검은색이라 안 보인다면, 아래 필터를 활성화하여 흰색으로 반전시킬 수 있습니다 */
+    /* filter: brightness(0) invert(1); */
 }
 
 .footer-logo p {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.6;
-    color: #999999;
-    max-width: 260px;
+    color: #9ca3af !important;       /* 💡 설명글을 어두운 배경에 잘 보이는 밝은 회색으로 변경 */
+    margin-bottom: 30px;
 }
 
-.footer-logo .copyright {
+.footer-logo p span {
+    color: #10b981 !important;       /* 포인트 도트(.) 컬러를 산뜻한 라이트 그린으로 최적화 */
+    font-weight: bold;
+}
+
+.copyright {
     font-size: 13px;
-    color: #666666;
-    margin-top: auto; /* 하단 밀착 */
+    color: #6b7280 !important;       /* 카피라이트 문구를 은은한 회색으로 조정 */
 }
 
-/* 개별 링크 칼럼 */
 .footer-column {
     display: flex;
     flex-direction: column;
@@ -1026,169 +660,443 @@ gap:40px;
 }
 
 .footer-column h4 {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
-    letter-spacing: 1px;
-    color: #ffffff;
+    color: #ffffff !important;       /* 💡 대카테고리 제목을 완전한 화이트로 강조 */
     margin-bottom: 10px;
-    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .footer-column a {
+    color: #9ca3af !important;       /* 💡 세부 메뉴 링크들을 가독성 높은 연회색으로 변경 */
     font-size: 14px;
-    color: #bbbbbb;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: 0.3s;
 }
 
+/* 메뉴 링크에 마우스 올렸을 때(Hover) 효과 */
 .footer-column a:hover {
-    color: #0F9D58; /* 브랜드 키 컬러 */
+    color: #10b981 !important;       /* 라이프드 시그니처 그린 컬러로 밝게 하이라이트 */
 }
 
-/* 소셜 및 언어 선택 영역 */
-.footer-column.social {
-    gap: 25px;
-}
-
+/* 소셜 아이콘 구역 보정 */
 .social-icons {
     display: flex;
-    gap: 12px;
+    gap: 15px;
+    margin-bottom: 25px;
 }
 
 .social-icons a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 36px;
     height: 36px;
-    background: rgba(255, 255, 255, 0.05);
     border-radius: 50%;
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: all 0.3s ease;
+    background: #1f2937 !important;  /* 💡 아이콘 원형 배경을 어두운 칩 형태로 가공 */
+    color: #d1d5db !important;       /* 내부 SNS 로고 그래픽을 밝은 은회색으로 변경 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    font-size: 16px;
 }
 
 .social-icons a:hover {
-    background: #0F9D58;
-    color: #ffffff;
-    transform: translateY(-3px);
+    background: #0F9D58 !important;  /* 호버 시 선명한 초록색 원형으로 활성화 */
+    color: #fff !important;
 }
 
-.footer-column .language {
-    font-size: 13px;
-    color: #bbbbbb;
+/* 지구본 다국어 버튼 보정 */
+.language-footer {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    border: 1px solid #374151 !important; /* 테두리 선을 다크하게 변경 */
+    border-radius: 8px;
+    background: #1f2937 !important;  /* 💡 버튼 내부를 짙은 색으로 채움 */
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 8px 12px;
-    border-radius: 4px;
-    display: inline-block;
-    align-self: flex-start;
-    transition: background 0.3s;
+    font-size: 14px;
+    color: #d1d5db !important;       /* 지구본 및 English 텍스트를 화이트 톤으로 최적화 */
+    transition: 0.3s;
 }
 
-.footer-column .language:hover {
-    background: rgba(255, 255, 255, 0.1);
+.language-footer:hover {
+    border-color: #10b981 !important;
+    color: #10b981 !important;
 }
 
+/* --------------------------------------------------------------------------
+7. GOOGLE TRANSLATION UI CLOAKING STYLES (구글 번역 위젯 로고 강제 은폐)
+-------------------------------------------------------------------------- */
+.goog-te-banner-frame {
+display: none !important;
+}
+body {
+top: 0 !important;
+}
+#google_translate_element,
+.goog-logo-link,
+.goog-te-gadget span,
+.goog-te-gadget img {
+display: none !important;
+}
+.goog-te-gadget {
+font-size: 0 !important;
+color: transparent !important;
+}
+.goog-te-balloon-frame,
+#goog-gt-tt,
+.orig {
+display: none !important;
+visibility: hidden !important;
+}
+/* --------------------------------------------------------------------------
+8. RESPONSIVE MEDIA QUERIES (스마트폰 모바일 브레이크 포인트 - 768px 이하)
+-------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+.header {
+padding: 10px 20px;
+}
+/* 5개 컬렉션 상품 목록 카드를 모바일에서 1열 기둥형 세로 배치 전환 */
+.collection-grid {
+flex-direction: column !important;
+gap: 30px !important;
+margin: 40px auto !important;
+}
+.collection-grid .product-card {
+width: 100% !important;
+max-width: none !important;
+}
+.card-content h3 {
+font-size: 22px !important;
+}
+/* 메인 프리미엄 가로 박스 배너 모바일 1열 반응형 수복 */
+.laifude-premium-banner {
+flex-direction: column !important;
+align-items: flex-start !important;
+padding: 40px 30px !important;
+gap: 25px !important;
+width: calc(100% - 20px) !important;
+}
+.laifude-premium-banner .banner-btn-zone {
+width: 100% !important;
+}
+.laifude-premium-banner .banner-title-zone h2 {
+font-size: 26px !important;
+}
+/* 대형 서브페이지 이미지 배너 가로 상한선 해제 및 모바일 100% 최적 유연화 */
+.technology-page,
+.products-page,
+.collections-page,
+.about-page,
+.sustainability-page {
+max-width: 100% !important;
+padding: 0 10px !important;
+margin: 20px auto !important;
+}
+.technology-page img,
+.products-page img,
+.collections-page img,
+.about-page img,
+.sustainability-page img {
+border-radius: 10px; /* 모바일 비례 외곽 곡률 조정 */
+}
+.hero-content {
+width: 100%;
+padding-left: 20px;
+padding-right: 20px;
+}
+.hero h1 {
+font-size: 38px;
+}
+/* 모바일 환경에선 견적 폼 및 푸터 서식을 세로 1열로 나열 */
+.quotation-grid {
+grid-template-columns: 1fr !important;
+gap: 10px;
+}
+.footer-top {
+grid-template-columns: 1fr;
+gap: 40px;
+}
+.footer-logo {
+margin-bottom: 10px;
+}
+}
+/* ==========================================
+   📞 [완벽 복구] CONTACT PAGE 하단 정보 카드 가로 정렬 및 아이콘 수복
+   ========================================== */
+/* 개인정보 동의 라벨 하단 여백 보호 */
+.privacy-agreement-label {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    margin-top: 15px !important;
+    cursor: pointer !important;
+}
 
-/* =====================================
-   FOOTER RESPONSIVE (미디어 쿼리 추가)
-===================================== */
+/* 1. 카드를 감싸는 부모 컨테이너 (가로 3열 행 정렬 강력 지시) */
+.contact-page-info-grid {
+    display: flex !important;
+    flex-direction: row !important; /* 무조건 가로 1줄 정렬 */
+    justify-content: space-between !important;
+    align-items: stretch !important;  /* 3개 카드의 높이를 똑같이 일치 */
+    gap: 25px !important;            /* 카드 사이의 여백 */
+    width: 100% !important;
+    margin-top: 60px !important;      /* 제출 버튼과의 수직 공간 확보 */
+    clear: both !important;
+}
 
-/* 태블릿 화면 (최대 1024px) */
-@media screen and (max-width: 1024px) {
-    .footer {
-        padding: 60px 40px 30px 40px;
+/* 2. 개별 카드 컴포넌트 프리미엄 디자인 */
+.contact-info-card-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    flex: 1 !important;               /* 가로 폭을 정확하게 3등분 분배 */
+    min-width: 0 !important;
+    background: #ffffff !important;
+    padding: 35px 20px !important;
+    border-radius: 15px !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04) !important;
+    transition: all 0.3s ease !important;
+}
+
+.contact-info-card-item:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 15px 30px rgba(15, 157, 88, 0.1) !important;
+    border-color: #0F9D58 !important;
+}
+
+/* 3. 상단 둥근 아이콘 써클 존 디자인 */
+.contact-info-card-item .card-icon-zone {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50% !important;
+    background: rgba(15, 157, 88, 0.08) !important; /* 은은한 브랜드 그린 배경 */
+    color: #0F9D58 !important;                     /* 아이콘 자체는 선명한 시그니처 그린 */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    font-size: 24px !important;
+    margin-bottom: 20px !important;
+}
+
+/* 4. 카드 내부 텍스트 폰트 제어 */
+.contact-info-card-item h3 {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #111111 !important;
+    margin-bottom: 8px !important;
+    word-break: break-all !important; /* 주소나 이메일이 길어지면 카드 안에서 자동 줄바꿈 */
+}
+
+.contact-info-card-item p {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: #0F9D58 !important; /* 서브 카테고리는 초록색으로 세련되게 강조 */
+}
+
+/* 📱 모바일 디바이스 해상도 최적화 (768px 이하) */
+@media (max-width: 768px) {
+    .contact-page-info-grid {
+        flex-direction: column !important; /* 모바일 환경에선 카드 3개가 위아래로 안전 전환 */
+        gap: 20px !important;
+        margin-top: 40px !important;
     }
-    .footer-top {
-        grid-template-columns: repeat(3, 1fr); /* 3열로 압축 */
-        gap: 40px 30px;
-    }
-    .footer-logo {
-        grid-column: span 3; /* 로고 영역을 최상단에 길게 배치 */
-        margin-bottom: 20px;
-    }
-    .footer-logo .copyright {
-        margin-top: 10px;
+    
+    .contact-info-card-item {
+        width: 100% !important;
+        padding: 30px 20px !important;
     }
 }
-
-/* 모바일 화면 (최대 768px) */
-@media screen and (max-width: 768px) {
-    .footer {
-        padding: 35px 20px 20px 20px;
-    }
-    .footer-top {
-        grid-template-columns: 1fr; /* 1열 세로 정렬 */
-        gap: 35px;
-    }
-    .footer-logo img{ /* 모바일 화면에서 로고 크기 */
-        width:160px;
-        height:auto;
-        display:block;
-    }
-
-    .footer-logo{
-        display:flex;
-        align-items:center;
-        justify-content:center;
-    }
-    .footer-column {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        padding-bottom: 20px; /* 구분을 위한 경계선 추가 */
-    }
-    .footer-column.social {
-        border-bottom: none;
-    }
-}
-.language-selector{
-    position:relative;
+/* ==========================================================================
+   🌐 [최종 해결] 상단 다국어 언어 버튼 안쪽 당김 및 팝업 활성화 고정
+   ========================================================================== */
+/* 1. 메뉴바 전체를 우측 벽에서 안쪽으로 60px 더 강력하게 당김 */
+.main-nav {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 35px !important;
+    margin-left: 0 !important;
+    padding-right: 60px !important; /* 💡 기존보다 여백을 대폭 늘려 버튼이 절대 벽에 가리지 않도록 조절 */
 }
 
-.lang-btn{
-    background:none;
-    border:none;
-    color:#fff;
-    cursor:pointer;
+/* 2. 언어 변경 버튼 자체의 z-index와 클릭 유효 공간 선언 */
+.main-nav .language,
+button.language {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    background: #ffffff !important;
+    border: 1px solid #d1d5db !important;
+    padding: 9px 16px !important;
+    border-radius: 6px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #374151 !important;
+    cursor: pointer !important;
+    position: relative !important;
+    z-index: 10000 !important; /* 헤더보다 높은 등급을 주어 클릭 무반응 현상 차단 */
+    white-space: nowrap !important;
 }
 
-.lang-menu{
-    display:none;
-    position:absolute;
-    bottom:40px;
-    left:0;
-    width:140px;
-    background:#111;
-    border:1px solid rgba(255,255,255,.1);
-    border-radius:8px;
+/* 3. 클릭 시 아래에 나타나는 실제 다국어 메뉴 팝업 레이어 수복 */
+.language-menu {
+    position: fixed !important;
+    /* 💡 버튼 아래 정확한 위치에 팝업이 강제로 안착하도록 좌표 고정 */
+    top: 65px !important; 
+    right: 100px !important; /* 오른쪽 벽에서 넉넉히 격리하여 가림 현상 원천 배제 */
+    background: #ffffff !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+    overflow: hidden !important;
+    z-index: 999999 !important; /* 페이지 내 그 어떤 요소보다 무조건 가장 위에 보이도록 설정 */
 }
 
-.lang-menu.show{
-    display:block;
+/* 다국어 메뉴 내부 선택지 가시성 보정 */
+.language-menu div {
+    padding: 14px 24px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #374151 !important;
+    cursor: pointer !important;
+    transition: background 0.2s ease !important;
+    background: #ffffff !important;
 }
 
-.lang-menu li{
-    list-style:none;
-    padding:12px 16px;
-    color:white;
-    cursor:pointer;
+.language-menu div:hover {
+    background: #f3f4f6 !important;
+    color: #0F9D58 !important;
+}
+/* ==========================================================================
+   🌐 [레이아웃 충돌 해결] 자바스크립트 동적 좌표 컴포넌트 수용 설정
+   ========================================================================== */
+.language-menu {
+    position: absolute !important; /* 화면 스크롤 대칭을 위해 fixed에서 absolute로 최적 튜닝 */
+    background: #ffffff !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+    overflow: hidden !important;
+    z-index: 999999 !important; /* 무조건 모든 컨텐츠 레이어 최상단 노출 고수 */
+    
+    /* 🚨 [치명적 결함 해결] 자바스크립트의 .style 지시 명령이 작동하도록 CSS의 고정 수치 해제 */
+    top: auto; 
+    right: auto;
+    left: auto;
+}
+/* ==========================================================================
+   🌐 [교정 마감] 구글 번역바 완전 은폐 및 다국어 활성화 스타일 고정
+   ========================================================================== */
+/* 자바스크립트의 .style 지시가 씹히지 않도록 기본 배치 초기화 */
+.language-menu {
+    position: absolute !important;
+    background: #ffffff !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+    overflow: hidden !important;
+    z-index: 999999 !important;
+    top: auto; 
+    right: auto;
+    left: auto;
+    display: none !important; /* 평소에는 완전히 보이지 않음 */
 }
 
-.lang-menu li:hover{
-    background:#1f1f1f;
-}
-/*구글 번역 버튼 숨기기*/
-#google_translate_element{
-    display:none;
+/* 스크립트에 의해 active 클래스가 추가되면 화면에 블록으로 노출 */
+.language-menu.active {
+    display: block !important;
 }
 
-.goog-te-banner-frame{
-    display:none !important;
+/* 🚨 튀어나오는 구글 위젯 프레임 및 강제 공백 레이아웃 박멸 */
+.goog-te-banner-frame,
+.goog-te-banner,
+.skiptranslate,
+#google_translate_element {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    opacity: 0 !important;
 }
 
-body{
-    top:0 !important;
+body {
+    top: 0 !important;
+    position: static !important;
+}
+
+/* 구글 툴팁 및 원문 오버레이 완전 차단 */
+#goog-gt-tt, 
+.goog-te-balloon-frame,
+.orig {
+    display: none !important;
+    visibility: hidden !important;
+}
+/* ==========================================================================
+   🌐 [레이아웃 수복] 다국어 메뉴 팝업 우측 끝선 밀착 및 잘림 현상 박멸
+   ========================================================================== */
+.language-menu {
+    position: absolute !important;
+    background: #ffffff !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+    overflow: hidden !important;
+    z-index: 999999 !important;
+    display: none !important; /* 평소 숨김 */
+    width: 160px !important;  /* 팝업 창 가로 크기 안정적으로 고정 */
+}
+
+/* 스크립트에 의해 active 클래스가 붙으면 화면 노출 */
+.language-menu.active {
+    display: block !important;
+}
+
+/* 🚨 1. 상단 헤더 버튼 클릭 시: 버튼 내부에 고정되어 우측 정렬 (절대 잘리지 않음) */
+.main-nav {
+    position: relative !important; /* 내비게이션 바 전체를 기준점으로 고정 */
+}
+.language-menu.is-header {
+    top: 50px !important;          /* 헤더 메뉴바 아래 적당한 위치 */
+    right: 60px !important;        /* 헤더 우측 패딩 여백 라인에 칼정렬 일치 */
+    left: auto !important;
+}
+
+/* 🚨 2. 하단 푸터 버튼 클릭 시: 푸터 버튼 내부에 고정되어 위로 솟아오름 */
+.language-footer {
+    position: relative !important; /* 푸터 버튼 자체를 기준점으로 박아 넣음 */
+}
+.language-menu.is-footer {
+    bottom: 50px !important;       /* 푸터 단추 위쪽 공간으로 배치 */
+    left: 0 !important;            /* 푸터 지구본 버튼과 왼쪽 시작 라인 일치 */
+    top: auto !important;
+    right: auto !important;
+}
+
+/* 구글 위젯 UI 은폐용 철벽 속성 유지 */
+.goog-te-banner-frame, .goog-te-banner, .skiptranslate, #google_translate_element, #goog-gt-tt, .goog-te-balloon-frame, .orig {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    opacity: 0 !important;
+}
+body { top: 0 !important; position: static !important; }
+
+/* ==========================================================================
+   🏁 [최종 마감] 푸터 내재화에 따른 다국어 팝업 솟아오름 간격 고정
+   ========================================================================== */
+.language-footer .language-menu.is-footer {
+    position: absolute !important;
+    bottom: 45px !important;    /* 💡 푸터 단추 위로 45픽셀만큼 정확하게 수직 공중부양 */
+    left: 0 !important;         /* 버튼 왼쪽 끝선과 자석처럼 일치 */
+    top: auto !important;
+    right: auto !important;
+    width: 150px !important;    /* 푸터 버튼 너비에 예쁘게 맞춤 */
 }
 

@@ -7,6 +7,11 @@
 
 <title>About Us | LAIFUDE VINA</title>
 
+   <!-- 🚨 구글 크롤러봇이 사이트의 고유 아이덴티티 심볼을 강제 인식하게 만드는 코드 -->
+    <link rel="icon" type="image/png" href="image/favicon.png" sizes="48x48">
+    <link rel="apple-touch-icon" href="image/favicon.png"> <!-- 아이폰 홈화면 북마크용 -->
+    
+
 <meta name="description"
 content="Technology Built on Trust, Value Defined by Quality">
 
@@ -69,15 +74,24 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 <nav class="main-nav">
 
     <a href="aboutus.html">ABOUT US</a>
-    <a href="products.html">COLLECTIONS</a>
+    <a href="collections.html">COLLECTIONS</a>
     <a href="technology.html">TECHNOLOGY</a>
     <a href="Sustainability.html">SUSTAINABILITY</a>
     <a href="contact.html">CONTACT</a>
 
-    <button class="language">
-        🌐 <span id="current-language">English</span>
-        <i class="fa-solid fa-chevron-down"></i>
-    </button>
+        <!-- [상단 인터페이스] 언어 변경 버튼 자체 고유 클래스 지정 -->
+        <button class="language">
+            🌐 <span id="current-language">English</span>
+            <i class="fa-solid fa-chevron-down"></i>
+
+            <div class="language-menu header-menu">
+    <div onclick="changeLanguage('en')">English</div>
+    <div onclick="changeLanguage('ko')">한국어</div>
+    <div onclick="changeLanguage('vi')">Tiếng Việt</div>
+    <div onclick="changeLanguage('zh-CN')">中文</div>
+</div>
+
+        </button>
    
 
 </nav>
@@ -139,11 +153,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
         <h4>COLLECTIONS</h4>
 
-        <a href="#">Workwear</a>
-        <a href="#">Corporate Wear</a>
-        <a href="#">ESD & Cleanroom Wear</a>
-        <a href="#">Medical Uniforms</a>
-        <a href="#">Safety & PPE</a>
+        <a href="products.html">Workwear</a>
+        <a href="products.html">Corporate Wear</a>
+        <a href="products.html">ESD & Cleanroom Wear</a>
+        <a href="products.html">Medical Uniforms</a>
+        <a href="products.html">Safety & PPE</a>
 
     </div>
 
@@ -152,7 +166,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
         <h4>SUPPORT</h4>
 
-        <a href="quotation.html">Request a Quotation</a>
+        <a href="contact.html#quotation-form">Request a Quotation</a>
         <a href="#">FAQ</a>
         <a href="#">Catalog Download</a>
         <a href="contact.html">Contact Us</a>
@@ -181,26 +195,30 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
             <a href="#"><i class="fa-brands fa-youtube"></i></a>
         </div>
 
-<div class="language-footer">
-    🌐 <span id="footer-language">English</span>
-    <i class="fa-solid fa-chevron-down"></i>
-</div>
+            <!-- [하단 인터페이스] 버튼 내재화 캡슐 구조 수복 완결 -->
+            <div class="language-footer">
+                🌐 <span id="footer-language">English</span>
+                <i class="fa-solid fa-chevron-down"></i>
+                
+                <!-- 🚨 자바스크립트 자동 계산을 위해 푸터 버튼 내부 자식 요소로 안전하게 결합시켰습니다 -->
+                <div class="language-menu footer-menu">
+                    <div onclick="changeLanguage('en')">English</div>
+                    <div onclick="changeLanguage('ko')">한국어</div>
+                    <div onclick="changeLanguage('vi')">Tiếng Việt</div>
+                    <div onclick="changeLanguage('zh-CN')">中文</div>
+                </div>
+            </div> <!-- language-footer 끝 -->
 
-
+        </div> <!-- footer-column social 끝 -->
+    </div> <!-- footer-top 끝 -->
 </footer>
-<div class="language-menu">
 
-    <div onclick="changeLanguage('en')">English</div>
-    <div onclick="changeLanguage('ko')">한국어</div>
-    <div onclick="changeLanguage('vi')">Tiếng Việt</div>
-    <div onclick="changeLanguage('zh-CN')">中文</div>
 
-</div>
-
+<!-- 백그라운드 엔진 레이어 영역 -->
 <div id="google_translate_element"></div>
 
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+<!-- 핵심 스크립트 라이브러리 순차 바인딩 -->
+<script src="//://google.com"></script>
 <script src="language.js"></script>
 
 </body>

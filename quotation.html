@@ -31,17 +31,17 @@ placeholder="PHONE NUMBER">
 
 <div class="collection-group">
 
-<label><input type="checkbox" name="collection" value="Corporate"> CORPORATE</label>
+<label><input type="checkbox" value="Corporate"> CORPORATE</label>
 
-<label><input type="checkbox" name="collection" value="Industrial"> INDUSTRIAL</label>
+<label><input type="checkbox" value="Industrial"> INDUSTRIAL</label>
 
-<label><input type="checkbox" name="collection" value="IR4+ESD"> IR4+ESD</label>
+<label><input type="checkbox" value="IR4+ESD"> IR4+ESD</label>
 
-<label><input type="checkbox" name="collection" value="Medical"> MEDICAL UNIFORM</label>
+<label><input type="checkbox" value="Medical Uniform"> MEDICAL UNIFORM</label>
 
-<label><input type="checkbox" name="collection" value="Safety"> SAFETY & PPE</label>
+<label><input type="checkbox" value="Safety & PPE"> SAFETY & PPE</label>
 
-<label><input type="checkbox" name="collection" value="Custom"> CUSTOM</label>
+<label><input type="checkbox" value="Custom"> CUSTOM</label>
 
 </div>
 
@@ -56,6 +56,8 @@ placeholder="CUSTOMIZATION NEEDS"></textarea>
 <textarea
 name="additional_notes"
 placeholder="ADDITIONAL NOTES"></textarea>
+
+<div class="contact-method">
 
 <label>
 <input type="radio"
@@ -72,6 +74,8 @@ value="Phone">
 Phone
 </label>
 
+</div>
+
 <label>
 
 <input type="checkbox"
@@ -81,7 +85,8 @@ I AGREE TO PRIVACY POLICY
 
 </label>
 
-<button type="submit">
+<button type="submit"
+id="submit-btn">
 
 SUBMIT REQUEST →
 
@@ -90,8 +95,3 @@ SUBMIT REQUEST →
 </form>
 
 <div id="success-message"></div>
-
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-<script src="quotation.js"></script>
-

@@ -1,266 +1,161 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAIFUDE VINA</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <!-- 🚨 구글 크롤러봇이 사이트의 고유 아이덴티티 심볼을 강제 인식하게 만드는 코드 -->
+    <link rel="icon" type="image/png" href="image/favicon.png" sizes="48x48">
+    <link rel="apple-touch-icon" href="image/favicon.png"> <!-- 아이폰 홈화면 북마크용 -->
+    
 
-<title>LAIFUDE VINA</title>
-
-<meta name="description"
-content="Technology Built on Trust, Value Defined by Quality">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-rel="stylesheet">
-
-<!-- Font Awesome 6 아이콘 라이브러리 추가 -->
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-<link rel="stylesheet"
-href="style.css">
-
+    <meta name="description" content="Technology Built on Trust, Value Defined by Quality">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 아이콘 라이브러리 추가 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="products.css">
 </head>
 <body>
 
 <header class="header">
-
-<div class="logo">
-
-<a href="index.html">
-
-<img src="image/logo.png" alt="LAIFUDE VINA">
-
-</a>
-
-</div>
-
-<div class="menu-toggle">
-☰
-</div>
-
-<nav class="main-nav">
-
-    <a href="aboutus.html">ABOUT US</a>
-    <a href="collections.html">COLLECTIONS</a>
-    <a href="technology.html">TECHNOLOGY</a>
-    <a href="Sustainability.html">SUSTAINABILITY</a>
-    <a href="contact.html">CONTACT</a>
-
-    <button class="language">
-        🌐 <span id="current-language">English</span>
-        <i class="fa-solid fa-chevron-down"></i>
-    </button>
-  
-
-</nav>
-
-</header>
-
-
-
-<section class="collections">
-
-<input
-type="text"
-id="searchBox"
-placeholder="Search Products">
-
-
-
-
-
-<h2>OUR COLLECTIONS</h2>
-
-<div class="collection-grid">
-
-<div class="product-card">
-
-<img src="images/product1.jpg">
-
-<div class="card-content">
-
-<h3>LF-WJ-2401</h3>
-
-<p>Industrial Workwear</p>
-
-<a href="products/LF-WJ-2401.html">
-
-View Details →
-
-</a>
-
-</div>
-
-</div>
-
-
-
-<div class="product-card">
-
-<img src="images/product2.jpg">
-
-<div class="card-content">
-
-<h3>LF-WJ-2402</h3>
-
-<p>Industrial Workwear</p>
-
-<a href="products/LF-WJ-2402.html">
-
-View Details →
-
-</a>
-
-</div>
-
-</div>
-
-
-
-<div class="product-card">
-
-<img src="images/product3.jpg">
-
-<div class="card-content">
-
-<h3>LF-WJ-2403</h3>
-
-<p>Industrial Workwear</p>
-
-<a href="products/LF-WJ-2403.html">
-
-View Details →
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-
-<!-- FOOTER -->
-
-<footer class="footer">
-
-<div class="footer-top">
-
-    <div class="footer-logo">
-
+    <div class="logo">
         <a href="index.html">
-            <img src="image/footer-logo.png" alt="LAIFUDE">
-            
+            <img src="image/logo.png" alt="LAIFUDE VINA">
         </a>
-
-        <p>
-Technology Built on Trust,<br>
-Value Defined by Quality<span>.</span>
-        </p>
-
-        <div class="copyright">
-            © 2026 LAIFUDE. All rights reserved.
-        </div>
-
     </div>
+    <div class="menu-toggle">☰</div>
+    <nav class="main-nav">
+        <a href="aboutus.html">ABOUT US</a>
+        <a href="collections.html">COLLECTIONS</a>
+        <a href="technology.html">TECHNOLOGY</a>
+        <a href="Sustainability.html">SUSTAINABILITY</a>
+        <a href="contact.html">CONTACT</a>
+        <!-- [상단 인터페이스] 언어 변경 버튼 자체 고유 클래스 지정 -->
+        <button class="language">
+            🌐 <span id="current-language">English</span>
+            <i class="fa-solid fa-chevron-down"></i>
 
-    <div class="footer-column">
-
-        <h4>COMPANY</h4>
-
-        <a href="aboutus.html">About Us</a>
-        <a href="technology.html">Brand Philosophy</a>
-        <a href="Sustainability.html">Sustainability</a>
-        <a href="#">News & Insights</a>
-        <a href="#">Careers</a>
-
-    </div>
-
-    <div class="footer-column">
-
-        <h4>COLLECTIONS</h4>
-
-        <a href="#">Workwear</a>
-        <a href="#">Corporate Wear</a>
-        <a href="#">ESD & Cleanroom Wear</a>
-        <a href="#">Medical Uniforms</a>
-        <a href="#">Safety & PPE</a>
-
-    </div>
-
-    <div class="footer-column">
-
-        <h4>SUPPORT</h4>
-
-        <a href="quotation.html">Request a Quotation</a>
-        <a href="#">FAQ</a>
-        <a href="#">Catalog Download</a>
-        <a href="contact.html">Contact Us</a>
-
-    </div>
-
-    <div class="footer-column">
-
-        <h4>LEGAL</h4>
-
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
-
-    </div>
-
-<div class="footer-column social">
-
-    <h4>FOLLOW US</h4>
-
-    <div class="social-icons">
-        <!-- 링크 주소(#) 부분에 실제 주소를 넣으시면 됩니다 -->
-        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href="https://www.facebook.com/laifudevn/" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-    </div>
-
-<div class="language-footer">
-    🌐 <span id="footer-language">English</span>
-    <i class="fa-solid fa-chevron-down"></i>
-</div>
-
-</div>
-
-
-</div>
-```
-
-</footer>
-
-<div class="language-menu">
-
+            <div class="language-menu header-menu">
     <div onclick="changeLanguage('en')">English</div>
     <div onclick="changeLanguage('ko')">한국어</div>
     <div onclick="changeLanguage('vi')">Tiếng Việt</div>
     <div onclick="changeLanguage('zh-CN')">中文</div>
-
 </div>
 
+        </button>
+    </nav>
+</header>
+
+<!-- 첫 번째 상단 배너 섹션 -->
+<section class="collections-page">
+    <img src="image/collections01.png" alt="LAIFUDE workwear">
+</section>
+
+<!-- 상품 컬렉션 그리드 영역 -->
+<div class="collection-grid">
+    <a href="products.html" class="product-card">
+        <img src="image/collections-work01.png" alt="LF-WJ-2401">
+        <div class="card-content">
+            <h3>Workwear</h3>
+        </div>
+    </a>
+    <a href="products.html" class="product-card">
+        <img src="image/collections-clean.png" alt="LF-WJ-2402">
+        <div class="card-content">
+            <h3>ESD & Cleanroom Wear</h3>
+        </div>
+    </a>
+</div>
+
+<!-- 두 번째 하단 배너 섹션 (독립 완료) -->
+<section class="collections-page">
+    <img src="image/collections03.png" alt="LAIFUDE workwear">
+</section> <!-- 정상적으로 태그를 닫아주었습니다 -->
+
+<!-- FOOTER (콘텐츠 밖으로 분리 완료) -->
+<footer class="footer">
+    <div class="footer-top">
+        <div class="footer-logo">
+            <a href="index.html">
+                <img src="image/footer-logo.png" alt="LAIFUDE">
+            </a>
+            <p>
+                Technology Built on Trust,<br>
+                Value Defined by Quality<span>.</span>
+            </p>
+            <div class="copyright">
+                © 2026 LAIFUDE. All rights reserved.
+            </div>
+        </div>
+
+        <div class="footer-column">
+            <h4>COMPANY</h4>
+            <a href="aboutus.html">About Us</a>
+            <a href="technology.html">Brand Philosophy</a>
+            <a href="Sustainability.html">Sustainability</a>
+            <a href="#">News & Insights</a>
+            <a href="#">Careers</a>
+        </div>
+
+        <div class="footer-column">
+            <h4>COLLECTIONS</h4>
+            <a href="#">Workwear</a>
+            <a href="#">Corporate Wear</a>
+            <a href="#">ESD & Cleanroom Wear</a>
+            <a href="#">Medical Uniforms</a>
+            <a href="#">Safety & PPE</a>
+        </div>
+
+        <div class="footer-column">
+            <h4>SUPPORT</h4>
+            <a href="contact.html#quotation-form">Request a Quotation</a>
+            <a href="#">FAQ</a>
+            <a href="#">Catalog Download</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+
+        <div class="footer-column">
+            <h4>LEGAL</h4>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Use</a>
+        </div>
+
+        <div class="footer-column social">
+            <h4>FOLLOW US</h4>
+            <div class="social-icons">
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://www.facebook.com/laifudevn/" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <!-- [하단 인터페이스] 버튼 내재화 캡슐 구조 수복 완결 -->
+            <div class="language-footer">
+                🌐 <span id="footer-language">English</span>
+                <i class="fa-solid fa-chevron-down"></i>
+                
+                <!-- 🚨 자바스크립트 자동 계산을 위해 푸터 버튼 내부 자식 요소로 안전하게 결합시켰습니다 -->
+                <div class="language-menu footer-menu">
+                    <div onclick="changeLanguage('en')">English</div>
+                    <div onclick="changeLanguage('ko')">한국어</div>
+                    <div onclick="changeLanguage('vi')">Tiếng Việt</div>
+                    <div onclick="changeLanguage('zh-CN')">中文</div>
+                </div>
+            </div> <!-- language-footer 끝 -->
+
+        </div> <!-- footer-column social 끝 -->
+    </div> <!-- footer-top 끝 -->
+</footer>
+
+
+<!-- 백그라운드 엔진 레이어 영역 -->
 <div id="google_translate_element"></div>
 
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+<!-- 핵심 스크립트 라이브러리 순차 바인딩 -->
+<script src="//://google.com"></script>
 <script src="language.js"></script>
-
-
 </body>
 </html>
