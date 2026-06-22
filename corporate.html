@@ -30,15 +30,15 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <style>
 
-/* CONTACT PAGE */
+/* WORKWEAR PAGE */
 
-.contact-page{
+.technology-page{
     width:100%;
     background:#fff;
     padding-top:90px;
 }
 
-.contact-page img{
+.technology-page img{
     display:block;
     width:100%;
     max-width:1920px;
@@ -91,204 +91,22 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     <div onclick="changeLanguage('zh-CN')">中文</div>
 </div>
 
-        </button> 
+        </button>
+   
 
 </nav>
 
 </header>
 
 
-<!-- CONTACT IMAGE -->
+<!-- PRODUCTS IMAGE -->
 
-<section class="contact-page">
+<section class="technology-page">
 
-    <img src="image/contactbg.png"
-         alt="LAIFUDE contact">
+    <img src="image/corporate-uniform.png"
+         alt="LAIFUDE workwear">
 
-    <img src="image/contactbg02.png"
-         alt="LAIFUDE contact">     
 
-</section>
-
-<section class="quotation-section">
-
-<div class="quotation-wrap">
-
-<h2>QUOTATION REQUEST FORM</h2>
-
-<form id="quotation-form">
-
-<div class="quotation-grid">
-
-<!-- LEFT -->
-<div class="quotation-left">
-
-<label>[ COMPANY NAME ]</label>
-<input type="text" name="company_name" placeholder="COMPANY NAME" required>
-
-<label>[ EMAIL ADDRESS ]</label>
-<input type="email" name="user_email" placeholder="EMAIL ADDRESS" required>
-
-<label>[ PRIMARY COLLECTION INTERES ]</label>
-
-<div class="collection-group">
-
-<label><input type="checkbox" value="CORPORATE"> CORPORATE</label>
-
-<label><input type="checkbox" value="INDUSTRIAL"> INDUSTRIAL</label>
-
-<label><input type="checkbox" value="IR4+ESD"> IR4+ESD</label>
-
-<label><input type="checkbox" value="MEDICAL UNIFORM"> MEDICAL UNIFORM</label>
-
-<label><input type="checkbox" value="SAFETY & PPE"> SAFETY & PPE</label>
-
-<label><input type="checkbox" value="CUSTOM"> CUSTOM</label>
-
-</div>
-
-<label>[ CUSTOMIZATION NEEDS ]</label>
-
-<textarea
-name="customization"
-placeholder="CUSTOMIZATION NEEDS"></textarea>
-
-</div>
-
-
-<!-- RIGHT -->
-
-<div class="quotation-right">
-
-<label>[ CONTACT PERSON ]</label>
-<input type="text" name="contact_person" placeholder="CONTACT PERSON" required>
-
-<label>[ PHONE NUMBER ]</label>
-<input type="text" name="phone" placeholder="PHONE NUMBER">
-
-<label>[ ESTIMATED QUANTITY ]</label>
-<input type="text" name="quantity"
-placeholder="Enter qty, logo, specific fabric">
-
-<label>[ ADDITIONAL NOTES ]</label>
-
-<textarea
-name="additional_notes"
-placeholder="ADDITIONAL NOTES"></textarea>
-
-
-<div class="contact-method">
-
-<label>
-<input type="radio"
-name="preferred_contact"
-value="Email"
-checked>
-Email
-</label>
-
-<label>
-<input type="radio"
-name="preferred_contact"
-value="Phone">
-Phone
-</label>
-
-</div>
-
-
-<div class="privacy">
-
-<input type="checkbox" required>
-
-I AGREE TO PRIVACY POLICY
-
-</div>
-
-</div>
-
-</div>
-
-
-<button type="submit"
-id="submit-btn">
-
-SUBMIT REQUEST →
-
-</button>
-
-<div id="success-message"></div>
-
-</form>
-<!-- ... 위쪽 견적서 서식 필드 코드들 ... -->
-
-        <label>
-            <input type="checkbox" required>
-            I AGREE TO PRIVACY POLICY
-        </label>
-
-        <button type="submit" id="submit-btn">
-            SUBMIT REQUEST →
-        </button>
-
-    </form> <!-- 💡 기존 견적서 폼이 닫히는 지점입니다. -->
-
-    <!-- ====================================================================
-         🚨 [신규 추가] 첫 페이지의 회사 정보, 이메일, 연락처 카드 그리드 영역
-         ==================================================================== -->
-<!-- 🚨 기존의 중복된 체크박스, 제출버튼, 깨진 주소 영역을 완전히 도려내고 아래 코드로 정확히 바꾸세요 -->
-        <label class="privacy-agreement-label">
-            <input type="checkbox" required>
-            I AGREE TO PRIVACY POLICY
-        </label>
-
-        <button type="submit" id="submit-btn">
-            SUBMIT REQUEST →
-        </button>
-
-    </form> <!-- 견적서 양식 폼 종료 -->
-
-    <!-- ====================================================================
-         ✨ [구조 수복] 회사 정보, 이메일, 연락처 카드 그리드 영역 (독립 클래스 적용)
-         ==================================================================== -->
-    <div class="contact-page-info-grid">
-        
-        <!-- 1. 이메일 카드 -->
-        <div class="contact-info-card-item">
-            <!-- font-awesome 아이콘을 사용하여 이미지 엑스박스 깨짐 현상을 원천 방어합니다 -->
-            <div class="card-icon-zone"><i class="fa-solid fa-envelope"></i></div>
-            <h3>laifudevina@gmail.com</h3>
-            <p>Email Us</p>
-        </div>
-
-        <!-- 2. 연락처 / 전화번호 카드 -->
-        <div class="contact-info-card-item">
-            <div class="card-icon-zone"><i class="fa-solid fa-phone"></i></div>
-            <h3>+84 (0) 24 6664 1500</h3>
-            <p>Call Us</p>
-        </div>
-
-        <!-- 3. 본사 / 공장 주소 카드 -->
-        <div class="contact-info-card-item">
-            <div class="card-icon-zone"><i class="fa-solid fa-location-dot"></i></div>
-            <h3>Son Dong, Ha Noi, Vietnam</h3>
-            <p>Visit Our Office</p>
-        </div>
-
-    </div> <!-- contact-page-info-grid 끝 -->
-
-    <div id="success-message"></div>
-
-</div> <!-- quotation-wrap 끝 -->
-
-</div>
-
-</section>
-
-<section class="contact-page">
-
-    <img src="image/contactbg03.png"
-         alt="LAIFUDE contact">
 </section>
 
 
@@ -374,7 +192,7 @@ SUBMIT REQUEST →
             <a href="#"><i class="fa-brands fa-instagram"></i></a>
             <a href="#"><i class="fa-brands fa-youtube"></i></a>
         </div>
-
+            <!-- [하단 인터페이스] 버튼 내재화 캡슐 구조 수복 완결 -->
             <!-- [하단 인터페이스] 버튼 내재화 캡슐 구조 수복 완결 -->
             <div class="language-footer">
                 🌐 <span id="footer-language">English</span>
@@ -402,4 +220,5 @@ SUBMIT REQUEST →
 <script src="language.js"></script>
 </body>
 </html>
-```
+
+

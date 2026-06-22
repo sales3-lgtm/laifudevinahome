@@ -1,9 +1,12 @@
 /* ==========================================================================
-   🌐 [LAIFUDE VINA] 다국어 팝업 상/하단 독립 개폐 제어 스크립트 (완전판)
+   🌐 [LAIFUDE VINA] 다국어 팝업 연동 및 구글 엔진 제어 스크립트 (번역 버그 수정본)
    ========================================================================== */
 
 window.addEventListener("DOMContentLoaded", () => {
-    // 💡 모든 다국어 메뉴들을 일괄 관리하기 위해 전체 종료하는 공통 함수
+    const menu = document.querySelector(".language-menu");
+    if (!menu) return;
+
+    // 모든 다국어 메뉴들을 일괄 종료하는 공통 함수
     function closeAllMenus() {
         document.querySelectorAll(".language-menu").forEach(menu => {
             menu.classList.remove("active");
@@ -16,12 +19,11 @@ window.addEventListener("DOMContentLoaded", () => {
     
     if (headerLangBtn && headerMenu) {
         headerLangBtn.addEventListener("click", (e) => {
-            e.stopPropagation(); // body 클릭 전파 차단
-            
+            e.stopPropagation();
             if (headerMenu.classList.contains("active")) {
                 headerMenu.classList.remove("active");
             } else {
-                closeAllMenus(); // 다른 메뉴가 켜져있다면 먼저 닫음
+                closeAllMenus();
                 headerMenu.classList.add("is-header");
                 headerMenu.classList.add("active");
             }
@@ -35,11 +37,10 @@ window.addEventListener("DOMContentLoaded", () => {
     if (footerLangBtn && footerMenu) {
         footerLangBtn.addEventListener("click", (e) => {
             e.stopPropagation();
-            
             if (footerMenu.classList.contains("active")) {
                 footerMenu.classList.remove("active");
             } else {
-                closeAllMenus(); // 다른 메뉴가 켜져있다면 먼저 닫음
+                closeAllMenus();
                 footerMenu.classList.add("is-footer");
                 footerMenu.classList.add("active");
             }
@@ -55,14 +56,36 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// 💡 자체 언어 버튼 클릭 시 구글 번역 연동 작동 함수
+// 💡 [🚨 핵심 수정] 구글 번역 콤보박스를 강제로 깨우고 실제 번역을 실현하는 최적화 함수
 function changeLanguage(lang) {
+    // 숨겨진 구글 순정 드롭다운 요소를 정밀 저격하여 탐색
     const combo = document.querySelector(".goog-te-combo");
+
     if (combo) {
+        // 값을 교체
         combo.value = lang;
-        combo.dispatchEvent(new Event("change"));
+        
+        // 🚨 최신 브라우저 표준에 맞는 가상 변경 이벤트 및 마우스 클릭 인지 트리거 가동
+        if (typeof(Event) === 'function') {
+            combo.dispatchEvent(new Event("change", { bubbles: true, cancelable: true }));
+        } else {
+            // 구형 브라우저 및 호환성 대비 인터페이스
+            const event = document.createEvent('HTMLEvents');
+            event.initEvent('change', true, true);
+            combo.dispatchEvent(event);
+        }
+    } else {
+        // 만약 구글 위젯 스크립트가 로딩 지연 상태일 경우를 대비한 0.5초 비동기 복구 대기 큐(Queue) 실행
+        setTimeout(() => {
+            const retryCombo = document.querySelector(".goog-te-combo");
+            if (retryCombo) {
+                retryCombo.value = lang;
+                retryCombo.dispatchEvent(new Event("change", { bubbles: true }));
+            }
+        }, 500);
     }
 
+    // 상/하단 버튼 내부 텍스트 즉시 새로고침 국가 명칭 데이터
     const names = {
         en: "English",
         ko: "한국어",
