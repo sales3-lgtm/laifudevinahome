@@ -509,150 +509,222 @@ body{
 /* --------------------------------------------------------------------------
    5. CONTACT PAGE & B2B QUOTATION FORM STYLES (견적서 화면 가로 폭 1400px 제한)
    -------------------------------------------------------------------------- */
-.quotation-section{
+/* =====================================
+   B2B QUOTATION FORM CLEAN STYLE
+===================================== */
+/* =====================================
+   B2B QUOTATION FORM PRECISE FIX
+===================================== */
+#quotation-form {
+    width: 100%;
+    max-width: 800px; 
+    margin: 60px auto !important; /* 📌 상하 여백을 주고 화면 정확히 정중앙 정렬 */
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    box-sizing: border-box;
+}
+
+/* 블록 레이아웃으로 감싸 타이틀이 폼 안쪽 왼쪽 라인에서 정확히 시작하게 교정 */
+.form-section-block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+}
+
+#quotation-form h3 {
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px;
+    color: #111111;
+    margin: 0 !important; /* 마진 초기화로 쏠림 방지 */
+    text-align: left !important;
+}
+
+/* 개인정보 동의 체크 영역 커스텀 */
+.privacy-agreement-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100%;
+    text-align: left;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.privacy-agreement-row input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #0F9D58; /* 체크 시 브랜드 초록색 활성화 */
+    margin: 0;
+}
+
+.privacy-agreement-row span {
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    color: #666666;
+    letter-spacing: 0.5px;
+}
+
+/* 📌 [강력 조치] 폼 외부 영역에 홀로 고립되어 정렬을 깨트리는 무명 유령 체크박스 레이어 전체 숨김 처리 */
+body > label:not([class]), 
+main > label:not([class]),
+#quotation-form ~ label {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* 기본 입력창 및 가로 2열 그리드 규격 유지 */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+#quotation-form input[type="text"],
+#quotation-form input[type="email"],
+#quotation-form textarea {
+    width: 100%;
+    padding: 16px 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    background: #fafafa;
+    box-sizing: border-box;
+}
+
+.collection-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px 10px;
+    background: #fdfdfd;
+    padding: 18px;
+    border-radius: 6px;
+    border: 1px solid #f0f0f0;
+}
+
+.collection-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #444444;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+/* 버튼 단일 노출 보장 */
+#quotation-form #submit-btn {
     width: 100% !important;
-    max-width: 1400px !important;    /* 💡 견적서 영역도 최대 1400px로 폭 제한 */
-    margin: 110px auto 40px !important; /* 💡 상단 헤더 메뉴바 공간 보호 및 정중앙 정렬 */
-    padding: 60px 40px !important;    /* 내부 컨텐츠 보호를 위한 여백 */
-    background: #f3f3f3 !important;   /* 연한 회색 배경색 유지 */
-    border-radius: 20px !important;   /* 💡 모든 서브 배너 및 메인 홈과 동일한 라운딩 통일 */
-    overflow: hidden !important;
-    box-shadow: 0 10px 30px rgba(0,0,0,.02); /* 시각적 깊이감을 위한 부드러운 음영 */
-}
-
-.quotation-wrap{
-    max-width: 100% !important;       /* 부모인 1400px 제한 폭 안에서 가득 차도록 유연화 */
-    margin: auto !important;
-    background: #f5f5f5 !important;
-    border: 2px solid #1d6b2e !important;
-    border-radius: 15px !important;
-    padding: 50px;
-}
-
-.quotation-wrap h2{
-    text-align: center;
-    margin-bottom: 50px;
-    font-size: 42px;
-}
-
-.quotation-grid{
-    display: grid !important; 
-    grid-template-columns: 1fr 1fr !important;
-    gap: 40px;
-}
-
-.quotation-wrap label{
-    display: block;
-    margin-bottom: 10px;
-    margin-top: 25px;
-    font-weight: 700;
-}
-
-.quotation-wrap input,
-.quotation-wrap textarea{
-    width: 100%;
-    padding: 16px;
-    border: 1px solid #2d7d39;
-    border-radius: 8px;
-    background: #fff;
-}
-
-.quotation-wrap textarea{
-    height: 180px;
-    resize: none;
-}
-
-.collection-group{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.collection-group label{
-    border: 1px solid #2d7d39;
-    padding: 10px 18px;
-    border-radius: 8px;
-    background: white;
-    margin-top: 0;
+    background: #0F9D58 !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 18px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px;
+    border-radius: 6px !important;
     cursor: pointer;
+    box-shadow: 0 4px 15px rgba(15, 157, 88, 0.2);
+    transition: all 0.2s ease;
 }
 
-.collection-group input{
-    display: none;
-}
-
-.contact-method{
-    margin-top: 20px;
-    display: flex;
-    gap: 30px;
-}
-
-.privacy{
-    margin-top: 30px;
-}
-
-#submit-btn{
-    width: 100%;
-    margin-top: 40px;
-    height: 70px;
-    background: #1d6b2e;
-    color: white;
-    font-size: 24px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 700;
-    transition: all 0.3s ease;
-}
-
-#submit-btn:hover {
-    background: #165222;
+#quotation-form #submit-btn:hover {
+    background: #11864d !important;
     transform: translateY(-2px);
 }
+
+@media screen and (max-width: 768px) {
+    .form-row { grid-template-columns: 1fr; }
+    .collection-group { grid-template-columns: 1fr 1fr; }
+}
+
+/* 성공 메시지 레이어 */
+#success-message {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0F9D58;
+    margin-top: 15px;
+}
+
+/* =====================================
+   FORM RESPONSIVE (모바일 레이아웃 최적화)
+===================================== */
+@media screen and (max-width: 768px) {
+    #quotation-form {
+        padding: 25px 20px;
+    }
+    .form-row {
+        grid-template-columns: 1fr; /* 모바일에서는 무조건 1줄에 1개씩 */
+        gap: 15px;
+    }
+    .collection-group {
+        grid-template-columns: 1fr 1fr; /* 모바일 체크박스는 2열 정렬 */
+    }
+}
+
 
 /* --------------------------------------------------------------------------
    6. PREMIUM ORIGINAL FOOTER STYLES (🚨 모든 페이지 푸터 블랙 테마 전면 개정)
    -------------------------------------------------------------------------- */
+/* =====================================
+   FOOTER SECTION (웹/데스크톱 기본: 가로 다단 정렬)
+===================================== */
 .footer {
-    background: #111827 !important;   /* 💡 고급스러운 흑색(딥 다크 그레이) 배경색 적용 */
-    padding: 80px 20px 50px;
-    border-top: 1px solid #1f2937;    /* 상단 경계선도 어두운 톤에 맞춰 미세 조정 */
+    background: #111111; 
+    color: #ffffff;
+    padding: 60px 80px 40px 80px;
+    font-family: 'Inter', sans-serif;
     width: 100%;
 }
 
 .footer-top {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1.5fr repeat(4, 1fr) 1.2fr;
-    gap: 50px;
+    display: grid !important;
+    /* 📌 웹 환경에서 절대 아래로 떨어지지 않도록 6개 칼럼 가로 배치 강제 정의 */
+    grid-template-columns: 2fr repeat(4, 1fr) 1.5fr !important; 
+    gap: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 40px;
+}
+
+/* 로고 및 카피라이트 영역 */
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .footer-logo img {
-    height: 40px;
+    height: 45px; 
     width: auto;
-    margin-bottom: 20px;
-    /* 💡 만약 원래 푸터 로고가 검은색이라 안 보인다면, 아래 필터를 활성화하여 흰색으로 반전시킬 수 있습니다 */
-    /* filter: brightness(0) invert(1); */
+    display: block;
+    object-fit: contain;
 }
 
 .footer-logo p {
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.6;
-    color: #9ca3af !important;       /* 💡 설명글을 어두운 배경에 잘 보이는 밝은 회색으로 변경 */
-    margin-bottom: 30px;
+    color: #999999;
+    max-width: 260px;
+    margin: 0;
 }
 
-.footer-logo p span {
-    color: #10b981 !important;       /* 포인트 도트(.) 컬러를 산뜻한 라이트 그린으로 최적화 */
-    font-weight: bold;
-}
-
-.copyright {
+.footer-logo .copyright {
     font-size: 13px;
-    color: #6b7280 !important;       /* 카피라이트 문구를 은은한 회색으로 조정 */
+    color: #666666;
+    margin-top: auto; /* 하단 밀착 */
 }
 
+/* 개별 메뉴 링크 칼럼 */
 .footer-column {
     display: flex;
     flex-direction: column;
@@ -660,49 +732,96 @@ body{
 }
 
 .footer-column h4 {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
-    color: #ffffff !important;       /* 💡 대카테고리 제목을 완전한 화이트로 강조 */
+    letter-spacing: 1px;
+    color: #ffffff;
     margin-bottom: 10px;
-    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 .footer-column a {
-    color: #9ca3af !important;       /* 💡 세부 메뉴 링크들을 가독성 높은 연회색으로 변경 */
     font-size: 14px;
-    text-decoration: none;
-    transition: 0.3s;
+    color: #bbbbbb;
+    text-decoration: none !important;
+    transition: color 0.3s ease;
 }
 
-/* 메뉴 링크에 마우스 올렸을 때(Hover) 효과 */
 .footer-column a:hover {
-    color: #10b981 !important;       /* 라이프드 시그니처 그린 컬러로 밝게 하이라이트 */
+    color: #0F9D58; 
 }
 
-/* 소셜 아이콘 구역 보정 */
+/* 소셜 및 언어 선택 영역 */
+.footer-column.social {
+    gap: 20px;
+}
+
 .social-icons {
     display: flex;
-    gap: 15px;
-    margin-bottom: 25px;
+    gap: 12px;
 }
 
 .social-icons a {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: #1f2937 !important;  /* 💡 아이콘 원형 배경을 어두운 칩 형태로 가공 */
-    color: #d1d5db !important;       /* 내부 SNS 로고 그래픽을 밝은 은회색으로 변경 */
     display: flex;
-    justify-content: center;
     align-items: center;
-    transition: 0.3s;
-    font-size: 16px;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    color: #cccccc; 
+    font-size: 16px; 
+    text-decoration: none !important;
+    transition: all 0.3s ease;
 }
 
 .social-icons a:hover {
-    background: #0F9D58 !important;  /* 호버 시 선명한 초록색 원형으로 활성화 */
-    color: #fff !important;
+    background: #0F9D58;
+    color: #ffffff;
+    transform: translateY(-3px);
 }
+
+/* =====================================
+   FOOTER RESPONSIVE (화면 크기별 해제 및 변형)
+===================================== */
+
+/* ❶ 태블릿 화면 (최대 1024px) */
+@media screen and (max-width: 1024px) {
+    .footer {
+        padding: 50px 40px 30px 40px;
+    }
+    .footer-top {
+        grid-template-columns: repeat(3, 1fr) !important; /* 3열 배열로 압축 */
+        gap: 40px 30px;
+    }
+    .footer-logo {
+        grid-column: span 3; /* 로고 영역을 맨 위로 길게 배치 */
+        margin-bottom: 10px;
+    }
+}
+
+/* ❷ 모바일 화면 (최대 768px 이하에서만 세로 정렬 적용) */
+@media screen and (max-width: 768px) {
+    .footer {
+        padding: 40px 20px 30px 20px;
+    }
+    .footer-top {
+        grid-template-columns: 1fr !important; /* 📌 모바일에서만 1열 세로 정렬 */
+        gap: 30px;
+    }
+    .footer-logo {
+        grid-column: span 1;
+    }
+    .footer-column {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding-bottom: 15px; /* 구분을 위한 얇은 경계선 */
+    }
+    .footer-column.social {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+}
+
 
 /* 지구본 다국어 버튼 보정 */
 .language-footer {
@@ -865,7 +984,7 @@ gap: 40px;
 .footer-logo {
 margin-bottom: 10px;
 }
-}
+
 /* ==========================================
    📞 [완벽 복구] CONTACT PAGE 하단 정보 카드 가로 정렬 및 아이콘 수복
    ========================================== */
@@ -1143,5 +1262,83 @@ body { top: 0 !important; position: static !important; }
     top: auto !important;
     right: auto !important;
     width: 150px !important;    /* 푸터 버튼 너비에 예쁘게 맞춤 */
+}
+/* =====================================
+   CONTACT PAGE LAYOUT BALANCING
+===================================== */
+.contact-page-container {
+    width: 100%;
+    background: #fdfdfd;
+    padding: 140px 0 80px 0; /* 상단 헤더 차단 여백 설계 */
+    display: flex;
+    justify-content: center;
+}
+
+.form-wrapper-block {
+    width: 100%;
+    max-width: 750px; /* 견적서 박스 전체 가로폭 제어 */
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 0 20px;
+}
+
+/* 대제목 정렬 보정 명세 */
+.page-main-title {
+    font-size: 26px !important;
+    font-weight: 700 !important;
+    color: #111111;
+    letter-spacing: -0.5px;
+    text-align: left !important;
+    margin: 0 0 10px 0 !important;
+    font-family: 'Inter', sans-serif;
+}
+
+/* 폼 입력창 구조 전용 정밀 패딩 설계 */
+#quotation-form {
+    background: #ffffff;
+    border: 1px solid #eef0f2;
+    padding: 40px !important;
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.input-field label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #888888;
+    letter-spacing: 0.5px;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.method-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #888888;
+    margin-right: 10px;
+}
+
+/* 유령 파편 원천 물리적 매몰 강제 규격 */
+body > input[type="button"],
+body > button:not([id="submit-btn"]),
+.contact-page-container ~ button {
+    display: none !important;
+    opacity: 0 !important;
 }
 

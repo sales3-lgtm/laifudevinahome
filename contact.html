@@ -1,380 +1,194 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Technology | LAIFUDE VINA</title>
-
-   <!-- 🚨 구글 크롤러봇이 사이트의 고유 아이덴티티 심볼을 강제 인식하게 만드는 코드 -->
-    <link rel="icon" type="image/png" href="image/favicon.png" sizes="48x48">
-    <link rel="apple-touch-icon" href="image/favicon.png"> <!-- 아이폰 홈화면 북마크용 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | LAIFUDE VINA</title>
     
-
-<meta name="description"
-content="Technology Built on Trust, Value Defined by Quality">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-<link rel="stylesheet" href="style.css">
-
-<style>
-
-/* CONTACT PAGE */
-
-.contact-page{
-    width:100%;
-    background:#fff;
-    padding-top:90px;
-}
-
-.contact-page img{
-    display:block;
-    width:100%;
-    max-width:1920px;
-    margin:auto;
-    height:auto;
-}
-
-</style>
-
+    <link rel="icon" type="image/png" href="image/favicon.png" sizes="48x48">
+    <link rel="apple-touch-icon" href="image/favicon.png">
+    
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-
 <!-- HEADER -->
-
 <header class="header">
+    <div class="logo">
+        <a href="index.html">
+            <img src="image/logo.png" alt="LAIFUDE VINA">
+        </a>
+    </div>
+    <div class="menu-toggle">☰</div>
+    <nav class="main-nav">
+        <a href="aboutus.html">ABOUT US</a>
+        <a href="collections.html">COLLECTIONS</a>
+        <a href="technology.html">TECHNOLOGY</a>
+        <a href="Sustainability.html">SUSTAINABILITY</a>
+        <a href="contact.html">CONTACT</a>
 
-<div class="logo">
-
-<a href="index.html">
-
-<img src="image/logo.png" alt="LAIFUDE VINA">
-
-</a>
-
-</div>
-
-<div class="menu-toggle">
-☰
-</div>
-
-<nav class="main-nav">
-
-    <a href="aboutus.html">ABOUT US</a>
-    <a href="collections.html">COLLECTIONS</a>
-    <a href="technology.html">TECHNOLOGY</a>
-    <a href="Sustainability.html">SUSTAINABILITY</a>
-    <a href="contact.html">CONTACT</a>
-
-        <!-- [상단 인터페이스] 언어 변경 버튼 자체 고유 클래스 지정 -->
         <button class="language">
             🌐 <span id="current-language">English</span>
             <i class="fa-solid fa-chevron-down"></i>
-
             <div class="language-menu header-menu">
-    <div onclick="changeLanguage('en')">English</div>
-    <div onclick="changeLanguage('ko')">한국어</div>
-    <div onclick="changeLanguage('vi')">Tiếng Việt</div>
-    <div onclick="changeLanguage('zh-CN')">中文</div>
-</div>
-
-        </button> 
-
-</nav>
-
+                <div onclick="changeLanguage('en')">English</div>
+                <div onclick="changeLanguage('ko')">한국어</div>
+                <div onclick="changeLanguage('vi')">Tiếng Việt</div>
+                <div onclick="changeLanguage('zh-CN')">中文</div>
+            </div>
+        </button>
+    </nav>
 </header>
+<!-- 첫 번째 상단 배너 섹션 -->
+<section class="collections-page">
+    <img src="image/contact02.png" alt="LAIFUDE workwear">
 
-
-<!-- CONTACT IMAGE -->
-
-<section class="contact-page">
-
-    <img src="image/contactbg.png"
-         alt="LAIFUDE contact">
-
-    <img src="image/contactbg02.png"
-         alt="LAIFUDE contact">     
-
+    <img src="image/contactbg02.png" alt="LAIFUDE workwear">
 </section>
 
-<section class="quotation-section">
+<!-- MAIN CONTENT WRAPPER -->
+<main class="contact-page-container">
+    
+    <!-- 폼과 대제목을 하나의 고정된 박스(Box) 구조 안으로 통합 배치 -->
+    <div class="form-wrapper-block">
+        <h1 class="page-main-title">QUOTATION REQUEST FORM</h1>
 
-<div class="quotation-wrap">
+        <form id="quotation-form">
+            <div class="form-row">
+                <div class="input-field">
+                    <label>COMPANY NAME</label>
+                    <input type="text" name="company_name" placeholder="Enter company name" required>
+                </div>
+                <div class="input-field">
+                    <label>CONTACT PERSON</label>
+                    <input type="text" name="contact_person" placeholder="Enter contact person" required>
+                </div>
+            </div>
 
-<h2>QUOTATION REQUEST FORM</h2>
+            <div class="form-row">
+                <div class="input-field">
+                    <label>EMAIL ADDRESS</label>
+                    <input type="email" name="user_email" placeholder="Enter email address" required>
+                </div>
+                <div class="input-field">
+                    <label>PHONE NUMBER</label>
+                    <input type="text" name="phone" placeholder="Enter phone number">
+                </div>
+            </div>
 
-<form id="quotation-form">
+            <div class="form-section-block">
+                <h3>PRIMARY COLLECTION INTERESTS</h3>
+                <div class="collection-group">
+                    <label><input type="checkbox" value="Corporate"> CORPORATE</label>
+                    <label><input type="checkbox" value="Industrial"> INDUSTRIAL</label>
+                    <label><input type="checkbox" value="IR4+ESD"> IR4+ESD</label>
+                    <label><input type="checkbox" value="Medical Uniform"> MEDICAL UNIFORM</label>
+                    <label><input type="checkbox" value="Safety & PPE"> SAFETY & PPE</label>
+                    <label><input type="checkbox" value="Custom"> CUSTOM</label>
+                </div>
+            </div>
 
-<div class="quotation-grid">
+            <div class="form-row">
+                <div class="input-field full-width">
+                    <label>ESTIMATED QUANTITY</label>
+                    <input type="text" name="quantity" placeholder="e.g., 500 pcs, 1000 sets">
+                </div>
+            </div>
 
-<!-- LEFT -->
-<div class="quotation-left">
+            <div class="input-field full-width">
+                <label>CUSTOMIZATION NEEDS</label>
+                <textarea name="customization" placeholder="Describe embroidery, logo printing, or design changes"></textarea>
+            </div>
 
-<label>[ COMPANY NAME ]</label>
-<input type="text" name="company_name" placeholder="COMPANY NAME" required>
+            <div class="input-field full-width">
+                <label>ADDITIONAL NOTES</label>
+                <textarea name="additional_notes" placeholder="Any other requirements or details"></textarea>
+            </div>
 
-<label>[ EMAIL ADDRESS ]</label>
-<input type="email" name="user_email" placeholder="EMAIL ADDRESS" required>
+            <div class="contact-method">
+                <span class="method-title">PREFERRED CONTACT METHOD:</span>
+                <label><input type="radio" name="preferred_contact" value="Email" checked> Email</label>
+                <label><input type="radio" name="preferred_contact" value="Phone"> Phone</label>
+            </div>
 
-<label>[ PRIMARY COLLECTION INTERES ]</label>
+            <label class="privacy-agreement-row">
+                <input type="checkbox" required>
+                <span>I AGREE TO PRIVACY POLICY</span>
+            </label>
 
-<div class="collection-group">
+            <button type="submit" id="submit-btn">
+                SUBMIT REQUEST →
+            </button>
+        </form>
+        <div id="success-message"></div>
+    </div>
+</main>
 
-<label><input type="checkbox" value="CORPORATE"> CORPORATE</label>
-
-<label><input type="checkbox" value="INDUSTRIAL"> INDUSTRIAL</label>
-
-<label><input type="checkbox" value="IR4+ESD"> IR4+ESD</label>
-
-<label><input type="checkbox" value="MEDICAL UNIFORM"> MEDICAL UNIFORM</label>
-
-<label><input type="checkbox" value="SAFETY & PPE"> SAFETY & PPE</label>
-
-<label><input type="checkbox" value="CUSTOM"> CUSTOM</label>
-
-</div>
-
-<label>[ CUSTOMIZATION NEEDS ]</label>
-
-<textarea
-name="customization"
-placeholder="CUSTOMIZATION NEEDS"></textarea>
-
-</div>
-
-
-<!-- RIGHT -->
-
-<div class="quotation-right">
-
-<label>[ CONTACT PERSON ]</label>
-<input type="text" name="contact_person" placeholder="CONTACT PERSON" required>
-
-<label>[ PHONE NUMBER ]</label>
-<input type="text" name="phone" placeholder="PHONE NUMBER">
-
-<label>[ ESTIMATED QUANTITY ]</label>
-<input type="text" name="quantity"
-placeholder="Enter qty, logo, specific fabric">
-
-<label>[ ADDITIONAL NOTES ]</label>
-
-<textarea
-name="additional_notes"
-placeholder="ADDITIONAL NOTES"></textarea>
-
-
-<div class="contact-method">
-
-<label>
-<input type="radio"
-name="preferred_contact"
-value="Email"
-checked>
-Email
-</label>
-
-<label>
-<input type="radio"
-name="preferred_contact"
-value="Phone">
-Phone
-</label>
-
-</div>
-
-
-<div class="privacy">
-
-<input type="checkbox" required>
-
-I AGREE TO PRIVACY POLICY
-
-</div>
-
-</div>
-
-</div>
-
-
-<button type="submit"
-id="submit-btn">
-
-SUBMIT REQUEST →
-
-</button>
-
-<div id="success-message"></div>
-
-</form>
-<!-- ... 위쪽 견적서 서식 필드 코드들 ... -->
-
-        <label>
-            <input type="checkbox" required>
-            I AGREE TO PRIVACY POLICY
-        </label>
-
-        <button type="submit" id="submit-btn">
-            SUBMIT REQUEST →
-        </button>
-
-    </form> <!-- 💡 기존 견적서 폼이 닫히는 지점입니다. -->
-
-    <!-- ====================================================================
-         🚨 [신규 추가] 첫 페이지의 회사 정보, 이메일, 연락처 카드 그리드 영역
-         ==================================================================== -->
-<!-- 🚨 기존의 중복된 체크박스, 제출버튼, 깨진 주소 영역을 완전히 도려내고 아래 코드로 정확히 바꾸세요 -->
-        <label class="privacy-agreement-label">
-            <input type="checkbox" required>
-            I AGREE TO PRIVACY POLICY
-        </label>
-
-        <button type="submit" id="submit-btn">
-            SUBMIT REQUEST →
-        </button>
-
-    </form> <!-- 견적서 양식 폼 종료 -->
-
-    <!-- ====================================================================
-         ✨ [구조 수복] 회사 정보, 이메일, 연락처 카드 그리드 영역 (독립 클래스 적용)
-         ==================================================================== -->
-    <div class="contact-page-info-grid">
-        
-        <!-- 1. 이메일 카드 -->
-        <div class="contact-info-card-item">
-            <!-- font-awesome 아이콘을 사용하여 이미지 엑스박스 깨짐 현상을 원천 방어합니다 -->
-            <div class="card-icon-zone"><i class="fa-solid fa-envelope"></i></div>
-            <h3>laifudevina@gmail.com</h3>
-            <p>Email Us</p>
-        </div>
-
-        <!-- 2. 연락처 / 전화번호 카드 -->
-        <div class="contact-info-card-item">
-            <div class="card-icon-zone"><i class="fa-solid fa-phone"></i></div>
-            <h3>+84 (0) 24 6664 1500</h3>
-            <p>Call Us</p>
-        </div>
-
-        <!-- 3. 본사 / 공장 주소 카드 -->
-        <div class="contact-info-card-item">
-            <div class="card-icon-zone"><i class="fa-solid fa-location-dot"></i></div>
-            <h3>Son Dong, Ha Noi, Vietnam</h3>
-            <p>Visit Our Office</p>
-        </div>
-
-    </div> <!-- contact-page-info-grid 끝 -->
-
-    <div id="success-message"></div>
-
-</div> <!-- quotation-wrap 끝 -->
-
-</div>
-
+<section class="collections-page">
+    <img src="image/contactbg03.png" alt="LAIFUDE workwear">
 </section>
 
-<section class="contact-page">
-
-    <img src="image/contactbg03.png"
-         alt="LAIFUDE contact">
-</section>
-
-
-<!-- FOOTER -->
-
+<!-- FOOTER (콘텐츠 밖으로 분리 완료) -->
 <footer class="footer">
-
-<div class="footer-top">
-
-    <div class="footer-logo">
-
-        <a href="index.html">
-            <img src="image/footer-logo.png" alt="LAIFUDE">
-        </a>
-
-        <p>
-            Technology Built on Trust,<br>
-            Value Defined by Quality<span>.</span>
-        </p>
-
-        <div class="copyright">
-            © 2026 LAIFUDE. All rights reserved.
+    <div class="footer-top">
+        <div class="footer-logo">
+            <a href="index.html">
+                <img src="image/footer-logo.png" alt="LAIFUDE">
+            </a>
+            <p>
+                Technology Built on Trust,<br>
+                Value Defined by Quality<span>.</span>
+            </p>
+            <div class="copyright">
+                © 2026 LAIFUDE. All rights reserved.
+            </div>
         </div>
 
-    </div>
-
-
-    <div class="footer-column">
-
-        <h4>COMPANY</h4>
-
-        <a href="aboutus.html">About Us</a>
-        <a href="technology.html">Brand Philosophy</a>
-        <a href="Sustainability.html">Sustainability</a>   
-        <a href="#">News & Insights</a>
-        <a href="#">Careers</a>
-
-    </div>
-
-
-    <div class="footer-column">
-
-        <h4>COLLECTIONS</h4>
-
-        <a href="products.html">Workwear</a>
-        <a href="corporate.html">Corporate Wear</a>
-        <a href="esdclean.html">ESD & Cleanroom Wear</a>
-        <a href="medical.html">Medical Uniforms</a>
-        <a href="safety.html">Safety & PPE</a>
-
-    </div>
-
-
-    <div class="footer-column">
-
-        <h4>SUPPORT</h4>
-
-        <a href="contact.html#quotation-form">Request a Quotation</a>
-        <a href="#">FAQ</a>
-        <a href="#">Catalog Download</a>
-        <a href="contact.html">Contact Us</a>
-
-    </div>
-
-
-    <div class="footer-column">
-
-        <h4>LEGAL</h4>
-
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
-
-    </div>
-
-
-    <div class="footer-column social">
-
-        <h4>FOLLOW US</h4>
-
-        <div class="social-icons">
-            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://www.facebook.com/laifudevn/"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        <div class="footer-column">
+            <h4>COMPANY</h4>
+            <a href="aboutus.html">About Us</a>
+            <a href="technology.html">Brand Philosophy</a>
+            <a href="Sustainability.html">Sustainability</a>
+            <a href="#">News & Insights</a>
+            <a href="#">Careers</a>
         </div>
 
+        <div class="footer-column">
+            <h4>COLLECTIONS</h4>
+            <a href="products.html">Workwear</a>
+            <a href="corporate.html">Corporate Wear</a>
+            <a href="esdclean.html">ESD & Cleanroom Wear</a>
+            <a href="medical.html">Medical Uniforms</a>
+            <a href="safety.html">Safety & PPE</a>
+        </div>
+
+        <div class="footer-column">
+            <h4>SUPPORT</h4>
+            <a href="contact.html#quotation-form">Request a Quotation</a>
+            <a href="#">FAQ</a>
+            <a href="#">Catalog Download</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+
+        <div class="footer-column">
+            <h4>LEGAL</h4>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Use</a>
+        </div>
+
+        <div class="footer-column social">
+            <h4>FOLLOW US</h4>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://www.facebook.com/laifudevn/" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
             <!-- [하단 인터페이스] 버튼 내재화 캡슐 구조 수복 완결 -->
             <div class="language-footer">
                 🌐 <span id="footer-language">English</span>
@@ -400,6 +214,25 @@ SUBMIT REQUEST →
 <!-- 핵심 스크립트 라이브러리 순차 바인딩 -->
 <script src="https://google.com"></script>
 <script src="language.js"></script>
+
+<script>
+    // 인터랙션 스크립트 엔진 바인딩
+    const headerLangBtn = document.querySelector(".header .language");
+    const headerMenu = document.querySelector(".header-menu");
+    headerLangBtn.addEventListener("click", (e) => { e.stopPropagation(); headerMenu.classList.toggle("show"); });
+
+    const footerLangBtn = document.querySelector(".language-footer");
+    const footerMenu = document.querySelector(".footer-menu");
+    footerLangBtn.addEventListener("click", (e) => { e.stopPropagation(); footerMenu.classList.toggle("show"); });
+
+    document.addEventListener("click", () => {
+        headerMenu.classList.remove("show");
+        footerMenu.classList.remove("show");
+    });
+
+    const toggle = document.querySelector(".menu-toggle");
+    const nav = document.querySelector(".main-nav");
+    toggle.addEventListener("click", () => { nav.classList.toggle("open"); });
+</script>
 </body>
 </html>
-```
