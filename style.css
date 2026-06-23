@@ -642,10 +642,7 @@ main > label:not([class]),
     transform: translateY(-2px);
 }
 
-@media screen and (max-width: 768px) {
-    .form-row { grid-template-columns: 1fr; }
-    .collection-group { grid-template-columns: 1fr 1fr; }
-}
+
 
 /* 성공 메시지 레이어 */
 #success-message {
@@ -656,21 +653,6 @@ main > label:not([class]),
     margin-top: 15px;
 }
 
-/* =====================================
-   FORM RESPONSIVE (모바일 레이아웃 최적화)
-===================================== */
-@media screen and (max-width: 768px) {
-    #quotation-form {
-        padding: 25px 20px;
-    }
-    .form-row {
-        grid-template-columns: 1fr; /* 모바일에서는 무조건 1줄에 1개씩 */
-        gap: 15px;
-    }
-    .collection-group {
-        grid-template-columns: 1fr 1fr; /* 모바일 체크박스는 2열 정렬 */
-    }
-}
 
 
 /* --------------------------------------------------------------------------
@@ -781,46 +763,7 @@ main > label:not([class]),
     transform: translateY(-3px);
 }
 
-/* =====================================
-   FOOTER RESPONSIVE (화면 크기별 해제 및 변형)
-===================================== */
 
-/* ❶ 태블릿 화면 (최대 1024px) */
-@media screen and (max-width: 1024px) {
-    .footer {
-        padding: 50px 40px 30px 40px;
-    }
-    .footer-top {
-        grid-template-columns: repeat(3, 1fr) !important; /* 3열 배열로 압축 */
-        gap: 40px 30px;
-    }
-    .footer-logo {
-        grid-column: span 3; /* 로고 영역을 맨 위로 길게 배치 */
-        margin-bottom: 10px;
-    }
-}
-
-/* ❷ 모바일 화면 (최대 768px 이하에서만 세로 정렬 적용) */
-@media screen and (max-width: 768px) {
-    .footer {
-        padding: 40px 20px 30px 20px;
-    }
-    .footer-top {
-        grid-template-columns: 1fr !important; /* 📌 모바일에서만 1열 세로 정렬 */
-        gap: 30px;
-    }
-    .footer-logo {
-        grid-column: span 1;
-    }
-    .footer-column {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        padding-bottom: 15px; /* 구분을 위한 얇은 경계선 */
-    }
-    .footer-column.social {
-        border-bottom: none;
-        padding-bottom: 0;
-    }
-}
 
 
 /* 지구본 다국어 버튼 보정 */
@@ -877,113 +820,306 @@ visibility: hidden !important;
 @media screen and (max-width: 768px) {
     /* 1. 로고와 메뉴 겹침 해결 */
     .header {
-        padding: 15px 20px; /* 좌우 여백을 줄여 공간 확보 */
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 70px !important; /* 모바일에서는 헤더 높이를 조금 더 컴팩트하게 조정 */
+
+        padding: 0px 20px; /* 좌우 여백을 줄여 공간 확보 */
         display: flex;
-        justify-content: space-between; /* 로고는 왼쪽, ☰ 버튼은 오른쪽 끝 배치 */
+        justify-content: flex-start !important; /* 로고는 왼쪽, ☰ 버튼은 오른쪽 끝 배치 */
         align-items: center;
-        height: 70px; /* 헤더 높이 고정 */
+        background: #ffffff !important; /* 모바일에서는 배경을 흰색으로 */
+        border-bottom: 1px solid #eeeeee !important;
+        z-index: 9999 !important;
+        box-sizing: border-box !important;
+        gap: 12px !important; /* 로고와 삼선 메뉴 사이 간격*/
+    }
+    .logo {
+        display: flex !important;
+        align-items: center !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        float: none !important;
     }
 
     .logo img {
-        height: 35px; /* 모바일 전용 로고 크기 축소로 겹침 방지 */
-        width: auto;
+        height: 32px !important; /* 모바일 전용 로고 크기 축소로 겹침 방지 */
+        width: auto !important;
     }
 
     .menu-toggle {
-        display: block; /* ☰ 버튼 상시 노출 */
-        font-size: 28px;
-        line-height: 1;
+        display: block !important; /* 📌 모바일에서 강제 활성화 */
+        background: none !important;
+        border: none !important;
+        font-size: 28px !important;
+        color: #111111 !important;
+        cursor: pointer !important;
+        padding: 5px !important;
+        line-height: 1 !important;
+        margin: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        position: static !important;
+        float: none !important;
     }
     
     /* 모바일 펼침 메뉴 스타일 정돈 */
+    .header nav,
     .main-nav {
-        display: none; 
-        position: absolute;
-        top: 70px; /* 헤더 바로 아래부터 열리도록 설정 */
-        left: 0;
-        width: 100%;
-        background: rgba(255, 255, 255, 0.98);
-        padding: 25px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        margin-left: 0;
-        z-index: 9999;
+        display: none !important; /* 📌 기본 상태: 완전히 숨김 */
+        position: absolute !important;
+        top: 70px !important; /* 헤더 바로 아래 닿도록 설정 */
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        background: #ffffff !important;
+        padding: 25px 20px 35px 20px !important;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        z-index: 99998 !important;
+        max-height: calc(100vh - 70px) !important;
+        overflow-y:auto !important;
     }
-    
     .main-nav.open {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 18px;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+    }
+        /* 모바일 가독성을 위해 메뉴 글씨들을 다시 노출시킵니다 */
+    .main-nav a {
+        display: block !important;
+        width: 100% !important;
+        font-size: 15px !important;
+        font-weight: 600 !important;
+        color: #111111 !important;
+        padding: 10px 0 !important;
+        text-align: left !important;
+        border-bottom: 1px solid #f5f5f5 !important; /* 메뉴간 구분선 */
+        margin: 0 !important;
+        text-decoration: none !important;
+        
+    }
+
+    .header nav a:last-of-type,
+    .main-nav a:last-of-type {
+        border-bottom: none !important;
+    }
+
+    /* 모바일 내 언어 버튼 너비 확장 */
+    .header nav .language,
+    .main-nav .language {
+        display: inline-flex !important;
+        visibility: visible !important;
+        margin-top: 15px !important;
+        width: 100% !important;
+        background: #f8f9fa !important;
+        padding: 12px 16px !important;
+        border: 1px solid #e9ecef !important;
+        border-radius: 6px !important;
+        justify-content: space-between !important;
+        box-sizing: border-box !important;
+        color: #333333 !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
     }
 
     /* 2. 메인 배경 사진과 타이틀 분리 현상 해결 */
-    .hero {
-        background-size: cover; /* 이미지가 배경 전체를 빈틈없이 채움 */
-        background-position: center; /* 사진 중심을 화면 가운데로 고정 */
-        min-height: 100vh; /* 화면 높이에 맞춰 유연하게 확장 */
-        height: auto;
-        display: flex;
-        align-items: center;
+.hero {
+    position: relative;
+    background-size: cover; /* 이미지가 배경 전체를 빈틈없이 채움 */
+    background-position: right center !important; /* 사진 중심을 화면 가운데로 고정 */
+    background-repeat:no-repeat !important;
+    background-color:#fff;
+    min-height: 100svh; /* 화면 높이에 맞춰 유연하게 확장 */
+    overflow: hidden;
     }
 
-    .hero-overlay {
-        background: rgba(255, 255, 255, 0.82); /* 글씨 가독성을 위해 배경 불투명도 업 */
-    }
+ .hero-overlay{
+    background: linear-gradient(
+        90deg,
+        rgba(255,255,255,.95) 0%,
+        rgba(255,255,255,.75) 45%,
+        rgba(255,255,255,.15) 70%,
+        rgba(255,255,255,0) 100%
+    ) !important;
+}
 
-    .hero-content {
-        width: 100%;
-        min-height: auto;
-        padding: 100px 20px 40px 20px; /* 상단 헤더와 절대 겹치지 않게 여백 조정 */
-        text-align: left; /* 브랜드 아이덴티티에 맞춰 좌측 정렬 유지 */
-    }
+.hero-content{
+    width:100% !important;
+    max-width:100% !important;
+    padding:100px 20px 40px 25px !important;
+    position:relative;
+    z-index:10;
+}
     
     /* 3. 타이틀이 세로로 너무 길게 나오는 현상 해결 */
     .hero h1 {
-        font-size: 32px !important; /* 글자 크기를 모바일에 맞춰 대폭 축소 */
+        position:relative;
+        font-size: 28px !important; /* 글자 크기를 모바일에 맞춰 대폭 축소 */
         line-height: 1.25 !important; /* 줄간격을 넓혀 자모음 겹침 및 과도한 줄바꿈 방지 */
+        max-width:220px;
         margin-bottom: 20px;
         word-break: keep-all; /* 단어가 중간에서 끊겨 한 글자씩 내려가는 현상 방지 */
+        z-index: 20;
     }
     
     .hero p {
+        position:relative;
         font-size: 15px !important; /* 본문 텍스트도 보기 좋게 조정 */
         line-height: 1.6;
-        max-width: 100%;
+        max-width: 180px;
+        z-index: 20;
     }
-    
-    /* 모바일 버튼 간격 */
-    .hero-buttons {
-        flex-direction: column;
-        gap: 12px;
-        margin-top: 25px;
-        width: 100%;
-    }
-    
-    .btn-primary, .btn-secondary {
-        text-align: center;
-        width: 100%;
-        padding: 15px;
+ 
+    /* 📌 1. 특징 피처 그리드 아이템 내부 요소들의 줄간격 및 여백 조율 */
+    .feature-item {
+        margin-bottom: 25px !important; /* 아이템 카드 간의 수직 공간 배분 */
+        text-align: left !important;
     }
 
+    .feature-item img {
+        width: 44px !important; /* 모바일 해상도 전용 아이콘 스케일 최적화 */
+        height: 44px !important;
+        margin-bottom: 12px !important;
+    }
+
+    .feature-item h3 {
+        font-size: 13px !important;
+        margin-bottom: 6px !important;
+        letter-spacing: 0.5px !important;
+    }
+
+    .feature-item p {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+        color: #666666 !important;
+    }
+       /* 📌 2. 특징 그리드와 하단 버튼 그룹 사이의 간격 수복 (가장 중요) */
+    .hero-features {
+        margin-top: 35px !important;
+        margin-bottom: 20px !important; /* 피처 그리드가 끝나고 버튼 시작 전 안전 여백 확보 */
+    }
+
+    /* 📌 3. 초록색 및 아웃라인 버튼 그룹 마진 및 패딩 전면 교정 */
+    .hero-buttons {
+        display: flex !important;
+        flex-direction: column !important; /* 모바일 화면은 세로 1열 버튼 스택 */
+        gap: 12px !important;
+        margin-top: 25px !important;
+        margin-bottom: 60px !important; /* ◀ 버튼 밑에 충분한 여백을 주어 다음 섹션 이미지와 절대 겹치지 않게 방어 */
+        width: 100% !important;
+    }
+
+    .btn-primary, .btn-secondary {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        padding: 15px 20px !important; /* 터치하기 편하도록 세로 두께 확장 */
+        font-size: 13px !important;
+        letter-spacing: 0.5px !important;
+        box-sizing: border-box !important;
+    }
     /* 기타 하단 그리드 요소 세로 한 줄 정렬 안전 조치 */
     .feature-grid, .collections-grid, .info-row-top, .info-row-bottom {
         grid-template-columns: 1fr !important;
         gap: 25px;
     }
+    /* =====================================
+   FORM RESPONSIVE (모바일 레이아웃 최적화)
+===================================== */
+    #quotation-form {
+        padding: 25px 20px;
+    }
+    .form-row {
+        grid-template-columns: 1fr; /* 모바일에서는 무조건 1줄에 1개씩 */
+        gap: 15px;
+    }
+    .collection-group {
+        grid-template-columns: 1fr 1fr; /* 모바일 체크박스는 2열 정렬 */
+    }
+
+
+    .footer {
+        padding: 40px 20px 30px 20px;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    .footer-top {
+        display: grid !important;
+        grid-template-columns: 1fr !important; /* 1열로 세로 정렬 */
+        gap: 30px;
+    }
+    .footer-logo {
+        grid-column: span 1;
+        margin-bottom: 10px;
+        text-align: left; /* 모바일에서는 로고와 카피라이트를 정렬 */
+    }
+    .footer-logo img {
+        height: 35px; /* 로고 크기 축소 */
+        width: auto;
+    }
+    .footer-logo p {
+        max-width: 100%; /* 로고 밑 설명 글씨 폭 제한 */
+        font-size: 13px; /* 카피라이트 글씨 크기 축소 */
+    }
+    .footer-column {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding-bottom: 20px; /* 구분을 위한 얇은 경계선 */
+        margin: 0 !important;
+    }
+    .footer-column.social {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+    .social-icons {
+        justify-content: flex-start !important; /* 소셜 아이콘 좌측 정렬 */
+        margin-bottom: 5px !important;
+    }
+
+    .language-footer {
+        align-self: flex-start !important;
+        width: auto !important;
+    }
+
 }
 
-/* 모바일 환경에선 견적 폼 및 푸터 서식을 세로 1열로 나열 */
-.quotation-grid {
-grid-template-columns: 1fr !important;
-gap: 10px;
+
+
+/* =====================================
+   FOOTER RESPONSIVE (화면 크기별 해제 및 변형)
+===================================== */
+
+/* ❶ 태블릿 화면 (최대 1024px) */
+@media screen and (max-width: 1024px) {
+    .footer {
+        padding: 50px 40px 30px 40px;
+    }
+    .footer-top {
+        grid-template-columns: repeat(3, 1fr) !important; /* 3열 배열로 압축 */
+        gap: 40px 30px;
+    }
+    .footer-logo {
+        grid-column: span 3; /* 로고 영역을 맨 위로 길게 배치 */
+        margin-bottom: 10px;
+    }
+    .footer-logo img {
+        height: 35px; /* 로고 크기 축소 */
+        width: auto;
+    }
+    .footer-logo p {
+        max-width: 100%; /* 로고 밑 설명 글씨 폭 제한 */
+        font-size: 13px; /* 카피라이트 글씨 크기 축소 */
+    }
 }
-.footer-top {
-grid-template-columns: 1fr;
-gap: 40px;
-}
-.footer-logo {
-margin-bottom: 10px;
-}
+
+/* ❷ 모바일 화면 (최대 768px 이하에서만 세로 정렬 적용) */
 
 /* ==========================================
    📞 [완벽 복구] CONTACT PAGE 하단 정보 카드 가로 정렬 및 아이콘 수복
@@ -1062,31 +1198,11 @@ margin-bottom: 10px;
     color: #0F9D58 !important; /* 서브 카테고리는 초록색으로 세련되게 강조 */
 }
 
-/* 📱 모바일 디바이스 해상도 최적화 (768px 이하) */
-@media (max-width: 768px) {
-    .contact-page-info-grid {
-        flex-direction: column !important; /* 모바일 환경에선 카드 3개가 위아래로 안전 전환 */
-        gap: 20px !important;
-        margin-top: 40px !important;
-    }
-    
-    .contact-info-card-item {
-        width: 100% !important;
-        padding: 30px 20px !important;
-    }
-}
+
 /* ==========================================================================
    🌐 [최종 해결] 상단 다국어 언어 버튼 안쪽 당김 및 팝업 활성화 고정
    ========================================================================== */
 /* 1. 메뉴바 전체를 우측 벽에서 안쪽으로 60px 더 강력하게 당김 */
-.main-nav {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-end !important;
-    gap: 35px !important;
-    margin-left: 0 !important;
-    padding-right: 60px !important; /* 💡 기존보다 여백을 대폭 늘려 버튼이 절대 벽에 가리지 않도록 조절 */
-}
 
 /* 2. 언어 변경 버튼 자체의 z-index와 클릭 유효 공간 선언 */
 .main-nav .language,
@@ -1108,75 +1224,10 @@ button.language {
     white-space: nowrap !important;
 }
 
-/* 3. 클릭 시 아래에 나타나는 실제 다국어 메뉴 팝업 레이어 수복 */
-.language-menu {
-    position: fixed !important;
-    /* 💡 버튼 아래 정확한 위치에 팝업이 강제로 안착하도록 좌표 고정 */
-    top: 65px !important; 
-    right: 100px !important; /* 오른쪽 벽에서 넉넉히 격리하여 가림 현상 원천 배제 */
-    background: #ffffff !important;
-    border: 1px solid #e5e7eb !important;
-    border-radius: 12px !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
-    overflow: hidden !important;
-    z-index: 999999 !important; /* 페이지 내 그 어떤 요소보다 무조건 가장 위에 보이도록 설정 */
-}
-
-/* 다국어 메뉴 내부 선택지 가시성 보정 */
-.language-menu div {
-    padding: 14px 24px !important;
-    font-size: 14px !important;
-    font-weight: 600 !important;
-    color: #374151 !important;
-    cursor: pointer !important;
-    transition: background 0.2s ease !important;
-    background: #ffffff !important;
-}
-
-.language-menu div:hover {
-    background: #f3f4f6 !important;
-    color: #0F9D58 !important;
-}
-/* ==========================================================================
-   🌐 [레이아웃 충돌 해결] 자바스크립트 동적 좌표 컴포넌트 수용 설정
-   ========================================================================== */
-.language-menu {
-    position: absolute !important; /* 화면 스크롤 대칭을 위해 fixed에서 absolute로 최적 튜닝 */
-    background: #ffffff !important;
-    border: 1px solid #e5e7eb !important;
-    border-radius: 12px !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
-    overflow: hidden !important;
-    z-index: 999999 !important; /* 무조건 모든 컨텐츠 레이어 최상단 노출 고수 */
-    
-    /* 🚨 [치명적 결함 해결] 자바스크립트의 .style 지시 명령이 작동하도록 CSS의 고정 수치 해제 */
-    top: auto; 
-    right: auto;
-    left: auto;
-}
 /* ==========================================================================
    🌐 [교정 마감] 구글 번역바 완전 은폐 및 다국어 활성화 스타일 고정
    ========================================================================== */
 /* 자바스크립트의 .style 지시가 씹히지 않도록 기본 배치 초기화 */
-.language-menu {
-    position: absolute !important;
-    background: #ffffff !important;
-    border: 1px solid #e5e7eb !important;
-    border-radius: 12px !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
-    overflow: hidden !important;
-    z-index: 999999 !important;
-    top: auto; 
-    right: auto;
-    left: auto;
-    display: none !important; /* 평소에는 완전히 보이지 않음 */
-}
-
-/* 스크립트에 의해 active 클래스가 추가되면 화면에 블록으로 노출 */
-.language-menu.active {
-    display: block !important;
-}
-
 /* 🚨 튀어나오는 구글 위젯 프레임 및 강제 공백 레이아웃 박멸 */
 .goog-te-banner-frame,
 .goog-te-banner,
@@ -1341,4 +1392,38 @@ body > button:not([id="submit-btn"]),
     display: none !important;
     opacity: 0 !important;
 }
+
+@media screen and (max-width:480px){
+
+    .hero h1{
+        font-size:26px !important;
+    }
+
+    .hero p{
+        font-size:14px !important;
+    }
+
+    .hero-buttons{
+        gap:10px !important;
+    }
+
+    .btn-primary,
+    .btn-secondary{
+        padding:14px !important;
+        font-size:12px !important;
+    }
+
+    .feature-item img{
+        width:40px !important;
+        height:40px !important;
+    }
+
+    .footer{
+        padding:35px 15px 25px;
+    }
+
+}
+/* ==========================================================================
+   📱 스마트폰 전용 교정 미디어 쿼리 마감선 (이 아래로는 코드를 쓰지 마세요)
+   ========================================================================== */
 
