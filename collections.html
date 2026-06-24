@@ -17,7 +17,7 @@
     <!-- Font Awesome 6 아이콘 라이브러리 추가 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="products.css">
+
 </head>
 <body>
 
@@ -27,8 +27,7 @@
             <img src="image/logo.png" alt="LAIFUDE VINA">
         </a>
     </div>
-    <div class="menu-toggle">☰</div>
-    <nav class="main-nav">
+<button class="menu-toggle" onclick="toggleMobileMenu(event)" aria-label="Toggle navigation">☰</button>    <nav class="main-nav">
         <a href="aboutus.html">ABOUT US</a>
         <a href="collections.html">COLLECTIONS</a>
         <a href="technology.html">TECHNOLOGY</a>
@@ -176,7 +175,23 @@
 <div id="google_translate_element"></div>
 
 <!-- 핵심 스크립트 라이브러리 순차 바인딩 -->
-<script src="https://google.com"></script>
 <script src="language.js"></script>
+
+<script>
+    function toggleMobileMenu(event) {
+        if (event) event.stopPropagation();
+        const mainNav = document.querySelector(".main-nav");
+        if (mainNav) mainNav.classList.toggle("open");
+    }
+
+    document.addEventListener("click", (e) => {
+        const mainNav = document.querySelector(".main-nav");
+        if (mainNav &&
+            !mainNav.contains(e.target) &&
+            !e.target.closest(".menu-toggle")) {
+            mainNav.classList.remove("open");
+        }
+    });
+</script>
 </body>
 </html>

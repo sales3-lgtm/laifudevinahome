@@ -8,11 +8,12 @@
     <link rel="icon" type="image/png" href="image/favicon.png" sizes="48x48">
     <link rel="apple-touch-icon" href="image/favicon.png">
     
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="https://cloudflare.com">
+    <!-- Font Awesome 6 아이콘 라이브러리 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,7 +25,7 @@
             <img src="image/logo.png" alt="LAIFUDE VINA">
         </a>
     </div>
-    <div class="menu-toggle">☰</div>
+    <button class="menu-toggle" onclick="toggleMobileMenu(event)" aria-label="Toggle navigation">☰</button>
     <nav class="main-nav">
         <a href="aboutus.html">ABOUT US</a>
         <a href="collections.html">COLLECTIONS</a>
@@ -44,17 +45,15 @@
         </button>
     </nav>
 </header>
+
 <!-- 첫 번째 상단 배너 섹션 -->
 <section class="collections-page">
     <img src="image/contact02.png" alt="LAIFUDE workwear">
-
     <img src="image/contactbg02.png" alt="LAIFUDE workwear">
 </section>
 
 <!-- MAIN CONTENT WRAPPER -->
 <main class="contact-page-container">
-    
-    <!-- 폼과 대제목을 하나의 고정된 박스(Box) 구조 안으로 통합 배치 -->
     <div class="form-wrapper-block">
         <h1 class="page-main-title">QUOTATION REQUEST FORM</h1>
 
@@ -133,7 +132,7 @@
     <img src="image/contactbg03.png" alt="LAIFUDE workwear">
 </section>
 
-<!-- FOOTER (콘텐츠 밖으로 분리 완료) -->
+<!-- FOOTER -->
 <footer class="footer">
     <div class="footer-top">
         <div class="footer-logo">
@@ -189,50 +188,44 @@
                 <a href="https://www.instagram.com" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
                 <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
             </div>
-            <!-- [하단 인터페이스] 버튼 내재화 캡슐 구조 수복 완결 -->
             <div class="language-footer">
                 🌐 <span id="footer-language">English</span>
                 <i class="fa-solid fa-chevron-down"></i>
-                
-                <!-- 🚨 자바스크립트 자동 계산을 위해 푸터 버튼 내부 자식 요소로 안전하게 결합시켰습니다 -->
                 <div class="language-menu footer-menu">
                     <div onclick="changeLanguage('en')">English</div>
                     <div onclick="changeLanguage('ko')">한국어</div>
                     <div onclick="changeLanguage('vi')">Tiếng Việt</div>
                     <div onclick="changeLanguage('zh-CN')">中文</div>
                 </div>
-            </div> <!-- language-footer 끝 -->
-
-        </div> <!-- footer-column social 끝 -->
-    </div> <!-- footer-top 끝 -->
+            </div>
+        </div>
+    </div>
 </footer>
 
-
-<!-- 백그라운드 엔진 레이어 영역 -->
 <div id="google_translate_element"></div>
 
-<!-- 핵심 스크립트 라이브러리 순차 바인딩 -->
-<script src="https://google.com"></script>
 <script src="language.js"></script>
 
 <script>
-    // 인터랙션 스크립트 엔진 바인딩
-    const headerLangBtn = document.querySelector(".header .language");
-    const headerMenu = document.querySelector(".header-menu");
-    headerLangBtn.addEventListener("click", (e) => { e.stopPropagation(); headerMenu.classList.toggle("show"); });
+    // 모바일 햄버거 메뉴 토글
+    function toggleMobileMenu(event) {
+        if (event) event.stopPropagation();
+        const mainNav = document.querySelector(".main-nav");
+        if (mainNav) mainNav.classList.toggle("open");
+    }
 
-    const footerLangBtn = document.querySelector(".language-footer");
-    const footerMenu = document.querySelector(".footer-menu");
-    footerLangBtn.addEventListener("click", (e) => { e.stopPropagation(); footerMenu.classList.toggle("show"); });
-
-    document.addEventListener("click", () => {
-        headerMenu.classList.remove("show");
-        footerMenu.classList.remove("show");
+    // 화면 빈 곳 터치 시 메뉴 닫힘
+    document.addEventListener("click", (e) => {
+        const mainNav = document.querySelector(".main-nav");
+        if (mainNav &&
+            !mainNav.contains(e.target) &&
+            !e.target.closest(".menu-toggle")) {
+            mainNav.classList.remove("open");
+        }
     });
-
-    const toggle = document.querySelector(".menu-toggle");
-    const nav = document.querySelector(".main-nav");
-    toggle.addEventListener("click", () => { nav.classList.toggle("open"); });
 </script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>
