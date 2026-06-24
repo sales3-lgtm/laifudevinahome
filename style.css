@@ -1116,6 +1116,19 @@ visibility: hidden !important;
         margin: 30px auto !important;
     }
 
+    .technology-page {
+    padding-top: 70px !important; /* 헤더 높이만큼만 */
+    background: #fff;
+}
+
+.technology-page img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    height: auto;
+}
+
     /* =====================================
    CONTACT INFO CARDS RESPONSIVE (모바일 세로 정렬)
 ===================================== */
