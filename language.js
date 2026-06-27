@@ -103,6 +103,61 @@ function changeLanguage(lang) {
     document.querySelectorAll(".language-menu").forEach(menu => {
         menu.classList.remove("active");
     });
+//언어 별 이미지 변환
+function changePageImages(lang){
+
+    const imageMap = {
+
+        collections01: {
+            en: "image/collections01-en.png",
+            ko: "image/collections01-ko.png",
+            vi: "image/collections01-vi.png",
+            "zh-CN": "image/collections01-zh.png"
+        },
+
+        collections03: {
+            en: "image/collections03-en.png",
+            ko: "image/collections03-ko.png",
+            vi: "image/collections03-vi.png",
+            "zh-CN": "image/collections03-zh.png"
+        },
+
+        technology01: {
+            en: "image/technology01-en.png",
+            ko: "image/technology01-ko.png",
+            vi: "image/technology01-vi.png",
+            "zh-CN": "image/technology01-zh.png"
+        },
+
+        about01: {
+            en: "image/about01-en.png",
+            ko: "image/about01-ko.png",
+            vi: "image/about01-vi.png",
+            "zh-CN": "image/about01-zh.png"
+        },
+
+        contact01: {
+            en: "image/contact01-en.png",
+            ko: "image/contact01-ko.png",
+            vi: "image/contact01-vi.png",
+            "zh-CN": "image/contact01-zh.png"
+        }
+
+    };
+
+
+    for(let id in imageMap){
+
+        const img=document.getElementById(id);
+
+        if(img && imageMap[id][lang]){
+            img.src=imageMap[id][lang];
+        }
+
+    }
+
+}
+
 }
 
 // 구글 자동 디스플레이 방지 위젯 초기화
