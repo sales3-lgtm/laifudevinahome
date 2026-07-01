@@ -1,170 +1,343 @@
-/* ==========================================================================
-   🌐 [LAIFUDE VINA] 다국어 팝업 연동 및 구글 엔진 제어 스크립트 (번역 버그 수정본)
-   ========================================================================== */
+/* ==========================================================
+   LAIFUDE VINA
+   language.js V3
+   Part 1
+========================================================== */
 
-window.addEventListener("DOMContentLoaded", () => {
-    const menu = document.querySelector(".language-menu");
-    if (!menu) return;
+(() => {
 
-    // 모든 다국어 메뉴들을 일괄 종료하는 공통 함수
-    function closeAllMenus() {
-        document.querySelectorAll(".language-menu").forEach(menu => {
-            menu.classList.remove("active");
-        });
-    }
+    "use strict";
 
-    // 1. [상단 헤더 버튼 인터페이스] -> 오직 header-menu만 조종
-    const headerLangBtn = document.querySelector(".language");
-    const headerMenu = document.querySelector(".language-menu.header-menu");
-    
-    if (headerLangBtn && headerMenu) {
-        headerLangBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            if (headerMenu.classList.contains("active")) {
-                headerMenu.classList.remove("active");
-            } else {
-                closeAllMenus();
-                headerMenu.classList.add("is-header");
-                headerMenu.classList.add("active");
-            }
-        });
-    }
+    const STORAGE_KEY = "laifude_language";
 
-    // 2. [하단 푸터 버튼 인터페이스] -> 오직 footer-menu만 조종
-    const footerLangBtn = document.querySelector(".language-footer");
-    const footerMenu = document.querySelector(".language-menu.footer-menu");
-    
-    if (footerLangBtn && footerMenu) {
-        footerLangBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            if (footerMenu.classList.contains("active")) {
-                footerMenu.classList.remove("active");
-            } else {
-                closeAllMenus();
-                footerMenu.classList.add("is-footer");
-                footerMenu.classList.add("active");
-            }
-        });
-    }
+    const DEFAULT_LANG = "en";
 
-    // 3. [바탕화면 클릭 인터페이스] 바탕화면 누르면 열려있는 모든 메뉴 부드럽게 완전 자동 종료
-    document.addEventListener("click", (e) => {
-        const isMenuClick = e.target.closest(".language-menu");
-        if (!isMenuClick) {
-            closeAllMenus();
-        }
-    });
-});
-
-// 💡 [🚨 핵심 수정] 구글 번역 콤보박스를 강제로 깨우고 실제 번역을 실현하는 최적화 함수
-function changeLanguage(lang) {
-    // 숨겨진 구글 순정 드롭다운 요소를 정밀 저격하여 탐색
-    const combo = document.querySelector(".goog-te-combo");
-
-    if (combo) {
-        // 값을 교체
-        combo.value = lang;
-        
-        // 🚨 최신 브라우저 표준에 맞는 가상 변경 이벤트 및 마우스 클릭 인지 트리거 가동
-        if (typeof(Event) === 'function') {
-            combo.dispatchEvent(new Event("change", { bubbles: true, cancelable: true }));
-        } else {
-            // 구형 브라우저 및 호환성 대비 인터페이스
-            const event = document.createEvent('HTMLEvents');
-            event.initEvent('change', true, true);
-            combo.dispatchEvent(event);
-        }
-    } else {
-        // 만약 구글 위젯 스크립트가 로딩 지연 상태일 경우를 대비한 0.5초 비동기 복구 대기 큐(Queue) 실행
-        setTimeout(() => {
-            const retryCombo = document.querySelector(".goog-te-combo");
-            if (retryCombo) {
-                retryCombo.value = lang;
-                retryCombo.dispatchEvent(new Event("change", { bubbles: true }));
-            }
-        }, 500);
-    }
-
-    // 상/하단 버튼 내부 텍스트 즉시 새로고침 국가 명칭 데이터
-    const names = {
+    const LABELS = {
         en: "English",
         ko: "한국어",
         vi: "Tiếng Việt",
         "zh-CN": "中文"
     };
 
-    const currentLangEl = document.getElementById("current-language");
-    const footerLangEl = document.getElementById("footer-language");
+    /*
+        번역 대상 이미지만 등록
 
-    if (currentLangEl) currentLangEl.innerText = names[lang];
-    if (footerLangEl) footerLangEl.innerText = names[lang];
+        HTML 예)
 
-    // 번역 완료 후 활성화되어 있던 모든 다국어 팝업창 완전 종료
-    document.querySelectorAll(".language-menu").forEach(menu => {
-        menu.classList.remove("active");
-    });
-//언어 별 이미지 변환
-function changePageImages(lang){
+        <img id="banner2" src="image/2banner.png">
 
-    const imageMap = {
+    */
 
-        collections01: {
-            en: "image/collections01-en.png",
-            ko: "image/collections01-ko.png",
-            vi: "image/collections01-vi.png",
-            "zh-CN": "image/collections01-zh.png"
-        },
+    const IMAGE_MAP = {
 
-        collections03: {
-            en: "image/collections03-en.png",
-            ko: "image/collections03-ko.png",
-            vi: "image/collections03-vi.png",
-            "zh-CN": "image/collections03-zh.png"
-        },
+        banner2: "2banner",
 
-        technology01: {
-            en: "image/technology01-en.png",
-            ko: "image/technology01-ko.png",
-            vi: "image/technology01-vi.png",
-            "zh-CN": "image/technology01-zh.png"
-        },
+        aboutus01: "aboutus01",
+        aboutus02: "aboutus02",
 
-        about01: {
-            en: "image/about01-en.png",
-            ko: "image/about01-ko.png",
-            vi: "image/about01-vi.png",
-            "zh-CN": "image/about01-zh.png"
-        },
+        collections01: "collections01",
 
-        contact01: {
-            en: "image/contact01-en.png",
-            ko: "image/contact01-ko.png",
-            vi: "image/contact01-vi.png",
-            "zh-CN": "image/contact01-zh.png"
-        }
+        collections03: "collections03",
+
+        tech01: "tech01",
+        tech02: "tech02",
+
+        sustainability01: "sustainability01",
+        sustainability02: "sustainability02",
+
+        contact02: "contact02",
+        contactbg03: "contactbg03"
 
     };
 
+    const LANG_SUFFIX = {
 
-    for(let id in imageMap){
+        en: "",
 
-        const img=document.getElementById(id);
+        ko: "-ko",
 
-        if(img && imageMap[id][lang]){
-            img.src=imageMap[id][lang];
+        vi: "-vi",
+
+        "zh-CN": "-zh"
+
+    };
+
+    //--------------------------------------------------
+
+    function getSavedLanguage(){
+
+        return localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG;
+
+    }
+
+    //--------------------------------------------------
+
+    function saveLanguage(lang){
+
+        localStorage.setItem(STORAGE_KEY,lang);
+
+    }
+
+    //--------------------------------------------------
+
+    function updateLanguageLabel(lang){
+
+        const top=document.getElementById("current-language");
+
+        const bottom=document.getElementById("footer-language");
+
+        if(top){
+
+            top.textContent=LABELS[lang];
+
+        }
+
+        if(bottom){
+
+            bottom.textContent=LABELS[lang];
+
         }
 
     }
 
-}
+    //--------------------------------------------------
 
-}
+    function closeMenus(){
 
-// 구글 자동 디스플레이 방지 위젯 초기화
-function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'en,ko,vi,zh-CN',
-        autoDisplay: false 
-    }, 'google_translate_element');
-}
+        document
+            .querySelectorAll(".language-menu")
+            .forEach(menu=>{
+
+                menu.classList.remove("active");
+
+            });
+
+    }
+
+    //--------------------------------------------------
+
+    function toggleMenu(menu){
+
+        if(!menu) return;
+
+        const active=menu.classList.contains("active");
+
+        closeMenus();
+
+        if(!active){
+
+            menu.classList.add("active");
+
+        }
+
+    }
+
+    //--------------------------------------------------
+
+    function bindMenus(){
+
+        const headerBtn=document.querySelector(".language");
+
+        const footerBtn=document.querySelector(".language-footer");
+
+        const headerMenu=document.querySelector(".header-menu");
+
+        const footerMenu=document.querySelector(".footer-menu");
+
+        if(headerBtn){
+
+            headerBtn.addEventListener("click",(e)=>{
+
+                e.stopPropagation();
+
+                toggleMenu(headerMenu);
+
+            });
+
+        }
+
+        if(footerBtn){
+
+            footerBtn.addEventListener("click",(e)=>{
+
+                e.stopPropagation();
+
+                toggleMenu(footerMenu);
+
+            });
+
+            footerMenu.addEventListener("click",(e)=>{
+
+                e.stopPropagation();
+
+            });
+
+        }
+
+    document.addEventListener("click",(e)=>{
+
+    if(
+        e.target.closest(".language")==null &&
+        e.target.closest(".language-footer")==null &&
+        e.target.closest(".language-menu")==null
+    ){
+
+        closeMenus();
+
+    }
+
+});
+
+    }
+
+    //--------------------------------------------------
+
+    function buildImageName(baseName,lang){
+
+        const suffix=LANG_SUFFIX[lang];
+
+        return "image/" + baseName + suffix + ".png";
+
+    }
+
+    //--------------------------------------------------
+
+    function changeImages(lang){
+
+        Object.entries(IMAGE_MAP).forEach(([id,file])=>{
+
+            const img=document.getElementById(id);
+
+            if(!img) return;
+
+            if(lang==="en"){
+
+                img.src="image/"+file+".png";
+
+            }else{
+
+                img.src=buildImageName(file,lang);
+
+            }
+
+        });
+
+    }
+
+    //--------------------------------------------------
+
+    function googleTranslate(lang){
+
+        const combo=document.querySelector(".goog-te-combo");
+
+        if(!combo){
+
+            return false;
+
+        }
+
+        combo.value=lang;
+
+        combo.dispatchEvent(
+
+            new Event("change",{
+
+                bubbles:true
+
+            })
+
+        );
+
+        return true;
+
+    }
+
+    //--------------------------------------------------
+        function waitGoogle(lang){
+
+        let retry = 0;
+
+        const timer = setInterval(() => {
+
+            if (googleTranslate(lang)) {
+
+                clearInterval(timer);
+                return;
+
+            }
+
+            retry++;
+
+            if (retry > 30) {
+
+                clearInterval(timer);
+
+            }
+
+        }, 200);
+
+    }
+
+    //--------------------------------------------------
+
+    function applyLanguage(lang){
+
+        saveLanguage(lang);
+
+        updateLanguageLabel(lang);
+
+        changeImages(lang);
+
+        waitGoogle(lang);
+
+        closeMenus();
+
+    }
+
+    //--------------------------------------------------
+
+    window.changeLanguage = function(lang){
+
+        applyLanguage(lang);
+
+    };
+
+    //--------------------------------------------------
+
+    window.googleTranslateElementInit = function(){
+
+        new google.translate.TranslateElement({
+
+            pageLanguage: "en",
+
+            includedLanguages: "en,ko,vi,zh-CN",
+
+            autoDisplay: false
+
+        }, "google_translate_element");
+
+        setTimeout(() => {
+
+            applyLanguage(getSavedLanguage());
+
+        }, 500);
+
+    };
+
+    //--------------------------------------------------
+
+    function init(){
+
+        bindMenus();
+
+        updateLanguageLabel(getSavedLanguage());
+
+        changeImages(getSavedLanguage());
+
+    }
+
+    //--------------------------------------------------
+
+    document.addEventListener("DOMContentLoaded", init);
+
+})();

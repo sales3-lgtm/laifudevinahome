@@ -100,10 +100,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <section class="about-page">
 
-    <img src="image/aboutus01.png"
-         alt="LAIFUDE ABOUT US">
+    <img id="aboutus01"
+     src="image/aboutus01.png" alt="LAIFUDE ABOUT US">
 
-    <img src="image/aboutus02.png"
+    <img id="aboutus02"
+         src="image/aboutus02.png"
          alt="LAIFUDE ABOUT US">     
 
 </section>
@@ -212,10 +213,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 
 <!-- 백그라운드 엔진 레이어 영역 -->
+
+<script src="language.images.js"></script>
+
 <div id="google_translate_element"></div>
 
-<!-- 핵심 스크립트 라이브러리 순차 바인딩 -->
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script src="language.js"></script>
+
 
 <script>
     function toggleMobileMenu(event) {
@@ -225,6 +230,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     }
 
     document.addEventListener("click", (e) => {
+    
         const mainNav = document.querySelector(".main-nav");
         if (mainNav &&
             !mainNav.contains(e.target) &&
