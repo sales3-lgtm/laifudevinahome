@@ -26,72 +26,48 @@ name="phone"
 placeholder="PHONE NUMBER">
 
 </div>
+<!-- ... (상단 COMPANY NAME, EMAIL 등 입력란은 그대로 유지) ... -->
 
-<h3>PRIMARY COLLECTION</h3>
+    <!-- 📌 변경: 타이틀과 그룹을 하나의 감싸는 부모 div 안에 넣어 정렬을 일치시킵니다. -->
+    <div class="form-section-block">
+        <h3>PRIMARY COLLECTION</h3>
+        <div class="collection-group">
+            <label><input type="checkbox" value="Corporate"> CORPORATE</label>
+            <label><input type="checkbox" value="Industrial"> INDUSTRIAL</label>
+            <label><input type="checkbox" value="IR4+ESD"> IR4+ESD</label>
+            <label><input type="checkbox" value="Medical Uniform"> MEDICAL UNIFORM</label>
+            <label><input type="checkbox" value="Safety & PPE"> SAFETY & PPE</label>
+            <label><input type="checkbox" value="Custom"> CUSTOM</label>
+        </div>
+    </div>
 
-<div class="collection-group">
+    <input type="text" name="quantity" placeholder="ESTIMATED QUANTITY">
 
-<label><input type="checkbox" value="Corporate"> CORPORATE</label>
+    <textarea name="customization" placeholder="CUSTOMIZATION NEEDS"></textarea>
+    <textarea name="additional_notes" placeholder="ADDITIONAL NOTES"></textarea>
 
-<label><input type="checkbox" value="Industrial"> INDUSTRIAL</label>
+    <div class="contact-method">
+        <label>
+            <input type="radio" name="preferred_contact" value="Email" checked> Email
+        </label>
+        <label>
+            <input type="radio" name="preferred_contact" value="Phone"> Phone
+        </label>
+    </div>
 
-<label><input type="checkbox" value="IR4+ESD"> IR4+ESD</label>
+    <!-- 📌 고유 클래스(privacy-agreement-row)를 부여하여 바깥의 유령 체크박스들과 완벽히 분리합니다 -->
+    <label class="privacy-agreement-row">
+        <input type="checkbox" required>
+        <span>I AGREE TO PRIVACY POLICY</span>
+    </label>
 
-<label><input type="checkbox" value="Medical Uniform"> MEDICAL UNIFORM</label>
-
-<label><input type="checkbox" value="Safety & PPE"> SAFETY & PPE</label>
-
-<label><input type="checkbox" value="Custom"> CUSTOM</label>
-
-</div>
-
-<input type="text"
-name="quantity"
-placeholder="ESTIMATED QUANTITY">
-
-<textarea
-name="customization"
-placeholder="CUSTOMIZATION NEEDS"></textarea>
-
-<textarea
-name="additional_notes"
-placeholder="ADDITIONAL NOTES"></textarea>
-
-<div class="contact-method">
-
-<label>
-<input type="radio"
-name="preferred_contact"
-value="Email"
-checked>
-Email
-</label>
-
-<label>
-<input type="radio"
-name="preferred_contact"
-value="Phone">
-Phone
-</label>
-
-</div>
-
-<label>
-
-<input type="checkbox"
-required>
-
-I AGREE TO PRIVACY POLICY
-
-</label>
-
-<button type="submit"
-id="submit-btn">
-
-SUBMIT REQUEST →
-
-</button>
+    <button type="submit" id="submit-btn">
+        SUBMIT REQUEST →
+    </button>
 
 </form>
 
 <div id="success-message"></div>
+
+<!-- ⚠️ 중요: 만약 이 아래에 </form> 태그가 하나 더 중복되어 있거나, 
+     과거에 쓰던 <label><input type="checkbox">...</label> 조각이 혼자 떨어져 있다면 꼭 찾아서 삭제해 주세요! -->
