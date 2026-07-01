@@ -30,7 +30,10 @@
 
     const IMAGE_MAP = {
 
+        banner01: "banner01",
         banner2: "2banner",
+
+        process: "process",
 
         aboutus01: "aboutus01",
         aboutus02: "aboutus02",

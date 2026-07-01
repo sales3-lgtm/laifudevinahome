@@ -18,7 +18,6 @@ window.LanguageImages = (function () {
         "logo",
         "footer-logo",
         "favicon",
-        "process",
         "contactimg",
         "icon-"
     ];
