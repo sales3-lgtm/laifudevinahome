@@ -1,98 +1,188 @@
+
 /* ==========================================================
    LAIFUDE VINA
-   language.images.js
-   Version 1.0
+   language.images.js V4
 ========================================================== */
 
-window.LanguageImages = (function () {
+(() => {
 
-    const suffixMap = {
-        "en": "",
-        "ko": "-ko",
-        "vi": "-vi",
-        "zh-CN": "-zh"
-    };
+"use strict";
 
-    // 절대 변경하지 않을 이미지
-    const ignoreList = [
-        "logo",
-        "footer-logo",
-        "favicon",
-        "contactimg",
-        "icon-"
-    ];
+/* ---------------------------------------------------------
+   Language Image Engine
+--------------------------------------------------------- */
 
-    function ignore(src) {
+const IMAGE_MAP = {
 
-        return ignoreList.some(item => src.includes(item));
+    banner01: "banner01",
+    banner2: "2banner",
 
-    }
+    process: "process",
 
-    function getTarget(src, lang){
+    aboutus01: "aboutus01",
+    aboutus02: "aboutus02",
 
-        if(!src) return null;
+    collections01: "collections01",
+    collections03: "collections03",
 
-        if(!src.startsWith("image/")) return null;
+    tech01: "tech01",
+    tech02: "tech02",
 
-        if(src.endsWith(".svg")) return null;
+    sustainability01: "sustainability01",
+    sustainability02: "sustainability02",
 
-        if(ignore(src)) return null;
+    contact02: "contact02",
+    contactbg03: "contactbg03",
+    contactimg: "contactimg"
 
-        // 이미 언어 이미지인 경우 원본으로 변환
-        src = src.replace("-ko.png",".png");
-        src = src.replace("-vi.png",".png");
-        src = src.replace("-zh.png",".png");
+};
 
-        const suffix = suffixMap[lang] || "";
+const SUFFIX = {
 
-        return src.replace(".png", suffix + ".png");
+    en: "",
+    ko: "-ko",
+    vi: "-vi",
+    "zh-CN": "-zh"
 
-    }
+};
 
-    function fileExists(url){
+/* ---------------------------------------------------------
+   파일명 생성
+--------------------------------------------------------- */
 
-        return new Promise(resolve=>{
+function buildPath(file, lang){
 
-            const img = new Image();
+    if(lang==="en"){
 
-            img.onload=()=>resolve(true);
-
-            img.onerror=()=>resolve(false);
-
-            img.src=url;
-
-        });
+        return `image/${file}.png`;
 
     }
 
-    async function change(lang){
+    return `image/${file}${SUFFIX[lang]}.png`;
 
-        const images=document.querySelectorAll("img");
+}
 
-        for(const img of images){
+/* ---------------------------------------------------------
+   이미지 존재 여부 확인
+--------------------------------------------------------- */
 
-            const src=img.getAttribute("src");
+function imageExists(src){
 
-            const target=getTarget(src,lang);
+    return new Promise(resolve=>{
 
-            if(!target) continue;
+        const img=new Image();
 
-            const ok=await fileExists(target);
+        img.onload=()=>resolve(true);
 
-            if(ok){
+        img.onerror=()=>resolve(false);
 
-                img.src=target;
+        img.src=src;
 
-            }
+    });
 
-        }
+}
+
+/* ---------------------------------------------------------
+   이미지 변경
+--------------------------------------------------------- */
+
+async function change(lang){
+
+    const jobs=[];
+
+    Object.entries(IMAGE_MAP).forEach(([id,file])=>{
+
+        jobs.push(changeOne(id,file,lang));
+
+    });
+
+    await Promise.all(jobs);
+
+}
+/* ---------------------------------------------------------
+   개별 이미지 변경
+--------------------------------------------------------- */
+
+async function changeOne(id, file, lang){
+
+    const img = document.getElementById(id);
+
+    if(!img){
+
+        return;
 
     }
 
-    return{
+    const target = buildPath(file, lang);
 
-        change
+    /* 이미 적용되어 있으면 종료 */
+    if(img.getAttribute("src") === target){
 
-    };
+        return;
+
+    }
+
+    /* 파일 존재 확인 */
+    const exists = await imageExists(target);
+
+    if(!exists){
+
+        console.warn("[LanguageImages] Missing :", target);
+
+        return;
+
+    }
+
+    img.src = target;
+
+}
+
+/* ---------------------------------------------------------
+   현재 언어 다시 적용
+--------------------------------------------------------- */
+
+function refresh(){
+
+    const lang =
+        localStorage.getItem("laifude_language") || "en";
+
+    change(lang);
+
+}
+
+/* ---------------------------------------------------------
+   초기화
+--------------------------------------------------------- */
+
+function init(){
+
+    if(document.readyState==="loading"){
+
+        document.addEventListener("DOMContentLoaded",refresh);
+
+    }else{
+
+        refresh();
+
+    }
+
+}
+/* ---------------------------------------------------------
+   외부 공개 API
+--------------------------------------------------------- */
+
+window.LanguageImages = Object.freeze({
+
+    change,
+    refresh,
+    init
+
+});
+
+/* ---------------------------------------------------------
+   자동 초기화
+--------------------------------------------------------- */
+
+init();
 
 })();
