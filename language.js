@@ -210,9 +210,9 @@ function waitGoogle(lang){
                 typeof window.LanguageImages.change==="function"
             ){
 
-                window.LanguageImages.change(lang);
-
-            }
+         requestAnimationFrame(() => {
+    window.LanguageImages.change(lang);
+});
 
             closeMenus();
 
