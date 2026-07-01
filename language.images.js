@@ -111,33 +111,19 @@ async function change(lang){
 
 async function changeOne(id, file, lang){
 
-    const img = document.getElementById(id);
+     const img = document.getElementById(id);
 
-    if(!img){
-
-        return;
-
-    }
+    if(!img) return;
 
     const target = buildPath(file, lang);
 
-    /* 이미 적용되어 있으면 종료 */
-    if(img.getAttribute("src") === target){
+    console.log(id, "=>", target);
 
-        return;
+    img.onerror = () => {
 
-    }
+        console.warn("Image not found:", target);
 
-    /* 파일 존재 확인 */
-    const exists = await imageExists(target);
-
-    if(!exists){
-
-        console.warn("[LanguageImages] Missing :", target);
-
-        return;
-
-    }
+    };
 
     img.src = target;
 
