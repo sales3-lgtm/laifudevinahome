@@ -218,7 +218,7 @@ function waitGoogle(lang){
 
             return;
 
-        }
+        }}
 
         retry++;
 
