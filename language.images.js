@@ -14,26 +14,32 @@
 
 const IMAGE_MAP = {
 
+    // index
     banner01: "banner01",
     banner2: "2banner",
-
     process: "process",
+    contactimg: "contactimg",
 
+    // about
     aboutus01: "aboutus01",
     aboutus02: "aboutus02",
 
+    // collections
     collections01: "collections01",
     collections03: "collections03",
 
+    // technology
     tech01: "tech01",
     tech02: "tech02",
 
+    // sustainability
     sustainability01: "sustainability01",
     sustainability02: "sustainability02",
 
+    // contact
     contact02: "contact02",
-    contactbg03: "contactbg03",
-    contactimg: "contactimg"
+    contactbg02: "contactbg02",
+    contactbg03: "contactbg03"
 
 };
 
