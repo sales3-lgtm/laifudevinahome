@@ -4,18 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LAIFUDE VINA</title>
-   
-    <!-- 구글 검색 로봇 파비콘 강제 수집 등록 링크 -->
     <link rel="icon" type="image/png" href="image/favicon.png" sizes="48x48">
-    <link rel="apple-touch-icon" href="image/favicon.png"> 
-    
+    <link class="apple-touch-icon" href="image/favicon.png"> 
     <meta name="description" content="Technology Built on Trust, Value Defined by Quality">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome 6 아이콘 라이브러리 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -24,33 +18,25 @@
 <!-- HEADER NAVIGATION -->
 <header class="header">
     <div class="logo">
-        <a href="index.html">
-            <img src="image/logo.png" alt="LAIFUDE VINA">
-        </a>
+        <a href="index.html"><img src="image/logo.png" alt="LAIFUDE VINA"></a>
     </div>
-
-    <!-- 📌 삼선 메뉴 토글 버튼 (클릭 영역 확장을 위해 button 태그로 권장) -->
     <button class="menu-toggle" onclick="toggleMobileMenu(event)" aria-label="Toggle navigation">☰</button>
-
     <nav class="main-nav">
-        <a href="aboutus.html">ABOUT US</a>
-        <a href="collections.html">COLLECTIONS</a>
-        <a href="technology.html">TECHNOLOGY</a>
-        <a href="Sustainability.html">SUSTAINABILITY</a>
-        <a href="contact.html">CONTACT</a>
+        <a href="aboutus.html" data-lang="nav_about">ABOUT US</a>
+        <a href="collections.html" data-lang="nav_collections">COLLECTIONS</a>
+        <a href="technology.html" data-lang="nav_tech">TECHNOLOGY</a>
+        <a href="Sustainability.html" data-lang="nav_sust">SUSTAINABILITY</a>
+        <a href="contact.html" data-lang="nav_contact">CONTACT</a>
 
-        <!-- [상단 인터페이스] 언어 변경 버튼 자체 고유 클래스 지정 -->
         <button class="language">
             🌐 <span id="current-language">English</span>
             <i class="fa-solid fa-chevron-down"></i>
-
             <div class="language-menu header-menu">
-    <div onclick="changeLanguage('en')">English</div>
-    <div onclick="changeLanguage('ko')">한국어</div>
-    <div onclick="changeLanguage('vi')">Tiếng Việt</div>
-    <div onclick="changeLanguage('zh-CN')">中文</div>
-</div>
-
+                <div onclick="changeLanguage('en')">English</div>
+                <div onclick="changeLanguage('ko')">한국어</div>
+                <div onclick="changeLanguage('vi')">Tiếng Việt</div>
+                <div onclick="changeLanguage('zh-CN')">中文</div>
+            </div>
         </button>
     </nav>  
 </header>
@@ -60,221 +46,130 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
         <div class="hero-title-zone">
-            <h1>
-                Technology Built on Trust,<br>
-                Value Defined by Quality<span>.</span>
-            </h1>
-            <p>
-                Korean engineering expertise, strategic sourcing and precision manufacturing infrastructure delivering reliable performance worldwide.
-            </p>
+            <!-- 📌 [해결] 구글 번역기가 한 문장으로 완벽히 인식하도록 태그 공백 제거 및 구조 최적화 완료 -->
+            <h1 data-lang="hero_title">Technology Built on Trust, Value Defined by Quality.</h1>
+            <p data-lang="hero_desc">Korean engineering expertise, strategic sourcing and precision manufacturing infrastructure delivering reliable performance worldwide.</p>
         </div>
-
         <div class="hero-features">
             <div class="feature-grid">
                 <div class="feature-item">
                     <img src="image/icons/icon-quality.svg" alt="Trusted Quality">
-                    <h3>TRUSTED QUALITY</h3>
-                    <p>Reliable performance<br>you can count on</p>
+                    <h3 data-lang="feat1_title">TRUSTED QUALITY</h3>
+                    <p data-lang="feat1_desc">Reliable performance<br>you can count on</p>
                 </div>
-
                 <div class="feature-item">
                     <img src="image/icons/icon-engineering.svg" alt="Engineering Solutions">
-                    <h3>ENGINEERING SOLUTIONS</h3>
-                    <p>Purpose-built for<br>every profession</p>
+                    <h3 data-lang="feat2_title">ENGINEERING SOLUTIONS</h3>
+                    <p data-lang="feat2_desc">Purpose-built for<br>every profession</p>
                 </div>
-
                 <div class="feature-item">
                     <img src="image/icons/icon-global.svg" alt="Global Partnership">
-                    <h3>GLOBAL PARTNERSHIP</h3>
-                    <p>Trusted by partners<br>worldwide</p>
+                    <h3 data-lang="feat3_title">GLOBAL PARTNERSHIP</h3>
+                    <p data-lang="feat3_desc">Trusted by partners<br>worldwide</p>
                 </div>
-
                 <div class="feature-item">
                     <img src="image/icons/icon-sustainable.svg" alt="Sustainable Future">
-                    <h3>SUSTAINABLE FUTURE</h3>
-                    <p>Responsible practices<br>for a better tomorrow</p>
+                    <h3 data-lang="feat4_title">SUSTAINABLE FUTURE</h3>
+                    <p data-lang="feat4_desc">Responsible practices<br>for a better tomorrow</p>
                 </div>
             </div>
         </div>
-
         <div class="hero-buttons">
-            <a href="collections.html" class="btn-primary">VIEW COLLECTIONS</a>
-            <a href="aboutus.html" class="btn-secondary">BRAND STORY</a>
+            <a href="collections.html" class="btn-primary" data-lang="btn_view">VIEW COLLECTIONS</a>
+            <a href="aboutus.html" class="btn-secondary" data-lang="btn_story">BRAND STORY</a>
         </div>
     </div>
 </section>
 
-<!-- BRAND STORY BANNER -->
-<section id="brand-story" class="brand-story">
-    <img id="banner01" src="image/banner01.png" alt="Brand Story">
-</section>
+<!-- BANNERS -->
+<section id="brand-story" class="brand-story"><img id="banner01" src="image/banner01.png" alt="Brand Story"></section>
+<section id="collections" class="collections"><img id="banner2" src="image/2banner.png" alt="Collections Banner"></section>
+<section id="process-banner" class="process-banner"><img id="process" src="image/process.png" alt="B2B Process"></section>
 
-<!-- COLLECTIONS BANNER -->
-<section id="collections" class="collections">
-    <img id="banner2" src="image/2banner.png" alt="Collections Banner">
-</section>
-
-<!-- PROCESS BANNER -->
-<section id="process-banner" class="process-banner">
-    <img id="process" src="image/process.png" alt="B2B Process">
-</section>
-
-<!-- LAIFUDE PREMIUM TEXT BANNER COMPONENT -->
+<!-- PREMIUM TEXT BANNER -->
 <div class="laifude-premium-banner">
-    <div class="banner-title-zone">
-        <h2>Let's Build Your<br>Uniform Program Together.</h2>
-    </div>
-    <div class="banner-desc-zone">
-        <p>Speak with our specialists about customized workwear, classroom garments, medical uniforms, and industrial supply solutions.</p>
-    </div>
+    <div class="banner-title-zone"><h2 data-lang="prem_title">Let's Build Your Uniform Program Together.</h2></div>
+    <div class="banner-desc-zone"><p data-lang="prem_desc">Speak with our specialists about customized workwear, classroom garments, medical uniforms, and industrial supply solutions.</p></div>
     <div class="banner-btn-zone">
-        <a href="contact.html#quotation-form" class="banner-btn-green">
-            REQUEST A QUOTATION <i class="fa-solid fa-arrow-right"></i>
-        </a>
-
-                    <a href="https://github.com/sales3-lgtm/laifudevinahome/releases/download/catalogue/catalogue _LAIFUDE VINA CO.,LTD.pdf"
-            class="banner-btn-outline"
-            download>
-            CATALOG DOWNLOAD
-            <i class="fa-solid fa-arrow-down"></i>
-        </a>
+        <a href="contact.html#quotation-form" class="banner-btn-green" data-lang="btn_req">REQUEST A QUOTATION <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="https://github.com/sales3-lgtm/laifudevinahome/releases/download/catalogue/catalogue _LAIFUDE VINA CO.,LTD.pdf" class="banner-btn-outline" download data-lang="btn_dl">CATALOG DOWNLOAD <i class="fa-solid fa-arrow-down"></i></a>
     </div>
 </div>
 
-<!-- CONTACT FOOT BANNER -->
-<section id="contact" class="contact-banner">
-    <img id="contactimg" src="image/contactimg.png" alt="Contact Us Banner">
-</section>
+<section id="contact" class="contact-banner"><img id="contactimg" src="image/contactimg.png" alt="Contact Us Banner"></section>
 
 <!-- PREMIUM MAIN FOOTER -->
 <footer class="footer">
     <div class="footer-top">
-        
         <div class="footer-logo">
-            <a href="index.html">
-                <img src="image/footer-logo.png" alt="LAIFUDE">
-            </a>
-            <p>
-                Technology Built on Trust,<br>
-                Value Defined by Quality<span>.</span>
-            </p>
-            <div class="copyright">
-                © 2026 LAIFUDE. All rights reserved.
-            </div>
+            <a href="index.html"><img src="image/footer-logo.png" alt="LAIFUDE"></a>
+            <p data-lang="footer_moto">Technology Built on Trust, Value Defined by Quality.</p>
+            <div class="copyright">© 2026 LAIFUDE. All rights reserved.</div>
         </div>
-
         <div class="footer-column">
-            <h4>COMPANY</h4>
-            <a href="aboutus.html">About Us</a>
-            <a href="technology.html">Brand Philosophy</a>
-            <a href="Sustainability.html">Sustainability</a>
-            <a href="#">News & Insights</a>
-            <a href="#">Careers</a>
+            <h4 data-lang="f_col1_h">COMPANY</h4>
+            <a href="aboutus.html" data-lang="f_col1_a1">About Us</a>
+            <a href="technology.html" data-lang="f_col1_a2">Brand Philosophy</a>
+            <a href="Sustainability.html" data-lang="f_col1_a3">Sustainability</a>
+            <a href="#" data-lang="f_col1_a4">News & Insights</a>
+            <a href="#" data-lang="f_col1_a5">Careers</a>
         </div>
-
         <div class="footer-column">
-            <h4>COLLECTIONS</h4>
-            <a href="products.html">Workwear</a>
-            <a href="corporate.html">Corporate Wear</a>
-            <a href="esdclean.html">ESD & Cleanroom Wear</a>
-            <a href="medical.html">Medical Uniforms</a>
-            <a href="safety.html">Safety & PPE</a>
+            <h4 data-lang="f_col2_h">COLLECTIONS</h4>
+            <a href="products.html" data-lang="f_col2_a1">Workwear</a>
+            <a href="corporate.html" data-lang="f_col2_a2">Corporate Wear</a>
+            <a href="esdclean.html" data-lang="f_col2_a3">ESD & Cleanroom Wear</a>
+            <a href="medical.html" data-lang="f_col2_a4">Medical Uniforms</a>
+            <a href="safety.html" data-lang="f_col2_a5">Safety & PPE</a>
         </div>
-
         <div class="footer-column">
-            <h4>SUPPORT</h4>
-            <a href="contact.html#quotation-form">Request a Quotation</a>
-            <a href="#">FAQ</a>
-        
-            <a href="https://github.com/sales3-lgtm/laifudevinahome/releases/download/catalogue/catalogue _LAIFUDE VINA CO.,LTD.pdf"
-            class="banner-btn-outline"
-            download>
-            CATALOG DOWNLOAD
-            <i class="fa-solid fa-arrow-down"></i>
-        
-    </a>          
-  <a href="contact.html">Contact Us</a>
+            <h4 data-lang="f_col3_h">SUPPORT</h4>
+            <a href="contact.html#quotation-form" data-lang="f_col3_a1">Request a Quotation</a>
+            <a href="#" data-lang="f_col3_a2">FAQ</a>
+            <a href="https://github.com/sales3-lgtm/laifudevinahome/releases/download/catalogue/catalogue _LAIFUDE VINA CO.,LTD.pdf" download data-lang="f_col3_a3">CATALOG DOWNLOAD</a>          
+            <a href="contact.html" data-lang="f_col3_a4">Contact Us</a>
         </div>
-
         <div class="footer-column">
-            <h4>LEGAL</h4>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Use</a>
+            <h4 data-lang="f_col4_h">LEGAL</h4>
+            <a href="#" data-lang="f_col4_a1">Privacy Policy</a>
+            <a href="#" data-lang="f_col4_a2">Terms of Use</a>
         </div>
-
         <div class="footer-column social">
-            <h4>FOLLOW US</h4>
+            <h4 data-lang="f_col5_h">FOLLOW US</h4>
             <div class="social-icons">
                 <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                 <a href="https://www.facebook.com/laifudevn/" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                 <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
                 <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
             </div>
-
-            <!-- [하단 인터페이스] 버튼 내재화 캡슐 구조 수복 완결 -->
+            
+            <!-- 📌 [복원 완료] 하단 인디케이터 수복 및 드롭다운 완결 -->
             <div class="language-footer">
                 🌐 <span id="footer-language">English</span>
                 <i class="fa-solid fa-chevron-down"></i>
-                
-                <!-- 🚨 자바스크립트 자동 계산을 위해 푸터 버튼 내부 자식 요소로 안전하게 결합시켰습니다 -->
                 <div class="language-menu footer-menu">
                     <div onclick="changeLanguage('en')">English</div>
                     <div onclick="changeLanguage('ko')">한국어</div>
                     <div onclick="changeLanguage('vi')">Tiếng Việt</div>
                     <div onclick="changeLanguage('zh-CN')">中文</div>
                 </div>
-            </div> <!-- language-footer 끝 -->
-
-        </div> <!-- footer-column social 끝 -->
-    </div> <!-- footer-top 끝 -->
+            </div>
+        </div>
+    </div>
 </footer>
 
+<!-- 구글 번역 백그라운드 그릇 -->
+<div id="google_translate_element" style="display:none;"></div>
 
-<!-- 백그라운드 엔진 레이어 영역 -->
+<!-- 구글 공식 API 라이브러리 -->
+<script src="https://google.com"></script>
 
-
-<!-- 핵심 스크립트 라이브러리 순차 바인딩 -->
-
-
-
-<!-- 모바일 전용 삼선 토글 햄버거 메뉴 구동 로직 -->
-<!-- 기존 삼선 제어 스크립트를 아래 클린 엔진으로 전면 교체합니다 -->
-<script>
-    function toggleMobileMenu(event) {
-        // 1. 이벤트 전파를 막아 빈 화면 클릭 시 메뉴가 즉시 닫히는 버그 방어
-        if (event) event.stopPropagation();
-        
-        // 2. 내비게이션 메뉴 박스(.main-nav 또는 header nav)를 확실하게 찾아옵니다.
-        const mainNav = document.querySelector(".main-nav") || document.querySelector(".header nav");
-        
-        if (mainNav) {
-            // 3. CSS에 연동되어 있는 .open 클래스를 붙였다 뗐다(Toggle) 처리합니다.
-            mainNav.classList.toggle("open");
-            console.log("모바일 메뉴 활성화 여부:", mainNav.classList.contains("open"));
-        } else {
-            alert("시스템 오류: 메뉴 상자(.main-nav) 클래스를 찾을 수 없습니다. HTML 태그를 검사하세요.");
-        }
-    }
-
-    // 💡 스마트 편의 기능: 메뉴판이 열린 상태에서 화면의 다른 빈 공간을 터치하면 알아서 메뉴가 닫힘
-    document.addEventListener("click", (e) => {
-        const mainNav = document.querySelector(".main-nav") || document.querySelector(".header nav");
-        if (mainNav &&
-        !mainNav.contains(e.target) &&
-        !e.target.closest(".menu-toggle")) {
-            mainNav.classList.remove("open");
-        }
-    });
-</script>
-
-
-
+<!-- 📌 1. 내가 만든 이미지 번역 엔진을 가장 먼저 로드 -->
 <script src="language.images.js"></script>
 
-<div id="google_translate_element"></div>
-
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<!-- 📌 2. 구글 번역과 이미지 엔진을 함께 통제하는 컨트롤러 로드 -->
 <script src="language.js"></script>
 
 </body>
 </html>
+
