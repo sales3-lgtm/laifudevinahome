@@ -5,11 +5,13 @@
 <input type="text"
 name="company_name"
 placeholder="COMPANY NAME"
+data-lang-placeholder="company_name"
 required>
 
 <input type="text"
 name="contact_person"
 placeholder="CONTACT PERSON"
+data-lang-placeholder="email"
 required>
 
 </div>
@@ -30,14 +32,24 @@ placeholder="PHONE NUMBER">
 
     <!-- 📌 변경: 타이틀과 그룹을 하나의 감싸는 부모 div 안에 넣어 정렬을 일치시킵니다. -->
     <div class="form-section-block">
-        <h3>PRIMARY COLLECTION</h3>
-        <div class="collection-group">
-            <label><input type="checkbox" value="Corporate"> CORPORATE</label>
-            <label><input type="checkbox" value="Industrial"> INDUSTRIAL</label>
-            <label><input type="checkbox" value="IR4+ESD"> IR4+ESD</label>
-            <label><input type="checkbox" value="Medical Uniform"> MEDICAL UNIFORM</label>
-            <label><input type="checkbox" value="Safety & PPE"> SAFETY & PPE</label>
-            <label><input type="checkbox" value="Custom"> CUSTOM</label>
+<h3 data-lang="primary_collection">
+PRIMARY COLLECTION
+</h3>        <div class="collection-group">
+
+<label>
+<input type="checkbox"><span data-lang="corporate">CORPORATE</span></label>
+<label>
+<input type="checkbox"><span data-lang="industrial">INDUSTRIAL</span></label>
+<label>
+<input type="checkbox"><span data-lang="ir4">IR4+ESD</span></label>
+<label>
+<input type="checkbox"><span data-lang="medical">MEDICAL UNIFORM</span></label>
+<label>
+<input type="checkbox"><span data-lang="safety">SAFETY & PPE</span></label>
+<label>
+<input type="checkbox"><span data-lang="custom">CUSTOM</span></label>
+
+
         </div>
     </div>
 
@@ -48,8 +60,7 @@ placeholder="PHONE NUMBER">
 
     <div class="contact-method">
         <label>
-            <input type="radio" name="preferred_contact" value="Email" checked> Email
-        </label>
+<span data-lang="email_contact">Email</span></label>
         <label>
             <input type="radio" name="preferred_contact" value="Phone"> Phone
         </label>
@@ -61,13 +72,27 @@ placeholder="PHONE NUMBER">
         <span>I AGREE TO PRIVACY POLICY</span>
     </label>
 
-    <button type="submit" id="submit-btn">
-        SUBMIT REQUEST →
+    <button
+    id="submit-btn"
+    data-lang="submit">
+    SUBMIT REQUEST →
     </button>
 
 </form>
 
 <div id="success-message"></div>
+
+<!-- 구글 번역 백그라운드 그릇 -->
+<div id="google_translate_element" style="display:none;"></div>
+
+<!-- 구글 공식 API 라이브러리 -->
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<!-- 📌 1. 내가 만든 이미지 번역 엔진을 가장 먼저 로드 -->
+<script src="language.images.js"></script>
+
+<!-- 📌 2. 구글 번역과 이미지 엔진을 함께 통제하는 컨트롤러 로드 -->
+<script src="language.js"></script>
+
 
 <!-- ⚠️ 중요: 만약 이 아래에 </form> 태그가 하나 더 중복되어 있거나, 
      과거에 쓰던 <label><input type="checkbox">...</label> 조각이 혼자 떨어져 있다면 꼭 찾아서 삭제해 주세요! -->

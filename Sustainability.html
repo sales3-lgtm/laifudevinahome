@@ -111,106 +111,65 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 
 <!-- FOOTER -->
-
+<!-- PREMIUM MAIN FOOTER -->
 <footer class="footer">
-
-<div class="footer-top">
-
-    <div class="footer-logo">
-
-        <a href="index.html">
-            <img src="image/footer-logo.png" alt="LAIFUDE">
-        </a>
-
-        <p>
-            Technology Built on Trust,<br>
-            Value Defined by Quality<span>.</span>
-        </p>
-
-        <div class="copyright">
-            © 2026 LAIFUDE. All rights reserved.
+    <div class="footer-top">
+        <div class="footer-logo">
+            <a href="index.html"><img src="image/footer-logo.png" alt="LAIFUDE"></a>
+            <p data-lang="footer_moto">Technology Built on Trust, Value Defined by Quality.</p>
+            <div class="copyright">© 2026 LAIFUDE. All rights reserved.</div>
         </div>
-
-    </div>
-
-
-    <div class="footer-column">
-
-        <h4>COMPANY</h4>
-
-        <a href="aboutus.html">About Us</a>
-        <a href="technology.html">Brand Philosophy</a>
-        <a href="Sustainability.html">Sustainability</a>   
-        <a href="#">News & Insights</a>
-        <a href="#">Careers</a>
-
-    </div>
-
-
-    <div class="footer-column">
-
-        <h4>COLLECTIONS</h4>
-
-        <a href="products.html">Workwear</a>
-        <a href="products.html">Corporate Wear</a>
-        <a href="products.html">ESD & Cleanroom Wear</a>
-        <a href="products.html">Medical Uniforms</a>
-        <a href="products.html">Safety & PPE</a>
-
-    </div>
-
-
-    <div class="footer-column">
-
-        <h4>SUPPORT</h4>
-
-        <a href="contact.html#quotation-form">Request a Quotation</a>
-        <a href="#">FAQ</a>
-        <a href="#">Catalog Download</a>
-        <a href="contact.html">Contact Us</a>
-
-    </div>
-
-
-    <div class="footer-column">
-
-        <h4>LEGAL</h4>
-
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
-
-    </div>
-
-
-    <div class="footer-column social">
-
-        <h4>FOLLOW US</h4>
-
-        <div class="social-icons">
-            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://www.facebook.com/laifudevn/"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        <div class="footer-column">
+            <h4 data-lang="f_col1_h">COMPANY</h4>
+            <a href="aboutus.html" data-lang="f_col1_a1">About Us</a>
+            <a href="technology.html" data-lang="f_col1_a2">Brand Philosophy</a>
+            <a href="Sustainability.html" data-lang="f_col1_a3">Sustainability</a>
+            <a href="#" data-lang="f_col1_a4">News & Insights</a>
+            <a href="#" data-lang="f_col1_a5">Careers</a>
         </div>
-
-            <!-- [하단 인터페이스] 버튼 내재화 캡슐 구조 수복 완결 -->
+        <div class="footer-column">
+            <h4 data-lang="f_col2_h">COLLECTIONS</h4>
+            <a href="products.html" data-lang="f_col2_a1">Workwear</a>
+            <a href="corporate.html" data-lang="f_col2_a2">Corporate Wear</a>
+            <a href="esdclean.html" data-lang="f_col2_a3">ESD & Cleanroom Wear</a>
+            <a href="medical.html" data-lang="f_col2_a4">Medical Uniforms</a>
+            <a href="safety.html" data-lang="f_col2_a5">Safety & PPE</a>
+        </div>
+        <div class="footer-column">
+            <h4 data-lang="f_col3_h">SUPPORT</h4>
+            <a href="contact.html#quotation-form" data-lang="f_col3_a1">Request a Quotation</a>
+            <a href="#" data-lang="f_col3_a2">FAQ</a>
+            <a href="https://github.com/sales3-lgtm/laifudevinahome/releases/download/catalogue/catalogue_LAIFUDE VINA CO.,LTD.pdf" download data-lang="f_col3_a3">CATALOG DOWNLOAD</a>          
+            <a href="contact.html" data-lang="f_col3_a4">Contact Us</a>
+        </div>
+        <div class="footer-column">
+            <h4 data-lang="f_col4_h">LEGAL</h4>
+            <a href="#" data-lang="f_col4_a1">Privacy Policy</a>
+            <a href="#" data-lang="f_col4_a2">Terms of Use</a>
+        </div>
+        <div class="footer-column social">
+            <h4 data-lang="f_col5_h">FOLLOW US</h4>
+            <div class="social-icons">
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://www.facebook.com/laifudevn/" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            
+            <!-- [복원] 하단 인디케이터 수복 및 드롭다운 완결 -->
             <div class="language-footer">
                 🌐 <span id="footer-language">English</span>
                 <i class="fa-solid fa-chevron-down"></i>
-                
-                <!-- 🚨 자바스크립트 자동 계산을 위해 푸터 버튼 내부 자식 요소로 안전하게 결합시켰습니다 -->
                 <div class="language-menu footer-menu">
                     <div onclick="changeLanguage('en')">English</div>
                     <div onclick="changeLanguage('ko')">한국어</div>
                     <div onclick="changeLanguage('vi')">Tiếng Việt</div>
                     <div onclick="changeLanguage('zh-CN')">中文</div>
                 </div>
-            </div> <!-- language-footer 끝 -->
-
-        </div> <!-- footer-column social 끝 -->
-    </div> <!-- footer-top 끝 -->
+            </div>
+        </div>
+    </div>
 </footer>
-
 
 <!-- 백그라운드 엔진 레이어 영역 -->
 
@@ -221,22 +180,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script src="language.js"></script>
 
-<script>
-    function toggleMobileMenu(event) {
-        if (event) event.stopPropagation();
-        const mainNav = document.querySelector(".main-nav");
-        if (mainNav) mainNav.classList.toggle("open");
-    }
 
-    document.addEventListener("click", (e) => {
-        const mainNav = document.querySelector(".main-nav");
-        if (mainNav &&
-            !mainNav.contains(e.target) &&
-            !e.target.closest(".menu-toggle")) {
-            mainNav.classList.remove("open");
-        }
-    });
-</script>
 </body>
 </html>
 ```
