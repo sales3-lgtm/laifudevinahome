@@ -36,6 +36,7 @@ function closeMenus() {
 function applyLanguage(lang) {
     localStorage.setItem(STORAGE_KEY, lang);
     updateLanguageLabel(lang);
+    translatePage(lang);
     
     // 1. [작업 분리] 내가 만든 이미지 변경 스크립트 즉시 호출하여 이미지 교체
     if (window.LanguageImages && typeof window.LanguageImages.change === "function") {
@@ -81,6 +82,145 @@ document.addEventListener("DOMContentLoaded", () => {
         window.LanguageImages.change(getLanguage());
     }
 });
+
+const TRANSLATIONS = {
+
+    en: {
+        company_name: "COMPANY NAME",
+        contact_person: "CONTACT PERSON",
+        email: "EMAIL ADDRESS",
+        phone: "PHONE NUMBER",
+
+        primary_collection: "PRIMARY COLLECTION",
+
+        corporate: "CORPORATE",
+        industrial: "INDUSTRIAL",
+        ir4: "IR4+ESD",
+        medical: "MEDICAL UNIFORM",
+        safety: "SAFETY & PPE",
+        custom: "CUSTOM",
+
+        quantity: "ESTIMATED QUANTITY",
+        customization: "CUSTOMIZATION NEEDS",
+        notes: "ADDITIONAL NOTES",
+
+        email_contact: "Email",
+        phone_contact: "Phone",
+
+        privacy: "I AGREE TO PRIVACY POLICY",
+
+        submit: "SUBMIT REQUEST →"
+    },
+
+    ko: {
+        company_name: "회사명",
+        contact_person: "담당자",
+        email: "이메일",
+        phone: "전화번호",
+
+        primary_collection: "관심 제품군",
+
+        corporate: "기업 유니폼",
+        industrial: "산업 작업복",
+        ir4: "IR4 + 제전복",
+        medical: "의료복",
+        safety: "안전용품",
+        custom: "맞춤 제작",
+
+        quantity: "예상 수량",
+        customization: "맞춤 제작 요청사항",
+        notes: "추가 요청사항",
+
+        email_contact: "이메일",
+        phone_contact: "전화",
+
+        privacy: "개인정보 처리방침에 동의합니다.",
+
+        submit: "견적 요청하기 →"
+    },
+
+    vi: {
+        company_name: "TÊN CÔNG TY",
+        contact_person: "NGƯỜI LIÊN HỆ",
+        email: "ĐỊA CHỈ EMAIL",
+        phone: "SỐ ĐIỆN THOẠI",
+
+        primary_collection: "DÒNG SẢN PHẨM",
+
+        corporate: "ĐỒNG PHỤC DOANH NGHIỆP",
+        industrial: "ĐỒNG PHỤC CÔNG NGHIỆP",
+        ir4: "IR4 + ESD",
+        medical: "ĐỒNG PHỤC Y TẾ",
+        safety: "PPE",
+        custom: "THIẾT KẾ RIÊNG",
+
+        quantity: "SỐ LƯỢNG DỰ KIẾN",
+        customization: "YÊU CẦU TÙY CHỈNH",
+        notes: "GHI CHÚ",
+
+        email_contact: "Email",
+        phone_contact: "Điện thoại",
+
+        privacy: "Tôi đồng ý với Chính sách bảo mật",
+
+        submit: "GỬI YÊU CẦU →"
+    },
+
+    "zh-CN": {
+        company_name: "公司名称",
+        contact_person: "联系人",
+        email: "电子邮箱",
+        phone: "电话号码",
+
+        primary_collection: "产品类别",
+
+        corporate: "企业制服",
+        industrial: "工业工装",
+        ir4: "IR4+防静电",
+        medical: "医疗制服",
+        safety: "安全防护用品",
+        custom: "定制",
+
+        quantity: "预计数量",
+        customization: "定制需求",
+        notes: "其他说明",
+
+        email_contact: "电子邮件",
+        phone_contact: "电话",
+
+        privacy: "我同意隐私政策",
+
+        submit: "提交询价 →"
+    }
+
+};
+function translatePage(lang){
+
+    const dict = TRANSLATIONS[lang];
+
+    if(!dict) return;
+
+    document.querySelectorAll("[data-lang]").forEach(el=>{
+
+        const key = el.dataset.lang;
+
+        if(dict[key]){
+            el.textContent = dict[key];
+        }
+
+    });
+
+    document.querySelectorAll("[data-lang-placeholder]").forEach(el=>{
+
+        const key = el.dataset.langPlaceholder;
+
+        if(dict[key]){
+            el.placeholder = dict[key];
+        }
+
+    });
+
+}
 /* ==========================================
    Mobile Navigation
 ========================================== */

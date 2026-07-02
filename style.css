@@ -235,6 +235,13 @@ body{
     margin-top:50px;
     max-width:1000px;
 }
+.hero-title-zone h1 {
+    word-break: keep-all;     /* 단어 단위로 깔끔하게 끊어지게 처리 */
+    white-space: normal;      /* 반응형 크기에 맞춰 자연스러운 행간 보장 */
+    max-width: 800px;         /* 글자 박스의 최대 너비를 주어 자연스러운 2줄 유도 */
+    margin: 0 auto;           /* 중앙 정렬 */
+}
+
 
 .feature-grid{
     display:grid;
