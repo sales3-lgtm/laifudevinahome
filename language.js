@@ -81,5 +81,32 @@ document.addEventListener("DOMContentLoaded", () => {
         window.LanguageImages.change(getLanguage());
     }
 });
+/* ==========================================
+   Mobile Navigation
+========================================== */
 
+window.toggleMobileMenu = function (event) {
+
+    if (event) event.stopPropagation();
+
+    const mainNav = document.querySelector(".main-nav");
+
+    if (mainNav) {
+        mainNav.classList.toggle("open");
+    }
+};
+
+document.addEventListener("click", function (e) {
+
+    const mainNav = document.querySelector(".main-nav");
+
+    if (
+        mainNav &&
+        !mainNav.contains(e.target) &&
+        !e.target.closest(".menu-toggle")
+    ) {
+        mainNav.classList.remove("open");
+    }
+
+});
 })();
