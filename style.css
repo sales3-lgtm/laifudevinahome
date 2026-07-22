@@ -789,7 +789,23 @@ main > label:not([class]),
     color: #ffffff;
     transform: translateY(-3px);
 }
+a[aria-label="Facebook"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;                  /* 원의 가로 크기 */
+  height: 40px;                 /* 원의 세로 크기 */
+  background-color: #1877F2;    /* 페이스북 공식 브랜드 파란색 */
+  color: #ffffff;               /* 아이콘 색상 (흰색) */
+  border-radius: 50%;           /* 완벽한 원형 모서리 */
+  text-decoration: none;        /* 링크 밑줄 제거 */
+  transition: background-color 0.2s ease;
+}
 
+/* 마우스를 올렸을 때 약간 어둡게 효과 (선택 사항) */
+a[aria-label="Facebook"]:hover {
+  background-color: #0b63d3;
+}
 
 
 
