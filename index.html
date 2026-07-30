@@ -108,14 +108,20 @@
             <p data-lang="footer_moto">Technology Built on Trust, Value Defined by Quality.</p>
             <div class="copyright">© 2026 LAIFUDE. All rights reserved.</div>
         </div>
-        <div class="footer-column">
-            <h4 data-lang="f_col1_h">COMPANY</h4>
-            <a href="aboutus.html" data-lang="f_col1_a1">About Us</a>
-            <a href="technology.html" data-lang="f_col1_a2">Brand Philosophy</a>
-            <a href="Sustainability.html" data-lang="f_col1_a3">Sustainability</a>
-            <a href="#" data-lang="f_col1_a4">News & Insights</a>
-            <a href="#" data-lang="f_col1_a5">Careers</a>
-        </div>
+<div class="footer-column accordion">
+    <button class="accordion-btn">
+        COMPANY
+        <i class="fa-solid fa-chevron-down"></i>
+    </button>
+
+    <div class="accordion-content">
+        <a href="aboutus.html">About Us</a>
+        <a href="technology.html">Brand Philosophy</a>
+        <a href="Sustainability.html">Sustainability</a>
+        <a href="#">News & Insights</a>
+        <a href="#">Careers</a>
+    </div>
+</div>
         <div class="footer-column">
             <h4 data-lang="f_col2_h">COLLECTIONS</h4>
             <a href="uniformshirts.html" data-lang="f_col2_a6">Uniform Shirts</a>
@@ -163,7 +169,7 @@
 </footer>
 
 <!-- 구글 번역 백그라운드 그릇 -->
-<div id="google_translate_element" style="display:none;"></div>
+<div id="google_translate_element" style="transform:translateX(100%);"></div>
 
 <!-- 구글 공식 API 라이브러리 -->
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>

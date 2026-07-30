@@ -1212,33 +1212,112 @@ visibility: hidden !important;
         width: 100% !important;
         box-sizing: border-box !important;
     }
-    .footer-top {
-        display: grid !important;
-        grid-template-columns: 1fr !important; /* 1열로 세로 정렬 */
-        gap: 30px;
-    }
-    .footer-logo {
-        grid-column: span 1;
-        margin-bottom: 10px;
-        text-align: left; /* 모바일에서는 로고와 카피라이트를 정렬 */
-    }
-    .footer-logo img {
-        height: 35px; /* 로고 크기 축소 */
-        width: auto;
-    }
-    .footer-logo p {
-        max-width: 100%; /* 로고 밑 설명 글씨 폭 제한 */
-        font-size: 13px; /* 카피라이트 글씨 크기 축소 */
-    }
-    .footer-column {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        padding-bottom: 20px; /* 구분을 위한 얇은 경계선 */
-        margin: 0 !important;
-    }
-    .footer-column.social {
+    /* Desktop */
+
+.accordion-btn{
+
+display:none;
+
+}
+
+
+/* Mobile */
+
+@media (max-width:768px){
+
+.footer-top{
+
+display:flex;
+
+flex-direction:column;
+
+gap:0;
+
+}
+
+.footer-column{
+
+width:100%;
+
+border-bottom:1px solid rgba(255,255,255,.15);
+
+padding:0;
+
+}
+
+.accordion-btn{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+width:100%;
+
+padding:18px 0;
+
+background:none;
+
+border:none;
+
+color:#fff;
+
+font-size:15px;
+
+font-weight:600;
+
+cursor:pointer;
+
+}
+
+.accordion-btn i{
+
+transition:.3s;
+
+}
+
+.accordion-btn.active i{
+
+transform:rotate(180deg);
+
+}
+
+.accordion-content{
+
+max-height:0;
+
+overflow:hidden;
+
+transition:max-height .35s ease;
+
+display:flex;
+
+flex-direction:column;
+
+padding:0;
+
+}
+
+.accordion-content a{
+
+padding:10px 0 10px 15px;
+
+color:#d8d8d8;
+
+font-size:14px;
+
+text-decoration:none;
+
+}
+
+.accordion-content a:hover{
+
+color:#fff;
+
+}
+
+}    .footer-column.social {
         border-bottom: none;
         padding-bottom: 0;
     }
