@@ -55,7 +55,7 @@ const LANG_TEXTS = {
         footer_moto: "Technology Built on Trust,<br>Value Defined by Quality<span>.</span>",
         f_col1_h: "COMPANY", f_col1_a1: "About Us", f_col1_a2: "Brand Philosophy", f_col1_a3: "Sustainability", f_col1_a4: "News & Insights", f_col1_a5: "Careers",
         f_col2_h: "COLLECTIONS", f_col2_a1: "Workwear", f_col2_a2: "Corporate Wear", f_col2_a3: "ESD & Cleanroom Wear", f_col2_a4: "Medical Uniforms", f_col2_a5: "Safety & PPE",
-        f_col3_h: "SUPPORT", f_col3_a1: "Request a Quotation", f_col3_a2: "FAQ", f_col3_a3: "CATALOG DOWNLOAD", f_col3_a4: "Contact Us",
+        f_col3_h: "SUPPORT", f_col3_a1: "Request a Quotation", f_col3_a2: "LAIFUDE VINA CATALOG", f_col3_a3: "ESD_Cleanroom DOWNLOAD", f_col3_a4: "Contact Us",
         f_col4_h: "LEGAL", f_col4_a1: "Privacy Policy", f_col4_a2: "Terms of Use", f_col5_h: "FOLLOW US"
     },
     ko: {
@@ -74,7 +74,7 @@ const LANG_TEXTS = {
         footer_moto: "신뢰 위에 세운 기술,<br>품질로 증명하는 가치<span>.</span>",
         f_col1_h: "기업 정보", f_col1_a1: "회사 소개", f_col1_a2: "브랜드 철학", f_col1_a3: "지속가능경영", f_col1_a4: "뉴스 및 소식", f_col1_a5: "채용 안내",
         f_col2_h: "제품군", f_col2_a1: "일반 작업복", f_col2_a2: "오피스/사무복", f_col2_a3: "제전복 및 방진복", f_col2_a4: "메디컬 유니폼", f_col2_a5: "안전 용품 & PPE",
-        f_col3_h: "고객 지원", f_col3_a1: "온라인 견적 요청", f_col3_a2: "자주 묻는 질문", f_col3_a3: "카탈로그 다운로드", f_col3_a4: "고객 센터",
+        f_col3_h: "고객 지원", f_col3_a1: "온라인 견적 요청", f_col3_a2: "통합 카다로그 다운로드", f_col3_a3: "ESD클린룸 카다로그", f_col3_a4: "고객 센터",
         f_col4_h: "법적 고지", f_col4_a1: "개인정보처리방침", f_col4_a2: "이용약관", f_col5_h: "소셜 미디어"
     },
     vi: {
@@ -93,7 +93,7 @@ const LANG_TEXTS = {
         footer_moto: "Công nghệ từ lòng tin,<br>Giá trị từ chất lượng<span>.</span>",
         f_col1_h: "CÔNG TY", f_col1_a1: "Về chúng tôi", f_col1_a2: "Triết lý thương hiệu", f_col1_a3: "Phát triển bền vững", f_col1_a4: "Tin tức & Sự kiện", f_col1_a5: "Tuyển dụng",
         f_col2_h: "BỘ SƯU TẬP", f_col2_a1: "Đồ bảo hộ lao động", f_col2_a2: "Đồng phục văn phòng", f_col2_a3: "Trang phục phòng sạch & Chống tĩnh điện", f_col2_a4: "Đồng phục y tế", f_col2_a5: "Thiết bị an toàn & Bảo hộ cá nhân",
-        f_col3_h: "HỖ TRỢ", f_col3_a1: "Yêu cầu báo giá", f_col3_a2: "Câu hỏi thường gặp", f_col3_a3: "TẢI CATALOGUE", f_col3_a4: "Liên hệ với chúng tôi",
+        f_col3_h: "HỖ TRỢ", f_col3_a1: "Yêu cầu báo giá", f_col3_a2: "Tải xuống danh mục tích hợp", f_col3_a3: "Danh mục ESD CATALOGUE", f_col3_a4: "Liên hệ với chúng tôi",
         f_col4_h: "PHÁP LÝ", f_col4_a1: "Chính sách bảo mật", f_col4_a2: "Điều khoản sử dụng", f_col5_h: "THEO DÕI CHÚNG TÔI"
     },
     "zh-CN": {
@@ -112,7 +112,7 @@ const LANG_TEXTS = {
         footer_moto: "基于信任的技术，<br>由品质决定的价值<span>.</span>",
         f_col1_h: "公司信息", f_col1_a1: "关于我们", f_col1_a2: "品牌理念", f_col1_a3: "可持续发展", f_col1_a4: "新闻动态", f_col1_a5: "人才招聘",
         f_col2_h: "产品系列", f_col2_a1: "工业工作服", f_col2_a2: "商务职业装", f_col2_a3: "防静电与无尘服", f_col2_a4: "医疗医护服", f_col2_a5: "安全防护与 PPE",
-        f_col3_h: "客户支持", f_col3_a1: "请求实时报价", f_col3_a2: "常见问题", f_col3_a3: "下载产品目录", f_col3_a4: "联系我们",
+        f_col3_h: "客户支持", f_col3_a1: "请求实时报价", f_col3_a2: "綜合目錄", f_col3_a3: "ESD產品目錄", f_col3_a4: "联系我们",
         f_col4_h: "法律条款", f_col4_a1: "隐私政策", f_col4_a2: "使用条款", f_col5_h: "关注我们"
     }
 };

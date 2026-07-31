@@ -1,19 +1,11 @@
 /* ==========================================================
-   LAIFUDE VINA - Main Language Controller (v5)
+   LAIFUDE VINA - Main Language Controller (v5 - Fixed)
 ========================================================== */
 (() => {
 "use strict";
 
 const STORAGE_KEY = "laifude_language";
 const DEFAULT_LANG = "en";
-
-const EN_ORIGINAL_TEXTS = {
-    grid_work: "Workwear",
-    grid_clean: "ESD & Cleanroom Wear",
-    grid_corp: "Corporate Uniforms",
-    grid_medi: "Medical Uniforms",
-    grid_safe: "Safety & PPE"
-};
 
 const LABELS = { en: "English", ko: "한국어", vi: "Tiếng Việt", "zh-CN": "中文" };
 
@@ -31,18 +23,39 @@ function closeMenus() {
     document.querySelectorAll(".language-menu").forEach(m => m.classList.remove("active"));
 }
 
-/* 구글 번역 실행 및 이미지 엔진 연동 핵심 */
+/* 다국어 페이지 번역 실행 함수 */
+function translatePage(lang){
+    const dict = TRANSLATIONS[lang];
+    if(!dict) return;
+
+    // 텍스트 및 <br> 태그 반영
+    document.querySelectorAll("[data-lang]").forEach(el => {
+        const key = el.dataset.lang;
+        if(dict[key]){
+            el.innerHTML = dict[key]; 
+        }
+    });
+
+    // Placeholders 반영
+    document.querySelectorAll("[data-lang-placeholder]").forEach(el => {
+        const key = el.dataset.langPlaceholder;
+        if(dict[key]){
+            el.placeholder = dict[key];
+        }
+    });
+}
+
 function applyLanguage(lang) {
     localStorage.setItem(STORAGE_KEY, lang);
     updateLanguageLabel(lang);
-    translatePage(lang);
+    translatePage(lang); // 텍스트 번역 적용
     
-    // 1. [작업 분리] 이미지 변경 스크립트 호출
+    // 1. 이미지 변경 스크립트 호출
     if (window.LanguageImages && typeof window.LanguageImages.change === "function") {
         window.LanguageImages.change(lang);
     }
 
-    // 2. 구글 번역 위젯에 언어 값 주입
+    // 2. 구글 번역 위젯 연동
     const combo = document.querySelector(".goog-te-combo");
     if (combo) {
         combo.value = lang;
@@ -74,15 +87,7 @@ function initMenus() {
     document.addEventListener("click", closeMenus);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    initMenus();
-    updateLanguageLabel(getLanguage());
-    if (window.LanguageImages && typeof window.LanguageImages.change === "function") {
-        window.LanguageImages.change(getLanguage());
-    }
-});
-
-/* 📌 [수정 완결] 푸터 번역 데이터 추가 (f_col3_a1 ~ f_col3_a4) */
+/* 📌 TRANSLATIONS 데이터 객체 */
 const TRANSLATIONS = {
     en: {
         company_name: "COMPANY NAME",
@@ -104,11 +109,10 @@ const TRANSLATIONS = {
         privacy: "I AGREE TO PRIVACY POLICY",
         submit: "SUBMIT REQUEST →",
 
-        // 푸터 SUPPORT 영역 데이터
         f_col3_h: "SUPPORT",
         f_col3_a1: "Request a Quotation",
         f_col3_a2: "LAIFUDE VINA CATALOG",
-        f_col3_a3: "ESD_Cleanroom<br>DOWNLOAD",
+        f_col3_a3: "ESD_Cleanroom DOWNLOAD",
         f_col3_a4: "Contact Us"
     },
 
@@ -132,7 +136,6 @@ const TRANSLATIONS = {
         privacy: "개인정보 처리방침에 동의합니다.",
         submit: "견적 요청하기 →",
 
-        // 푸터 SUPPORT 영역 데이터
         f_col3_h: "고객 지원",
         f_col3_a1: "견적 요청하기",
         f_col3_a2: "LAIFUDE VINA 카탈로그",
@@ -160,7 +163,6 @@ const TRANSLATIONS = {
         privacy: "Tôi đồng ý với Chính sách bảo mật",
         submit: "GỬI YÊU CẦU →",
 
-        // 푸터 SUPPORT 영역 데이터
         f_col3_h: "HỖ TRỢ",
         f_col3_a1: "Yêu cầu báo giá",
         f_col3_a2: "CATALOG LAIFUDE VINA",
@@ -188,7 +190,6 @@ const TRANSLATIONS = {
         privacy: "我同意隐私政策",
         submit: "提交询价 →",
 
-        // 푸터 SUPPORT 영역 데이터
         f_col3_h: "支持",
         f_col3_a1: "索取报价",
         f_col3_a2: "LAIFUDE VINA 画册",
@@ -196,26 +197,6 @@ const TRANSLATIONS = {
         f_col3_a4: "联系我们"
     }
 };
-
-/* 📌 [수정 완결] textContent 대신 innerHTML을 사용하여 <br> 태그 렌더링 */
-function translatePage(lang){
-    const dict = TRANSLATIONS[lang];
-    if(!dict) return;
-
-    document.querySelectorAll("[data-lang]").forEach(el => {
-        const key = el.dataset.lang;
-        if(dict[key]){
-            el.innerHTML = dict[key]; // <br> 태그 적용을 위해 innerHTML 사용
-        }
-    });
-
-    document.querySelectorAll("[data-lang-placeholder]").forEach(el => {
-        const key = el.dataset.langPlaceholder;
-        if(dict[key]){
-            el.placeholder = dict[key];
-        }
-    });
-}
 
 /* 모바일 네비게이션 토글 */
 window.toggleMobileMenu = function (event) {
@@ -226,29 +207,40 @@ window.toggleMobileMenu = function (event) {
     }
 };
 
-document.addEventListener("click", function (e) {
-    const mainNav = document.querySelector(".main-nav");
-    if (
-        mainNav &&
-        !mainNav.contains(e.target) &&
-        !e.target.closest(".menu-toggle")
-    ) {
-        mainNav.classList.remove("open");
-    }
-});
-})();
+/* DOM 로드 완료 후 실행 로직 */
+document.addEventListener("DOMContentLoaded", () => {
+    const currentLang = getLanguage();
+    
+    initMenus();
+    updateLanguageLabel(currentLang);
+    translatePage(currentLang); // 📌 초기 실행 시 텍스트 번역 적용 로직 추가!
 
-/* 아코디언 메뉴 이벤트 listener */
-document.querySelectorAll(".accordion-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-        btn.classList.toggle("active");
-        const content = btn.nextElementSibling;
-        if (content) {
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-            }
+    if (window.LanguageImages && typeof window.LanguageImages.change === "function") {
+        window.LanguageImages.change(currentLang);
+    }
+
+    // 모바일 바깥 클릭 시 메뉴 닫기
+    document.addEventListener("click", function (e) {
+        const mainNav = document.querySelector(".main-nav");
+        if (mainNav && !mainNav.contains(e.target) && !e.target.closest(".menu-toggle")) {
+            mainNav.classList.remove("open");
         }
     });
+
+    // 📌 아코디언 메뉴 이벤트 (DOM 로드 후 안전하게 바인딩)
+    document.querySelectorAll(".accordion-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            btn.classList.toggle("active");
+            const content = btn.nextElementSibling;
+            if (content) {
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            }
+        });
+    });
 });
+
+})();
