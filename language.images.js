@@ -112,7 +112,7 @@ const LANG_TEXTS = {
         footer_moto: "基于信任的技术，<br>由品质决定的价值<span>.</span>",
         f_col1_h: "公司信息", f_col1_a1: "关于我们", f_col1_a2: "品牌理念", f_col1_a3: "可持续发展", f_col1_a4: "新闻动态", f_col1_a5: "人才招聘",
         f_col2_h: "产品系列", f_col2_a1: "工业工作服", f_col2_a2: "商务职业装", f_col2_a3: "防静电与无尘服", f_col2_a4: "医疗医护服", f_col2_a5: "安全防护与 PPE",
-        f_col3_h: "客户支持", f_col3_a1: "请求实时报价", f_col3_a2: "綜合目錄", f_col3_a3: "ESD產品目錄", f_col3_a4: "联系我们",
+        f_col3_h: "客户支持", f_col3_a1: "请求实时报价", f_col3_a2: "下載整合目錄。", f_col3_a3: "ESD產品目錄", f_col3_a4: "联系我们",
         f_col4_h: "法律条款", f_col4_a1: "隐私政策", f_col4_a2: "使用条款", f_col5_h: "关注我们"
     }
 };
