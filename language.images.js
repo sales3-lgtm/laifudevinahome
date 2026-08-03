@@ -21,6 +21,20 @@ const IMAGE_MAP = {
     collections01: "collections01",
     collections03: "collections03",
 
+        workwear01: "workwear01",
+        corporateuniform01: "corporateuniform01",
+        corporateuniform02: "corporateuniform02",
+        esdAntistatic: "esdAntistatic01",
+        uniformshirts01: "uniformshirts01",
+        medical01: "medical01",
+        medical02: "medical02",
+        safetyuniform01: "safety-uniform",
+
+
+
+
+
+
     // technology
     tech01: "tech01",
     tech02: "tech02",
