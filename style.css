@@ -475,6 +475,7 @@ body{
 .technology-page,
 .products-page,
 .collections-page,
+.product-page,
 .about-page,
 .sustainability-page,
 .contact-page { /* 💡 컨택트 페이지 배너 구역 추가 */
@@ -488,6 +489,7 @@ body{
 /* 상단 고정형 메뉴바(Header)와 첫 번째 이미지가 겹쳐서 잘리는 현상 방어 */
 .technology-page,
 .products-page,
+.product-page,
 .about-page,
 .contact-page { /* 💡 컨택트 페이지 상단 여백 확보 */
     padding-top: 90px !important; 
@@ -497,6 +499,7 @@ body{
 .technology-page img,
 .products-page img,
 .collections-page img,
+.product-page img,
 .about-page img,
 .sustainability-page img,
 .contact-page img { /* 💡 컨택트 페이지 이미지 라운딩 및 비율 최적화 */
@@ -1144,6 +1147,7 @@ visibility: hidden !important;
 .collections-page,
 .technology-page,
 .products-page,
+.product-page,
 .about-page,
 .sustainability-page,
 .contact-page {
@@ -1165,9 +1169,20 @@ visibility: hidden !important;
     .technology-page {
     padding-top: 70px !important; /* 헤더 높이만큼만 */
     background: #fff;
+
+       .product-page {
+    padding-top: 70px !important; /* 헤더 높이만큼만 */
+    background: #fff;
 }
 
 .technology-page img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    height: auto;
+}
+    .product-page img {
     display: block;
     width: 100%;
     max-width: 100%;
