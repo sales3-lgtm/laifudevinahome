@@ -475,6 +475,7 @@ body{
 .technology-page,
 .products-page,
 .collections-page,
+.workwear-page,
 .product-page,
 .esdAntistatic-page,
 .about-page,
@@ -490,9 +491,12 @@ body{
 /* 상단 고정형 메뉴바(Header)와 첫 번째 이미지가 겹쳐서 잘리는 현상 방어 */
 .technology-page,
 .products-page,
+.collections-page,
+.workwear-page,
 .product-page,
 .esdAntistatic-page,
 .about-page,
+.sustainability-page,
 .contact-page { /* 💡 컨택트 페이지 상단 여백 확보 */
     padding-top: 90px !important; 
 }
