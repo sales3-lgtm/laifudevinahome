@@ -476,6 +476,7 @@ body{
 .products-page,
 .collections-page,
 .product-page,
+.esdAntistatic-page,
 .about-page,
 .sustainability-page,
 .contact-page { /* 💡 컨택트 페이지 배너 구역 추가 */
@@ -490,6 +491,7 @@ body{
 .technology-page,
 .products-page,
 .product-page,
+.esdAntistatic-page,
 .about-page,
 .contact-page { /* 💡 컨택트 페이지 상단 여백 확보 */
     padding-top: 90px !important; 
@@ -502,7 +504,8 @@ body{
 .product-page img,
 .about-page img,
 .sustainability-page img,
-.contact-page img { /* 💡 컨택트 페이지 이미지 라운딩 및 비율 최적화 */
+.contact-page img,
+.esdAntistatic-page img { /* 💡 컨택트 페이지 이미지 라운딩 및 비율 최적화 */
     display: block !important;
     width: 100% !important;
     height: auto !important;
@@ -1150,7 +1153,8 @@ visibility: hidden !important;
 .product-page,
 .about-page,
 .sustainability-page,
-.contact-page {
+.contact-page,
+.esdAntistatic-page {
     padding: 70px !important;
     padding-right: 0 !important;
     padding-bottom: 0 !important;
