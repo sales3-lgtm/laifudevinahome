@@ -12,13 +12,14 @@ const IMAGE_MAP = {
     banner2: "2banner",
     process: "process",
     contactimg: "contactimg",
-
+    saftyshoesbanner01: "saftyshoesbanner01",
     // about
     aboutus01: "aboutus01",
     aboutus02: "aboutus02",
 
     // collections
     collections01: "collections01",
+    safetyshoes01: "safetyshoes01",
     collections03: "collections03",
 
         workwear01: "workwear01",
@@ -26,7 +27,7 @@ const IMAGE_MAP = {
         corporateuniform02: "corporateuniform02",
         esdAntistatic: "esdAntistatic0",
         esdAntistatic02: "esdAntistatic02",
-        uniformshirts01: "uniformshirts01",
+        uniformshirts01: "uniformshirts01", 
         medical01: "medical01",
         medical02: "medical02",
         safetyuniform01: "safety-uniform",
@@ -37,6 +38,7 @@ const IMAGE_MAP = {
 
 
     // technology
+    saftyshoesbanner03: "saftyshoesbanner03",
     tech01: "tech01",
     tech02: "tech02",
 
