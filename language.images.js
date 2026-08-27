@@ -38,7 +38,7 @@ const IMAGE_MAP = {
 
 
     // technology
-    saftyshoesbanner03: "saftyshoesbanner03",
+    //saftyshoesbanner03: "saftyshoesbanner03",
     tech01: "tech01",
     tech02: "tech02",
 
