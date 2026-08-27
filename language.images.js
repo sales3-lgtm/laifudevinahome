@@ -12,7 +12,7 @@ const IMAGE_MAP = {
     banner2: "2banner",
     process: "process",
     contactimg: "contactimg",
-    saftyshoesbanner01: "saftyshoesbanner01",
+    //saftyshoesbanner01: "saftyshoesbanner01",
     // about
     aboutus01: "aboutus01",
     aboutus02: "aboutus02",
