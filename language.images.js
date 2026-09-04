@@ -25,7 +25,7 @@ const IMAGE_MAP = {
         workwear01: "workwear01",
         corporateuniform01: "corporateuniform01",
         corporateuniform02: "corporateuniform02",
-        esdAntistatic: "esdAntistatic0",
+        esdAntistatic0: "esdAntistatic0",
         esdAntistatic02: "esdAntistatic02",
         uniformshirts01: "uniformshirts01", 
         medical01: "medical01",
