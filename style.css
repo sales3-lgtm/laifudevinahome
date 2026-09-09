@@ -1356,31 +1356,26 @@ color:#fff;
 
 }
 <style>
-.tiktok-button {
+.tiktok-circle-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 10px 20px;
+  width: 40px;
+  height: 40px;
   background-color: #000000;
   color: #ffffff;
+  border-radius: 50%;
   text-decoration: none;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-weight: 600;
-  font-size: 15px;
-  border-radius: 8px;
-  transition: background-color 0.2s, transform 0.2s;
+  transition: opacity 0.2s;
 }
 
-.tiktok-icon {
-  width: 20px;
-  height: 20px;
+.tiktok-circle-btn:hover {
+  opacity: 0.8;
 }
 
-/* 마우스 올렸을 때 효과 */
-.tiktok-button:hover {
-  background-color: #121212;
-  transform: translateY(-1px);
+.tiktok-circle-btn .tiktok-icon {
+  width: 22px;
+  height: 22px;
 }
 </style>
 
