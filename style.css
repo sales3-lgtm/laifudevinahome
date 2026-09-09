@@ -1355,6 +1355,34 @@ color:#fff;
     }
 
 }
+<style>
+.tiktok-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: #000000;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 8px;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.tiktok-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* 마우스 올렸을 때 효과 */
+.tiktok-button:hover {
+  background-color: #121212;
+  transform: translateY(-1px);
+}
+</style>
 
 
 
