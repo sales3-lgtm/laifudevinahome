@@ -12,8 +12,213 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+
+    <!-- NEW PRODUCT POPUP -->
+    <style>
+        .new-product-popup {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(0, 0, 0, 0.58);
+            backdrop-filter: blur(3px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .3s ease, visibility .3s ease;
+        }
+
+        .new-product-popup.is-open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .new-product-popup__box {
+            position: relative;
+            width: min(920px, 94vw);
+            max-height: 92vh;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 24px 70px rgba(0,0,0,.28);
+            transform: translateY(18px) scale(.97);
+            transition: transform .3s ease;
+        }
+
+        .new-product-popup.is-open .new-product-popup__box {
+            transform: translateY(0) scale(1);
+        }
+
+        .new-product-popup__image {
+            min-height: 420px;
+            background: #f3f5f2;
+        }
+
+        .new-product-popup__image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 420px;
+            object-fit: cover;
+        }
+
+        .new-product-popup__content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 54px 48px;
+        }
+
+        .new-product-popup__eyebrow {
+            margin: 0 0 12px;
+            color: #527b62;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .16em;
+        }
+
+        .new-product-popup__content h2 {
+            margin: 0 0 18px;
+            color: #1e2d25;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(30px, 4vw, 46px);
+            line-height: 1.1;
+        }
+
+        .new-product-popup__content p {
+            margin: 0 0 30px;
+            color: #626862;
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+        .new-product-popup__btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+            min-width: 180px;
+            padding: 13px 22px;
+            border-radius: 2px;
+            background: #315d46;
+            color: #fff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .08em;
+            transition: background .2s ease, transform .2s ease;
+        }
+
+        .new-product-popup__btn:hover {
+            background: #234936;
+            transform: translateY(-1px);
+        }
+
+        .new-product-popup__close {
+            position: absolute;
+            top: 13px;
+            right: 15px;
+            z-index: 2;
+            width: 38px;
+            height: 38px;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,.92);
+            color: #222;
+            font-size: 25px;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 3px 12px rgba(0,0,0,.12);
+        }
+
+        .new-product-popup__close:hover {
+            background: #fff;
+        }
+
+        .new-product-popup__bottom {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 22px;
+            color: #888;
+            font-size: 12px;
+        }
+
+        .new-product-popup__bottom input {
+            accent-color: #315d46;
+        }
+
+        body.popup-open {
+            overflow: hidden;
+        }
+
+        @media (max-width: 700px) {
+            .new-product-popup {
+                padding: 14px;
+            }
+
+            .new-product-popup__box {
+                width: 100%;
+                max-height: 94vh;
+                grid-template-columns: 1fr;
+                overflow-y: auto;
+                border-radius: 14px;
+            }
+
+            .new-product-popup__image,
+            .new-product-popup__image img {
+                min-height: 230px;
+                height: 230px;
+            }
+
+            .new-product-popup__content {
+                padding: 30px 26px 28px;
+            }
+
+            .new-product-popup__content h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+
 </head>
 <body>
+
+<!-- NEW PRODUCT POPUP -->
+<div id="newProductPopup" class="new-product-popup" role="dialog" aria-modal="true"
+     aria-labelledby="newProductPopupTitle" aria-hidden="true">
+    <div class="new-product-popup__box">
+        <button type="button" class="new-product-popup__close" id="newProductPopupClose"
+                aria-label="Close">&times;</button>
+
+        <div class="new-product-popup__image">
+            <!-- 신상품 이미지: image/new-product.png 로 교체하면 됩니다. -->
+            <img src="image/new-product.png" alt="New Product">
+        </div>
+
+        <div class="new-product-popup__content">
+            <p class="new-product-popup__eyebrow">NEW PRODUCT</p>
+            <h2 id="newProductPopupTitle">Discover Our Latest Collection</h2>
+            <p>
+                Explore our latest products and new solutions from LAIFUDE VINA,
+                designed for quality, performance and professional use.
+            </p>
+            <a href="collections.html" class="new-product-popup__btn">
+                VIEW NEW PRODUCTS <i class="fa-solid fa-arrow-right" style="margin-left:9px;"></i>
+            </a>
+
+            <label class="new-product-popup__bottom">
+                <input type="checkbox" id="newProductPopupToday">
+                Don't show again today
+            </label>
+        </div>
+    </div>
+</div>
+
 
 <!-- HEADER NAVIGATION -->
 <header class="header">
@@ -223,6 +428,54 @@
 
 <!-- 📌 2. 구글 번역과 이미지 엔진을 함께 통제하는 컨트롤러 로드 -->
 <script src="language.js"></script>
+
+
+<script>
+(function () {
+    const popup = document.getElementById('newProductPopup');
+    const closeBtn = document.getElementById('newProductPopupClose');
+    const todayCheck = document.getElementById('newProductPopupToday');
+    const storageKey = 'laifudeNewProductPopupClosedUntil';
+
+    function shouldShowPopup() {
+        const closedUntil = localStorage.getItem(storageKey);
+        return !closedUntil || Date.now() > Number(closedUntil);
+    }
+
+    function openPopup() {
+        popup.classList.add('is-open');
+        popup.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('popup-open');
+    }
+
+    function closePopup() {
+        if (todayCheck.checked) {
+            const tomorrow = new Date();
+            tomorrow.setHours(24, 0, 0, 0);
+            localStorage.setItem(storageKey, String(tomorrow.getTime()));
+        }
+        popup.classList.remove('is-open');
+        popup.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('popup-open');
+    }
+
+    if (shouldShowPopup()) {
+        window.setTimeout(openPopup, 700);
+    }
+
+    closeBtn.addEventListener('click', closePopup);
+
+    popup.addEventListener('click', function (event) {
+        if (event.target === popup) closePopup();
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && popup.classList.contains('is-open')) {
+            closePopup();
+        }
+    });
+})();
+</script>
 
 </body>
 </html>
