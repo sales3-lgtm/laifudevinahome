@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAIFUDE VINA</title>
+    <link rel="icon" type="image/png" href="image/favicon.png" sizes="48x48">
+    <link class="apple-touch-icon" href="image/favicon.png"> 
+    <meta name="description" content="Technology Built on Trust, Value Defined by Quality">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- NEW PRODUCT POPUP -->
+    <style>
+        .new-product-popup {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(0, 0, 0, 0.58);
+            backdrop-filter: blur(3px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .3s ease, visibility .3s ease;
+        }
+
+        .new-product-popup.is-open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .new-product-popup__box {
+            position: relative;
+            width: min(920px, 94vw);
+            max-height: 92vh;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 24px 70px rgba(0,0,0,.28);
+            transform: translateY(18px) scale(.97);
+            transition: transform .3s ease;
+        }
+
+        .new-product-popup.is-open .new-product-popup__box {
+            transform: translateY(0) scale(1);
+        }
+
+        .new-product-popup__image {
+            min-height: 420px;
+            background: #f3f5f2;
+        }
+
+        .new-product-popup__image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 420px;
+            object-fit: cover;
+        }
+
+        .new-product-popup__content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 54px 48px;
+        }
+
+        .new-product-popup__eyebrow {
+            margin: 0 0 12px;
+            color: #527b62;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .16em;
+        }
+
+        .new-product-popup__content h2 {
+            margin: 0 0 18px;
+            color: #1e2d25;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(30px, 4vw, 46px);
+            line-height: 1.1;
+        }
+
+        .new-product-popup__content p {
+            margin: 0 0 30px;
+            color: #626862;
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+        .new-product-popup__btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+            min-width: 180px;
+            padding: 13px 22px;
+            border-radius: 2px;
+            background: #315d46;
+            color: #fff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .08em;
+            transition: background .2s ease, transform .2s ease;
+        }
+
+        .new-product-popup__btn:hover {
+            background: #234936;
+            transform: translateY(-1px);
+        }
+
+        .new-product-popup__close {
+            position: absolute;
+            top: 13px;
+            right: 15px;
+            z-index: 2;
+            width: 38px;
+            height: 38px;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,.92);
+            color: #222;
+            font-size: 25px;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 3px 12px rgba(0,0,0,.12);
+        }
+
+        .new-product-popup__close:hover {
+            background: #fff;
+        }
+
+        .new-product-popup__bottom {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 22px;
+            color: #888;
+            font-size: 12px;
+        }
+
+        .new-product-popup__bottom input {
+            accent-color: #315d46;
+        }
+
+        body.popup-open {
+            overflow: hidden;
+        }
+
+        @media (max-width: 700px) {
+            .new-product-popup {
+                padding: 14px;
+            }
+
+            .new-product-popup__box {
+                width: 100%;
+                max-height: 94vh;
+                grid-template-columns: 1fr;
+                overflow-y: auto;
+                border-radius: 14px;
+            }
+
+            .new-product-popup__image,
+            .new-product-popup__image img {
+                min-height: 230px;
+                height: 230px;
+            }
+
+            .new-product-popup__content {
+                padding: 30px 26px 28px;
+            }
+
+            .new-product-popup__content h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+<!-- NEW PRODUCT POPUP -->
+<div id="newProductPopup" class="new-product-popup" role="dialog" aria-modal="true"
+     aria-labelledby="newProductPopupTitle" aria-hidden="true">
+    <div class="new-product-popup__box">
+        <button type="button" class="new-product-popup__close" id="newProductPopupClose"
+                aria-label="Close">&times;</button>
+
+        <div class="new-product-popup__image">
+            <!-- 신상품 이미지: image/new-product.png 로 교체하면 됩니다. -->
+            <img src="image/new-product.png" alt="New Product">
+        </div>
+
+        <div class="new-product-popup__content">
+            <p class="new-product-popup__eyebrow">NEW PRODUCT</p>
+            <h2 id="newProductPopupTitle">Discover Our Latest Collection</h2>
+            <p>
+                Explore our latest products and new solutions from LAIFUDE VINA,
+                designed for quality, performance and professional use.
+            </p>
+            <a href="collections.html" class="new-product-popup__btn">
+                VIEW NEW PRODUCTS <i class="fa-solid fa-arrow-right" style="margin-left:9px;"></i>
+            </a>
+
+            <label class="new-product-popup__bottom">
+                <input type="checkbox" id="newProductPopupToday">
+                Don't show again today
+            </label>
+        </div>
+    </div>
+</div>
+
+
+<!-- HEADER NAVIGATION -->
+<header class="header">
+    <div class="logo">
+        <a href="index.html"><img src="image/logo.png" alt="LAIFUDE VINA"></a>
+    </div>
+    <button class="menu-toggle" onclick="toggleMobileMenu(event)" aria-label="Toggle navigation">☰</button>
+
+    <nav class="main-nav">
+
+        <a href="aboutus.html" data-lang="nav_about">ABOUT US</a>
+        <a href="collections.html" data-lang="nav_collections">COLLECTIONS</a>
+        <a href="technology.html" data-lang="nav_tech">TECHNOLOGY</a>
+        <a href="Sustainability.html" data-lang="nav_sust">SUSTAINABILITY</a>
+        <a href="contact.html" data-lang="nav_contact">CONTACT</a>
+
+        <button class="language">
+            🌐 <span id="current-language">English</span>
+            <i class="fa-solid fa-chevron-down"></i>
+            <div class="language-menu header-menu">
+                <div onclick="changeLanguage('en')">English</div>
+                <div onclick="changeLanguage('ko')">한국어</div>
+                <div onclick="changeLanguage('vi')">Tiếng Việt</div>
+                <div onclick="changeLanguage('zh-CN')">中文</div>
+            </div>
+        </button>
+    </nav>  
+</header>
+
+
+
+
+<!-- MAIN HERO SECTION -->
+<section class="hero">    
+
+
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-title-zone">
+            <!-- 📌 [해결] 구글 번역기가 한 문장으로 완벽히 인식하도록 태그 공백 제거 및 구조 최적화 완료 -->
+            <h1 data-lang="hero_title">Technology Built on Trust, Value Defined by Quality.</h1>
+            <p data-lang="hero_desc">Korean engineering expertise, strategic sourcing and precision manufacturing infrastructure delivering reliable performance worldwide.</p>
+        </div>
+        <div class="hero-features">
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <img src="image/icons/icon-quality.svg" alt="Trusted Quality">
+                    <h3 data-lang="feat1_title">TRUSTED QUALITY</h3>
+                    <p data-lang="feat1_desc">Reliable performance<br>you can count on</p>
+                </div>
+                <div class="feature-item">
+                    <img src="image/icons/icon-engineering.svg" alt="Engineering Solutions">
+                    <h3 data-lang="feat2_title">ENGINEERING SOLUTIONS</h3>
+                    <p data-lang="feat2_desc">Purpose-built for<br>every profession</p>
+                </div>
+                <div class="feature-item">
+                    <img src="image/icons/icon-global.svg" alt="Global Partnership">
+                    <h3 data-lang="feat3_title">GLOBAL PARTNERSHIP</h3>
+                    <p data-lang="feat3_desc">Trusted by partners<br>worldwide</p>
+                </div>
+                <div class="feature-item">
+                    <img src="image/icons/icon-sustainable.svg" alt="Sustainable Future">
+                    <h3 data-lang="feat4_title">SUSTAINABLE FUTURE</h3>
+                    <p data-lang="feat4_desc">Responsible practices<br>for a better tomorrow</p>
+                </div>
+            </div>
+        </div>
+        <div class="hero-buttons">
+            <a href="collections.html" class="btn-primary" data-lang="btn_view">VIEW COLLECTIONS</a>
+            <a href="aboutus.html" class="btn-secondary" data-lang="btn_story">BRAND STORY</a>
+        </div>
+    </div>
+</section>
+
+<!-- BANNERS -->
+
+<section id="brand-story" class="brand-story"><img id="banner01" src="image/banner01.png" alt="Brand Story"></section>
+<section id="safety-shoes" class="brand-story"><img id="saftyshoesbanner01" src="image/saftyshoesbanner01.png" alt="Safety Shoes Banner"></section>
+<section id="collections" class="collections"><img id="banner2" src="image/2banner.png" alt="Collections Banner"></section>
+<section id="collections2" class="collections"><img id="banner22" src="image/2banner-2.png" alt="Collections Banner2"></section>
+<section id="process-banner" class="process-banner"><img id="process" src="image/process.png" alt="B2B Process"></section>
+
+<!-- PREMIUM TEXT BANNER -->
+<div class="laifude-premium-banner">
+    <div class="banner-title-zone"><h2 data-lang="prem_title">Let's Build Your Uniform Program Together.</h2></div>
+    <div class="banner-desc-zone"><p data-lang="prem_desc">Speak with our specialists about customized workwear, classroom garments, medical uniforms, and industrial supply solutions.</p></div>
+    <div class="banner-btn-zone">
+        <a href="contact.html#quotation-form" class="banner-btn-green" data-lang="btn_req">REQUEST A QUOTATION <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="https://github.com/sales3-lgtm/laifudevinahome/releases/download/catalogue/LAIFUDE_CATALOG_2026.pdf""
+         class="banner-btn-outline" download data-lang="btn_dl">CATALOG DOWNLOAD <i class="fa-solid fa-arrow-down"></i></a>
+    </div>
+</div>
+
+<section id="contact" class="contact-banner"><img id="contactimg" src="image/contactimg.png" alt="Contact Us Banner"></section>
+
+<!-- PREMIUM MAIN FOOTER -->
+<footer class="footer">
+    <div class="footer-top">
+        <div class="footer-logo">
+            <a href="index.html"><img src="image/footer-logo.png" alt="LAIFUDE"></a>
+            <p data-lang="footer_moto">Technology Built on Trust, Value Defined by Quality.</p>
+            <div class="copyright">© 2026 LAIFUDE. All rights reserved.</div>
+        </div>
+<div class="footer-column">
+    <h4 data-lang="f_col2_h">COMPANY</h4>
+        <a href="aboutus.html">About Us</a>
+        <a href="technology.html">Brand Philosophy</a>
+        <a href="Sustainability.html">Sustainability</a>
+        <a href="#">News & Insights</a>
+        <a href="#">Careers</a>
+    
+</div>
+        <div class="footer-column">
+            <h4 data-lang="f_col2_h">COLLECTIONS</h4>
+            <a href="uniformshirts.html" data-lang="f_col2_a6">Uniform Shirts</a>
+            <a href="corporate.html" data-lang="f_col2_a2">Corporate Wear</a>
+            <a href="esdclean.html" data-lang="f_col2_a3">ESD & Cleanroom Wear</a>
+            <a href="medical.html" data-lang="f_col2_a4">Medical Uniforms</a>
+            <a href="products.html" data-lang="f_col2_a1">Workwear</a>
+            <a href="safety.html" data-lang="f_col2_a5">Safety & PPE</a>
+        </div>
+        <div class="footer-column">
+            <h4 data-lang="f_col3_h">SUPPORT</h4>
+            <a href="contact.html#quotation-form" data-lang="f_col3_a1">Request a Quotation</a>
+            <a href="https://github.com/sales3-lgtm/laifudevinahome/releases/download/catalogue/LAIFUDE_CATALOG_2026.pdf" 
+            download data-lang="f_col3_a2">LAIFUDE VINA CATALOG</a>
+            <a href="https://github.com/sales3-lgtm/laifudevinahome/releases/download/catalogue/ESD_Catalog_2026.pdf" 
+            download data-lang="f_col3_a3">ESD_Cleanroom DOWNLOAD</a>
+            <a href="contact.html" data-lang="f_col3_a4">Contact Us</a>
+        </div>
+        <div class="footer-column">
+            <h4 data-lang="f_col4_h">LEGAL</h4>
+            <a href="privacypolicy.html" data-lang="f_col4_a1">Privacy Policy</a>
+            <a href="terms.html" data-lang="f_col4_a2">Terms of Use</a>
+        </div>
+        <div class="footer-column social">
+            <h4 data-lang="f_col5_h">FOLLOW US</h4>
+            <div class="social-icons">
+
+                <!-- ZALO QUICK CONTACT BUTTON -->
+        <a href="zalo://chat?p=84962705505" target="_blank" class="zalo-float" aria-label="Chat on Zalo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo">
+</a>
+                
+                <a href="https://www.facebook.com/laifudevn/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/본인아이디" target="_blank" rel="noopener noreferrer" class="instagram-link" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.youtube.com/" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+
+<style>
+  .tiktok-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background-color: #000000;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+  }
+
+  .tiktok-button:hover {
+    transform: scale(1.1);
+  }
+
+  /* 틱톡 입체 컬러 로고 효과 */
+  .tiktok-icon {
+    width: 24px;
+    height: 24px;
+    color: #ffffff;
+    /* 왼쪽 핑크, 오른쪽 시안 입체 오프셋 효과 */
+    filter: drop-shadow(-1.5px -1.5px 0px #FE2C55) drop-shadow(1.5px 1.5px 0px #00F2FE);
+  }
+</style>
+
+<a href="https://www.tiktok.com/@본인아이디" target="_blank" rel="noopener noreferrer" class="tiktok-button">
+  <svg class="tiktok-icon" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.29 0 .58.04.85.12V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 3 15.68 6.34 6.34 0 0 0 9.34 22a6.34 6.34 0 0 0 6.34-6.34V9.37a8.16 8.16 0 0 0 4.91 1.62V7.55a4.85 4.85 0 0 1-1-.86z"/>
+  </svg>
+</a>
+
+            </div>
+            
+            <!-- 📌 [복원 완료] 하단 인디케이터 수복 및 드롭다운 완결 -->
+            <div class="language-footer">
+                🌐 <span id="footer-language">English</span>
+                <i class="fa-solid fa-chevron-down"></i>
+                <div class="language-menu footer-menu">
+                    <div onclick="changeLanguage('en')">English</div>
+                    <div onclick="changeLanguage('ko')">한국어</div>
+                    <div onclick="changeLanguage('vi')">Tiếng Việt</div>
+                    <div onclick="changeLanguage('zh-CN')">中文</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- 구글 번역 백그라운드 그릇 -->
+<div id="google_translate_element" style="transform:translateX(100%);"></div>
+
+<!-- 구글 공식 API 라이브러리 -->
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<!-- 📌 1. 내가 만든 이미지 번역 엔진을 가장 먼저 로드 -->
+<script src="language.images.js"></script>
+
+<!-- 📌 2. 구글 번역과 이미지 엔진을 함께 통제하는 컨트롤러 로드 -->
+<script src="language.js"></script>
+
+
+<script>
+(function () {
+    const popup = document.getElementById('newProductPopup');
+    const closeBtn = document.getElementById('newProductPopupClose');
+    const todayCheck = document.getElementById('newProductPopupToday');
+    const storageKey = 'laifudeNewProductPopupClosedUntil';
+
+    function shouldShowPopup() {
+        const closedUntil = localStorage.getItem(storageKey);
+        return !closedUntil || Date.now() > Number(closedUntil);
+    }
+
+    function openPopup() {
+        popup.classList.add('is-open');
+        popup.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('popup-open');
+    }
+
+    function closePopup() {
+        if (todayCheck.checked) {
+            const tomorrow = new Date();
+            tomorrow.setHours(24, 0, 0, 0);
+            localStorage.setItem(storageKey, String(tomorrow.getTime()));
+        }
+        popup.classList.remove('is-open');
+        popup.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('popup-open');
+    }
+
+    if (shouldShowPopup()) {
+        window.setTimeout(openPopup, 700);
+    }
+
+    closeBtn.addEventListener('click', closePopup);
+
+    popup.addEventListener('click', function (event) {
+        if (event.target === popup) closePopup();
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && popup.classList.contains('is-open')) {
+            closePopup();
+        }
+    });
+})();
+</script>
+
+</body>
+</html>
+
